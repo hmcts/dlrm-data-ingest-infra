@@ -10,6 +10,7 @@ module "data_landing_zone" {
   }
 
   env                                              = var.env
+  name                                             = "dlrm-ingest-landing"
   common_tags                                      = module.ctags.common_tags
   default_route_next_hop_ip                        = var.default_route_next_hop_ip
   vnet_address_space                               = var.landing_address_space
