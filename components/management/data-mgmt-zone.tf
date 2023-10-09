@@ -7,7 +7,7 @@ module "data_mgmt_zone" {
   }
 
   env                       = var.env
-  name                      = "dlrm-ingest-mgmt"
+  name                      = "dlrm-ingest"
   common_tags               = module.ctags.common_tags
   default_route_next_hop_ip = var.default_route_next_hop_ip
   address_space             = var.mgmt_address_space
