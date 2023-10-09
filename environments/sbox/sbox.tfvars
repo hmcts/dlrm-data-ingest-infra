@@ -1,6 +1,7 @@
 default_route_next_hop_ip                        = "10.10.200.36"
 hub_vnet_name                                    = "hmcts-hub-sbox-int"
 hub_resource_group_name                          = "hmcts-hub-sbox-int"
+hub_subscription_id = "ea3a8c1e-af9d-4108-bc86-a7e2d267f49c"
 mgmt_address_space                               = ["10.10.240.0/24"]
 landing_address_space                            = ["10.10.241.0/24", "10.10.242.0/24"]
 services_subnet_address_space                    = ["10.10.241.0/27"]
