@@ -1,0 +1,15 @@
+default_route_next_hop_ip                        = "10.10.200.36"
+hub_vnet_name                                    = "hmcts-hub-sbox-int"
+hub_resource_group_name                          = "hmcts-hub-sbox-int"
+mgmt_address_space                               = ["10.10.240.0/24"]
+landing_address_space                            = ["10.10.241.0/24", "10.10.242.0/24"]
+services_subnet_address_space                    = ["10.10.241.0/27"]
+services_mysql_subnet_address_space              = ["10.10.241.32/27"]
+data_bricks_public_subnet_address_space          = ["10.10.241.64/27"]
+data_bricks_private_subnet_address_space         = ["10.10.241.96/27"]
+data_bricks_product_public_subnet_address_space  = ["10.10.241.128/27"]
+data_bricks_product_private_subnet_address_space = ["10.10.242.0/27"]
+data_integration_001_subnet_address_space        = ["10.10.242.32/27"]
+data_integration_002_subnet_address_space        = ["10.10.242.64/27"]
+data_product_001_subnet_address_space            = ["10.10.242.96/27"]
+data_product_002_subnet_address_space            = ["10.10.242.128/27"]
