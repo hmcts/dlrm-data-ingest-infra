@@ -14,3 +14,11 @@ data_integration_001_subnet_address_space        = ["10.10.242.32/27"]
 data_integration_002_subnet_address_space        = ["10.10.242.64/27"]
 data_product_001_subnet_address_space            = ["10.10.242.96/27"]
 data_product_002_subnet_address_space            = ["10.10.242.128/27"]
+
+existing_purview_account = {
+  resource_id = "/subscriptions/a8140a9e-f1b0-481f-a4de-09e2ee23f7ab/resourceGroups/mi-sbox-rg/providers/Microsoft.Purview/accounts/mi-purview-sbox"
+  identity = {
+    principal_id = "b92d5586-c076-4598-bccf-4ba081889621"
+    tenant_id    = "531ff96d-0ae9-462a-8d2d-bec7c0b42082"
+  }
+}

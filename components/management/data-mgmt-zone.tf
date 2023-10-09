@@ -12,4 +12,5 @@ module "data_mgmt_zone" {
   address_space             = var.mgmt_address_space
   hub_vnet_name             = var.hub_vnet_name
   hub_resource_group_name   = var.hub_resource_group_name
+  existing_purview_account  = var.existing_purview_account
 }
