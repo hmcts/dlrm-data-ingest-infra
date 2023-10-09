@@ -30,13 +30,15 @@ provider "azurerm" {
 }
 
 provider "azurerm" {
-  alias = "soc"
+  alias                      = "soc"
+  skip_provider_registration = true
   features {}
   subscription_id = local.soc_sub_id
 }
 
 provider "azurerm" {
-  alias = "cnp"
+  alias                      = "cnp"
+  skip_provider_registration = true
   features {}
   subscription_id = local.is_prod ? local.cnp_prod_sub_id : local.cnp_nonprod_sub_id
 }
