@@ -6,7 +6,7 @@ mgmt_address_space        = ["10.147.2.0/24"]
 
 landing_zones = {
   00 = {
-    landing_address_space                            = ["10.147.5.0/24", "10.147.6.0/24"]
+    address_space                                    = ["10.147.5.0/24", "10.147.6.0/24"]
     services_subnet_address_space                    = ["10.147.5.0/27"]
     services_mysql_subnet_address_space              = ["10.147.5.32/27"]
     data_bricks_public_subnet_address_space          = ["10.147.5.64/27"]
