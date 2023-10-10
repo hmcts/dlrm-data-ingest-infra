@@ -12,5 +12,6 @@ terraform {
 }
 
 provider "azurerm" {
+  subscription_id = local.ssptl_sub_id
   features {}
 }
