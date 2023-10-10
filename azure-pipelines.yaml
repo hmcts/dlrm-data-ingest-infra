@@ -46,7 +46,9 @@ parameters:
         environment: 'stg'
         component: 'landing'
         service_connection: 'DTS-SHAREDSERVICES-STG'
-        dependsOn: 'stg_mgmt'
+        dependsOn: 
+          - 'stg_mgmt'
+          - 'sbox_landing'
       - deployment: 'prod_mgmt'
         environment: 'prod'
         component: 'management'
@@ -56,7 +58,9 @@ parameters:
         environment: 'prod'
         component: 'landing'
         service_connection: 'DTS-SHAREDSERVICES-PROD'
-        dependsOn: 'prod_mgmt'
+        dependsOn: 
+          - 'prod_mgmt'
+          - 'stg_landing'
 
 variables:
   - name: timeoutInMinutes
