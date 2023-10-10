@@ -26,6 +26,7 @@ parameters:
   - name: environment_components
     type: object
     default:
+      #TODO: These should be deployed to thier own subs
       - deployment: 'sbox_mgmt'
         environment: 'sbox'
         component: 'management'
@@ -36,6 +37,26 @@ parameters:
         component: 'landing'
         service_connection: 'DTS-SHAREDSERVICES-SBOX'
         dependsOn: 'sbox_mgmt'
+      - deployment: 'stg_mgmt'
+        environment: 'stg'
+        component: 'management'
+        service_connection: 'DTS-SHAREDSERVICES-STG'
+        dependsOn: 'sbox_mgmt'
+      - deployment: 'stg_landing'
+        environment: 'stg'
+        component: 'landing'
+        service_connection: 'DTS-SHAREDSERVICES-STG'
+        dependsOn: 'stg_mgmt'
+      - deployment: 'prod_mgmt'
+        environment: 'prod'
+        component: 'management'
+        service_connection: 'DTS-SHAREDSERVICES-PROD'
+        dependsOn: 'stg_mgmt'
+      - deployment: 'prod_landing'
+        environment: 'prod'
+        component: 'landing'
+        service_connection: 'DTS-SHAREDSERVICES-PROD'
+        dependsOn: 'prod_mgmt'
 
 variables:
   - name: timeoutInMinutes
