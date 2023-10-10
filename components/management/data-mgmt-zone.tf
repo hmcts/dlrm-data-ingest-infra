@@ -2,8 +2,9 @@ module "data_mgmt_zone" {
   source = "github.com/hmcts/terraform-module-data-management-zone?ref=main"
 
   providers = {
-    azurerm     = azurerm,
-    azurerm.hub = azurerm.hub
+    azurerm       = azurerm,
+    azurerm.hub   = azurerm.hub
+    azurerm.ssptl = azurerm.ssptl
   }
 
   env                       = var.env

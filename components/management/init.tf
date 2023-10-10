@@ -20,3 +20,10 @@ provider "azurerm" {
   alias           = "hub"
   subscription_id = var.hub_subscription_id
 }
+
+provider "azurerm" {
+  alias                      = "ssptl"
+  skip_provider_registration = true
+  features {}
+  subscription_id = local.ssptl_sub_id
+}
