@@ -5,7 +5,7 @@ hub_subscription_id       = "ea3a8c1e-af9d-4108-bc86-a7e2d267f49c"
 mgmt_address_space        = ["10.147.2.0/24"]
 
 landing_zones = {
-  00 = {
+  "00" = {
     address_space                                    = ["10.147.5.0/24", "10.147.6.0/24"]
     services_subnet_address_space                    = ["10.147.5.0/27"]
     services_mysql_subnet_address_space              = ["10.147.5.32/27"]
