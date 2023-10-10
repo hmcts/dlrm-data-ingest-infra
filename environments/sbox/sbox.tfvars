@@ -6,18 +6,31 @@ mgmt_address_space        = ["10.147.2.0/24"]
 
 landing_zones = {
   "00" = {
-    address_space                                    = ["10.147.5.0/24", "10.147.6.0/24"]
-    services_subnet_address_space                    = ["10.147.5.0/27"]
-    services_mysql_subnet_address_space              = ["10.147.5.32/27"]
-    data_bricks_public_subnet_address_space          = ["10.147.5.64/27"]
-    data_bricks_private_subnet_address_space         = ["10.147.5.96/27"]
-    data_bricks_product_public_subnet_address_space  = ["10.147.5.128/27"]
-    data_bricks_product_private_subnet_address_space = ["10.147.6.0/27"]
-    data_integration_001_subnet_address_space        = ["10.147.6.32/27"]
-    data_integration_002_subnet_address_space        = ["10.147.6.64/27"]
-    data_product_001_subnet_address_space            = ["10.147.6.96/27"]
-    data_product_002_subnet_address_space            = ["10.147.6.128/27"]
+    address_space                                    = ["10.147.3.0/24", "10.147.4.0/24"]
+    services_subnet_address_space                    = ["10.147.3.0/27"]
+    services_mysql_subnet_address_space              = ["10.147.3.32/27"]
+    data_bricks_public_subnet_address_space          = ["10.147.3.64/27"]
+    data_bricks_private_subnet_address_space         = ["10.147.3.96/27"]
+    data_bricks_product_public_subnet_address_space  = ["10.147.3.128/27"]
+    data_bricks_product_private_subnet_address_space = ["10.147.4.0/27"]
+    data_integration_001_subnet_address_space        = ["10.147.4.32/27"]
+    data_integration_002_subnet_address_space        = ["10.147.4.64/27"]
+    data_product_001_subnet_address_space            = ["10.147.4.96/27"]
+    data_product_002_subnet_address_space            = ["10.147.4.128/27"]
   }
+  #"01" = {
+  #  address_space                                    = ["10.147.5.0/24", "10.147.6.0/24"]
+  #  services_subnet_address_space                    = ["10.147.5.0/27"]
+  #  services_mysql_subnet_address_space              = ["10.147.5.32/27"]
+  #  data_bricks_public_subnet_address_space          = ["10.147.5.64/27"]
+  #  data_bricks_private_subnet_address_space         = ["10.147.5.96/27"]
+  #  data_bricks_product_public_subnet_address_space  = ["10.147.5.128/27"]
+  #  data_bricks_product_private_subnet_address_space = ["10.147.6.0/27"]
+  #  data_integration_001_subnet_address_space        = ["10.147.6.32/27"]
+  #  data_integration_002_subnet_address_space        = ["10.147.6.64/27"]
+  #  data_product_001_subnet_address_space            = ["10.147.6.96/27"]
+  #  data_product_002_subnet_address_space            = ["10.147.6.128/27"]
+  #}
 }
 
 existing_purview_account = {
