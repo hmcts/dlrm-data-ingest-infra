@@ -1,5 +1,5 @@
 locals {
-  ssptl_sub_id       = "6c4d2513-a873-41b4-afdd-b05a33206631"
+  ssptl_sub_id = "6c4d2513-a873-41b4-afdd-b05a33206631"
   landing_zone_prefixes = flatten([
     for landing_zone in var.landing_zones : landing_zone.address_space
   ])
