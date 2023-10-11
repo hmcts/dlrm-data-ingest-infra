@@ -28,4 +28,6 @@ module "data_landing_zone" {
   data_integration_002_subnet_address_space        = each.value.data_integration_002_subnet_address_space
   data_product_001_subnet_address_space            = each.value.data_product_001_subnet_address_space
   data_product_002_subnet_address_space            = each.value.data_product_002_subnet_address_space
+  hub_vnet_name                                    = var.hub_vnet_name
+  hub_resource_group_name                          = var.hub_resource_group_name
 }
