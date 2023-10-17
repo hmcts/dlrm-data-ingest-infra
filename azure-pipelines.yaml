@@ -116,7 +116,7 @@ stages:
                   scriptLocation: 'inlineScript'
                   inlineScript: |
                     purviewAccountDetails=$(az purview account list --resource-group ingest-mgmt-rg-${{ deployment.environment }} --query "[0] | { resource_id: id, managed_storage_account_id: managedResources.storageAccount, managed_event_hub_namespace_id: managedResources.eventHubNamespace, identity: { principal_id: identity.principalId, tenant_id: identity.tenantId } }" | jq tostring)
-                    echo '##vso[task.setvariable variable=purview]$purviewAccountDetails'
+                    echo "##vso[task.setvariable variable=purview]$purviewAccountDetails"
             - template: steps/terraform.yaml@cnp-azuredevops-libraries
               parameters:
                 overrideAction: ${{ parameters.overrideAction }}
