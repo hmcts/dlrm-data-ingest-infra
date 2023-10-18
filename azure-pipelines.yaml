@@ -74,7 +74,7 @@ parameters:
 
 variables:
   - name: timeoutInMinutes
-    value: 60
+    value: 240
   - name: agentImage
     value: ubuntu-20.04
   - name: product
