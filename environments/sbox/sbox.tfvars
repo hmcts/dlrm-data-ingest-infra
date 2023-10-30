@@ -18,17 +18,4 @@ landing_zones = {
     data_product_001_subnet_address_space            = ["10.247.4.96/27"]
     data_product_002_subnet_address_space            = ["10.247.4.128/27"]
   }
-  "01" = {
-    address_space                                    = ["10.247.5.0/24", "10.247.6.0/24"]
-    services_subnet_address_space                    = ["10.247.5.0/27"]
-    services_mysql_subnet_address_space              = ["10.247.5.32/27"]
-    data_bricks_public_subnet_address_space          = ["10.247.5.64/27"]
-    data_bricks_private_subnet_address_space         = ["10.247.5.96/27"]
-    data_bricks_product_public_subnet_address_space  = ["10.247.5.128/27"]
-    data_bricks_product_private_subnet_address_space = ["10.247.6.0/27"]
-    data_integration_001_subnet_address_space        = ["10.247.6.32/27"]
-    data_integration_002_subnet_address_space        = ["10.247.6.64/27"]
-    data_product_001_subnet_address_space            = ["10.247.6.96/27"]
-    data_product_002_subnet_address_space            = ["10.247.6.128/27"]
-  }
 }
