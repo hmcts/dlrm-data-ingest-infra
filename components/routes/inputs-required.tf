@@ -16,17 +16,13 @@ variable "product" {
 variable "landing_zones" {
   description = "The landing zones to deploy."
   type = map(object({
-    address_space                                    = list(string)
-    services_subnet_address_space                    = list(string)
-    services_mysql_subnet_address_space              = list(string)
-    data_bricks_public_subnet_address_space          = list(string)
-    data_bricks_private_subnet_address_space         = list(string)
-    data_bricks_product_public_subnet_address_space  = list(string)
-    data_bricks_product_private_subnet_address_space = list(string)
-    data_integration_001_subnet_address_space        = list(string)
-    data_integration_002_subnet_address_space        = list(string)
-    data_product_001_subnet_address_space            = list(string)
-    data_product_002_subnet_address_space            = list(string)
+    role_based_access_control = optional(list(object({
+      name = optional(string)
+      type = optional(string, "user")
+      mail = optional(string),
+      role = optional(string, "Owner")
+    })))
+    project = string
   }))
 }
 
