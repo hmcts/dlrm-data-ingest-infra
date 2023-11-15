@@ -38,7 +38,7 @@ module "ctags" {
 
 data "azuread_user" "principal" {
   for_each            = local.users
-  user_principal_name = each.value.name
+  user_principal_name = endswith(each.value.name, "@justice.gov.uk") ? replace(each.value.name, "@justice.gov.uk", "_justice.gov.uk#EXT#@CJSCommonPlatform.onmicrosoft.com") : each.value.name
   mail                = each.value.mail
 }
 
