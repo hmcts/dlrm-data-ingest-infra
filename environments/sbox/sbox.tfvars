@@ -23,7 +23,7 @@ landing_zones = {
         type = "User"
       },
       {
-        name = "Alex.Bance"
+        name = "Alex.Bance@HMCTS.NET"
         type = "User"
       },
       {
