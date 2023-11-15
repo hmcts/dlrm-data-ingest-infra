@@ -22,13 +22,4 @@ landing_zones = {
       }
     ]
   }
-  "01" = {
-    project = "another example landing zone"
-    role_based_access_control = [
-      {
-        name = "DTS Platform Operations"
-        type = "Group"
-      }
-    ]
-  }
 }
