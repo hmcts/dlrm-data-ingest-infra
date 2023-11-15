@@ -9,7 +9,6 @@ locals {
   users_set              = toset([for principal in var.rbac_principals : principal if lower(principal.type) == "user"])
   groups_set             = toset([for principal in var.rbac_principals : principal if lower(principal.type) == "group"])
   service_principals_set = toset([for principal in var.rbac_principals : principal if lower(principal.type) == "service principal"])
-  rbac_scopes            = [for rg in module.data_landing_zone.resource_groups : rg.id]
 }
 
 module "ctags" {
