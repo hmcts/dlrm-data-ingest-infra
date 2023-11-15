@@ -20,16 +20,5 @@ variable "rbac_principals" {
     mail = optional(string)
   }))
   description = "Map of RBAC principals to create role assignments for. These can be users, groups or service principals."
-
-  validation {
-    condition = alltrue([
-      contains(["user", "group", "service principal"], lower(var.rbac_principals.type)),
-      anytrue([
-        var.rbac_principals.name != null,
-        var.rbac_principals.mail != null
-      ])
-    ])
-    error_message = "The type must be either 'user', 'group' or 'service principal' and either mail or name must be specified."
-  }
   default = []
 }
