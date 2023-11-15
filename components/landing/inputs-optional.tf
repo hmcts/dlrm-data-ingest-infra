@@ -20,5 +20,5 @@ variable "rbac_principals" {
     mail = optional(string)
   }))
   description = "Map of RBAC principals to create role assignments for. These can be users, groups or service principals."
-  default = []
+  default     = []
 }
