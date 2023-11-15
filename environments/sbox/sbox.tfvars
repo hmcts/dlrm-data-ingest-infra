@@ -19,3 +19,23 @@ landing_zones = {
     data_product_002_subnet_address_space            = ["10.247.4.128/27"]
   }
 }
+
+rbac_principals = [
+  {
+    name = "Alex.Bance@justice.gov.uk"
+    type = "User"
+  },
+  {
+    name = "Alex.Bance"
+    type = "User"
+  },
+  {
+    name = "DTS Platform Operations"
+    type = "Group"
+  }
+]
+
+resource_ids = [
+  "/subscriptions/df72bb30-d6fb-47bd-82ee-5eb87473ddb3/resourceGroups/ingest00-storage-sbox",
+  "/subscriptions/df72bb30-d6fb-47bd-82ee-5eb87473ddb3/resourceGroups/ingest00-network-sbox"
+]
