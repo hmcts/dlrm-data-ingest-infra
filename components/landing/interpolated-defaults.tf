@@ -27,8 +27,8 @@ locals {
   data_ingest_address_space = "10.247.0.0/18"
   subnet_starting_index = {
     "sbox" = 3
-    "stg"  = 33
-    "prod" = 63
+    "stg"  = 23
+    "prod" = 43
   }
 }
 
