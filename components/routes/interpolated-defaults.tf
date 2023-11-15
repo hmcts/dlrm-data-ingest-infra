@@ -5,7 +5,7 @@ locals {
   ssptl_route_table_name    = local.is_sbox ? "aks-ptlsbox-route-table" : "aks-ptl-route-table"
   ssptl_vnet_resource_group = local.is_sbox ? "ss-ptlsbox-network-rg" : "ss-ptl-network-rg"
   landing_zone_prefixes = flatten([
-    for key, landing_zone in var.landing_zones : [cidrsubnet(local.data_ingest_address_space, 6, local.subnet_starting_index[var.env] + parseint(key, 10)), cidrsubnet(local.data_ingest_address_space, 6, local.subnet_starting_index[var.env] + parseint(key, 10) + 1)]
+    for key, landing_zone in var.landing_zones : [cidrsubnet(local.data_ingest_address_space, 6, local.subnet_starting_index[var.env] + (parseint(key, 10) * 2)), cidrsubnet(local.data_ingest_address_space, 6, local.subnet_starting_index[var.env] + (parseint(key, 10) * 2) + 1)]
   ])
   data_ingest_address_space = "10.247.0.0/18"
   subnet_starting_index = {
