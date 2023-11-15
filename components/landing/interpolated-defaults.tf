@@ -11,7 +11,7 @@ locals {
       for rg in module.data_landing_zone[lz_key].resource_groups : [
         for rbac in lz.role_based_access_control : {
           lz_key = lz_key
-          key    = "${lz_key}-${rbac.type}-${rbac.name == null ? "" : rbac.name}${rbac.mail == null ? "" : rbac.mail}"
+          key    = "${lz_key}-${rg.name}-${rbac.type}-${rbac.name == null ? "" : rbac.name}${rbac.mail == null ? "" : rbac.mail}"
           name   = rbac.name
           type   = rbac.type
           mail   = rbac.mail
