@@ -18,16 +18,16 @@ module "data_landing_zone" {
   common_tags                                      = module.ctags.common_tags
   default_route_next_hop_ip                        = var.default_route_next_hop_ip
   vnet_address_space                               = [cidrsubnet(local.data_ingest_address_space, 6, local.subnet_starting_index[var.env] + parseint(each.key, 10)), cidrsubnet(local.data_ingest_address_space, 6, local.subnet_starting_index[var.env] + parseint(each.key, 10) + 1)]
-  services_subnet_address_space                    = cidrsubnet(cidrsubnet(local.data_ingest_address_space, 6, local.subnet_starting_index[var.env] + parseint(each.key, 10)), 3, 0)
-  services_mysql_subnet_address_space              = cidrsubnet(cidrsubnet(local.data_ingest_address_space, 6, local.subnet_starting_index[var.env] + parseint(each.key, 10)), 3, 1)
-  data_bricks_public_subnet_address_space          = cidrsubnet(cidrsubnet(local.data_ingest_address_space, 6, local.subnet_starting_index[var.env] + parseint(each.key, 10)), 3, 2)
-  data_bricks_private_subnet_address_space         = cidrsubnet(cidrsubnet(local.data_ingest_address_space, 6, local.subnet_starting_index[var.env] + parseint(each.key, 10)), 3, 3)
-  data_bricks_product_public_subnet_address_space  = cidrsubnet(cidrsubnet(local.data_ingest_address_space, 6, local.subnet_starting_index[var.env] + parseint(each.key, 10)), 3, 4)
-  data_bricks_product_private_subnet_address_space = cidrsubnet(cidrsubnet(local.data_ingest_address_space, 6, local.subnet_starting_index[var.env] + parseint(each.key, 10)), 3, 5)
-  data_integration_001_subnet_address_space        = cidrsubnet(cidrsubnet(local.data_ingest_address_space, 6, local.subnet_starting_index[var.env] + parseint(each.key, 10) + 1), 3, 0)
-  data_integration_002_subnet_address_space        = cidrsubnet(cidrsubnet(local.data_ingest_address_space, 6, local.subnet_starting_index[var.env] + parseint(each.key, 10) + 1), 3, 1)
-  data_product_001_subnet_address_space            = cidrsubnet(cidrsubnet(local.data_ingest_address_space, 6, local.subnet_starting_index[var.env] + parseint(each.key, 10) + 1), 3, 2)
-  data_product_002_subnet_address_space            = cidrsubnet(cidrsubnet(local.data_ingest_address_space, 6, local.subnet_starting_index[var.env] + parseint(each.key, 10) + 1), 3, 3)
+  services_subnet_address_space                    = [cidrsubnet(cidrsubnet(local.data_ingest_address_space, 6, local.subnet_starting_index[var.env] + parseint(each.key, 10)), 3, 0)]
+  services_mysql_subnet_address_space              = [cidrsubnet(cidrsubnet(local.data_ingest_address_space, 6, local.subnet_starting_index[var.env] + parseint(each.key, 10)), 3, 1)]
+  data_bricks_public_subnet_address_space          = [cidrsubnet(cidrsubnet(local.data_ingest_address_space, 6, local.subnet_starting_index[var.env] + parseint(each.key, 10)), 3, 2)]
+  data_bricks_private_subnet_address_space         = [cidrsubnet(cidrsubnet(local.data_ingest_address_space, 6, local.subnet_starting_index[var.env] + parseint(each.key, 10)), 3, 3)]
+  data_bricks_product_public_subnet_address_space  = [cidrsubnet(cidrsubnet(local.data_ingest_address_space, 6, local.subnet_starting_index[var.env] + parseint(each.key, 10)), 3, 4)]
+  data_bricks_product_private_subnet_address_space = [cidrsubnet(cidrsubnet(local.data_ingest_address_space, 6, local.subnet_starting_index[var.env] + parseint(each.key, 10)), 3, 5)]
+  data_integration_001_subnet_address_space        = [cidrsubnet(cidrsubnet(local.data_ingest_address_space, 6, local.subnet_starting_index[var.env] + parseint(each.key, 10) + 1), 3, 0)]
+  data_integration_002_subnet_address_space        = [cidrsubnet(cidrsubnet(local.data_ingest_address_space, 6, local.subnet_starting_index[var.env] + parseint(each.key, 10) + 1), 3, 1)]
+  data_product_001_subnet_address_space            = [cidrsubnet(cidrsubnet(local.data_ingest_address_space, 6, local.subnet_starting_index[var.env] + parseint(each.key, 10) + 1), 3, 2)]
+  data_product_002_subnet_address_space            = [cidrsubnet(cidrsubnet(local.data_ingest_address_space, 6, local.subnet_starting_index[var.env] + parseint(each.key, 10) + 1), 3, 3)]
   hub_vnet_name                                    = var.hub_vnet_name
   hub_resource_group_name                          = var.hub_resource_group_name
 }
