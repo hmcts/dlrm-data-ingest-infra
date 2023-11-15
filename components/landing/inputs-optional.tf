@@ -12,13 +12,3 @@ variable "existing_purview_account" {
   })
   default = null
 }
-
-variable "rbac_principals" {
-  type = list(object({
-    name = optional(string)
-    type = optional(string, "user")
-    mail = optional(string)
-  }))
-  description = "Map of RBAC principals to create role assignments for. These can be users, groups or service principals."
-  default     = []
-}

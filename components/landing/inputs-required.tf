@@ -27,6 +27,12 @@ variable "landing_zones" {
     data_integration_002_subnet_address_space        = list(string)
     data_product_001_subnet_address_space            = list(string)
     data_product_002_subnet_address_space            = list(string)
+    role_based_access_control = optional(list(object({
+      name = optional(string)
+      type = optional(string, "user")
+      mail = optional(string),
+      role = optional(string, "Owner")
+    })))
   }))
 }
 
