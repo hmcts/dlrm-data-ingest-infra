@@ -9,13 +9,22 @@ landing_zones = {
     project = "example landing zone"
     role_based_access_control = [
       {
-        name = "Alex.Bance@justice.gov.uk"
+        name = "prasanna.krishnan@justice.gov.uk"
         type = "User"
       },
       {
-        name = "Alex.Bance@HMCTS.NET"
+        name = "dominic.leary@justice.gov.uk"
         type = "User"
       },
+      {
+        name = "isha.shrivastava1@justice.gov.uk"
+        type = "User"
+      }
+    ]
+  }
+  "01" = {
+    project = "another example landing zone"
+    role_based_access_control = [
       {
         name = "DTS Platform Operations"
         type = "Group"
