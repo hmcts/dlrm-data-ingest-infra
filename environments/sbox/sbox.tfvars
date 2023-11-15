@@ -6,17 +6,7 @@ mgmt_address_space        = ["10.247.2.0/24"]
 
 landing_zones = {
   "00" = {
-    address_space                                    = ["10.247.3.0/24", "10.247.4.0/24"]
-    services_subnet_address_space                    = ["10.247.3.0/27"]
-    services_mysql_subnet_address_space              = ["10.247.3.32/27"]
-    data_bricks_public_subnet_address_space          = ["10.247.3.64/27"]
-    data_bricks_private_subnet_address_space         = ["10.247.3.96/27"]
-    data_bricks_product_public_subnet_address_space  = ["10.247.3.128/27"]
-    data_bricks_product_private_subnet_address_space = ["10.247.4.0/27"]
-    data_integration_001_subnet_address_space        = ["10.247.4.32/27"]
-    data_integration_002_subnet_address_space        = ["10.247.4.64/27"]
-    data_product_001_subnet_address_space            = ["10.247.4.96/27"]
-    data_product_002_subnet_address_space            = ["10.247.4.128/27"]
+    project = "example landing zone"
     role_based_access_control = [
       {
         name = "Alex.Bance@justice.gov.uk"

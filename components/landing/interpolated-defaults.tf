@@ -21,10 +21,15 @@ locals {
       ]
     ]
   ])
-  users              = { for rbac in local.flattened_rbac : rbac.key => rbac if lower(rbac.type) == "user" }
-  groups             = { for rbac in local.flattened_rbac : rbac.key => rbac if lower(rbac.type) == "group" }
-  service_principals = { for rbac in local.flattened_rbac : rbac.key => rbac if lower(rbac.type) == "service principal" }
-
+  users                     = { for rbac in local.flattened_rbac : rbac.key => rbac if lower(rbac.type) == "user" }
+  groups                    = { for rbac in local.flattened_rbac : rbac.key => rbac if lower(rbac.type) == "group" }
+  service_principals        = { for rbac in local.flattened_rbac : rbac.key => rbac if lower(rbac.type) == "service principal" }
+  data_ingest_address_space = "10.247.0.0/18"
+  subnet_starting_index = {
+    "sbox"    = 3
+    "nonprod" = 53
+    "prod"    = 103
+  }
 }
 
 module "ctags" {
