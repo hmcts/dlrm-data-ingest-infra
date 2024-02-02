@@ -116,7 +116,7 @@ stages:
             pool: hmcts-sds-ptl
           timeoutInMinutes: ${{ variables.timeoutInMinutes }}
           steps:
-            - ${{ if contains(deployment.component, 'landing') }}:
+            - ${{ if and(contains(deployment.component, 'landing'), ne(deployment.environment, 'prod')) }}:
               - task: AzureCLI@2
                 inputs:
                   azureSubscription: ${{ deployment.service_connection }}
@@ -133,7 +133,7 @@ stages:
                 serviceConnection: ${{ deployment.service_connection }}
                 terraformInitSubscription: ${{ variables.terraformInitSubscription }}
                 product: ${{ variables.product }}
-                ${{ if contains(deployment.component, 'landing') }}:
+                ${{ if and(contains(deployment.component, 'landing'), ne(deployment.environment, 'prod')) }}:
                   planCommandOptions: '-compact-warnings -var existing_purview_account=$(purview)'
                 ${{ else }}:
                   planCommandOptions: '-compact-warnings'
