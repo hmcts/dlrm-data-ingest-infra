@@ -10,4 +10,14 @@ mgmt_additional_kv_access_policies = {
   }
 }
 
+existing_purview_account = {
+  resource_id                    = "/subscriptions/da8a21e5-d260-4162-9391-6bdadf9103f8/resourceGroups/ingest-mgmt-rg-stg/providers/Microsoft.Purview/accounts/ingest-mgmt-purview-stg"
+  managed_storage_account_id     = "/subscriptions/da8a21e5-d260-4162-9391-6bdadf9103f8/resourceGroups/ingest-mgmt-purview-stg/providers/Microsoft.Storage/storageAccounts/scanuksouthjvoivnx"
+  managed_event_hub_namespace_id = "/subscriptions/da8a21e5-d260-4162-9391-6bdadf9103f8/resourcegroups/ingest-mgmt-purview-stg/providers/Microsoft.EventHub/namespaces/Atlas-29d1f0ea-be32-44a6-81aa-3dc42e7b18bb"
+  identity = {
+    principal_id = "43a67ac7-4006-4665-95b3-517db7e679f6"
+    tenant_id    = "531ff96d-0ae9-462a-8d2d-bec7c0b42082"
+  }
+}
+
 landing_zones = {}
