@@ -21,10 +21,6 @@ landing_zones = {
       {
         name = "dominic.leary@justice.gov.uk"
         type = "User"
-      },
-      {
-        name = "isha.shrivastava1@justice.gov.uk"
-        type = "User"
       }
     ]
   }
