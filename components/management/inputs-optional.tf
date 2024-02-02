@@ -21,5 +21,5 @@ variable "mgmt_additional_kv_access_policies" {
     certificate_permissions = optional(list(string), [])
     key_permissions         = optional(list(string), [])
   }))
-  default = []
+  default = {}
 }
