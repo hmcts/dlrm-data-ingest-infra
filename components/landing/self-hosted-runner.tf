@@ -20,7 +20,7 @@ resource "azurerm_container_group" "runner" {
     environment_variables = {
       GH_OWNER      = "hmcts"
       GH_REPOSITORY = each.value.gh_runner_key
-      GH_REPOSITORY = data.azurerm_key_vault_secret.token[each.key].value
+      GH_TOKEN = data.azurerm_key_vault_secret.token[each.key].value
     }
   }
 
