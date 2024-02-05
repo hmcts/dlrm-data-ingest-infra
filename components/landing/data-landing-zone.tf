@@ -28,6 +28,17 @@ module "data_landing_zone" {
   data_integration_002_subnet_address_space        = [cidrsubnet(cidrsubnet(local.data_ingest_address_space, 6, local.subnet_starting_index[var.env] + (parseint(each.key, 10) * 2) + 1), 3, 1)]
   data_product_001_subnet_address_space            = [cidrsubnet(cidrsubnet(local.data_ingest_address_space, 6, local.subnet_starting_index[var.env] + (parseint(each.key, 10) * 2) + 1), 2, 1)]
   data_product_002_subnet_address_space            = [cidrsubnet(cidrsubnet(local.data_ingest_address_space, 6, local.subnet_starting_index[var.env] + (parseint(each.key, 10) * 2) + 1), 2, 2)]
-  hub_vnet_name                                    = var.hub_vnet_name
-  hub_resource_group_name                          = var.hub_resource_group_name
+  additional_subnets = each.value.gh_runners == {} ? {} : {
+    gh-runners = {
+      address_prefixes = [cidrsubnet(cidrsubnet(local.data_ingest_address_space, 6, local.subnet_starting_index[var.env] + (parseint(each.key, 10) * 2) + 1), 3, 8)]
+      delegations = {
+        gh-runners-delegation = {
+          service_name = "Microsoft.ContainerInstance/containerGroups"
+          actions      = ["Microsoft.Network/virtualNetworks/subnets/join/action"]
+        }
+      }
+    }
+  }
+  hub_vnet_name           = var.hub_vnet_name
+  hub_resource_group_name = var.hub_resource_group_name
 }
