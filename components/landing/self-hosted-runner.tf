@@ -1,5 +1,5 @@
 resource "azurerm_container_group" "runner" {
-  for_each            = var.landing_zones
+  for_each            = { for key, value in var.landing_zones : key => value if value.deploy_gh_runner == true }
   name                = "ingest${each.key}-runner-${var.env}"
   location            = "uksouth"
   resource_group_name = "ingest${each.key}-management-${var.env}"

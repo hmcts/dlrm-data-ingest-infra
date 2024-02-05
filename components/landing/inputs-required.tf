@@ -23,6 +23,7 @@ variable "landing_zones" {
       role = optional(string, "Owner")
     })))
     project = string
+    deploy_gh_runner = optional(bool, false)
   }))
 }
 
