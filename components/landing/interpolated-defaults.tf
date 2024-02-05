@@ -38,6 +38,7 @@ locals {
         deploy            = gh_runner.deploy
         token_vault_id    = gh_runner.token_vault_id
         token_secret_name = gh_runner.token_secret_name
+        project           = lz.project
       }
   ]])
 }
