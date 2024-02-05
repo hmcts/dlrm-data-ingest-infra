@@ -11,7 +11,7 @@ resource "azurerm_container_group" "runner" {
   resource_group_name = "ingest${each.value.lz_key}-management-${var.env}"
   os_type             = "Linux"
   ip_address_type     = "Private"
-  subnet_ids          = [module.data_landing_zone[each.value.lz_key].subnet_ids["vnet-services"]]
+  subnet_ids          = [module.data_landing_zone[each.value.lz_key].subnet_ids["vnet-gh-runners"]]
   container {
     name   = "runner"
     image  = "hmctspublic.azurecr.io/github-runner:prod-84d74135-1707147900"
