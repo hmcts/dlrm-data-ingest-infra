@@ -22,6 +22,10 @@ resource "azurerm_container_group" "runner" {
       GH_REPOSITORY = each.value.gh_runner_key
       GH_TOKEN      = data.azurerm_key_vault_secret.token[each.key].value
     }
+    ports {
+      port     = 8080
+      protocol = "TCP"
+    }
   }
 
   tags = merge(module.ctags.common_tags, { "Data-Ingest-Project" = each.value.project })
