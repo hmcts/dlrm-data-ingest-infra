@@ -31,7 +31,4 @@ landing_zones = {
       }
     }
   }
-  "01" = {
-    project = "ajb test"
-  }
 }
