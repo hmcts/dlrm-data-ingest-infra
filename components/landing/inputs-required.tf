@@ -23,6 +23,11 @@ variable "landing_zones" {
       role = optional(string, "Owner")
     })))
     project = string
+    gh_runners = optional(map(object({
+      deploy            = optional(bool, true)
+      token_vault_id    = string
+      token_secret_name = string
+    })))
   }))
 }
 

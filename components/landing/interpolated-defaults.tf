@@ -30,6 +30,17 @@ locals {
     "stg"  = 23
     "prod" = 43
   }
+  flattened_runners = flatten([
+    for lz_key, lz in var.landing_zones : [
+      for gh_runner_key, gh_runner in lz.gh_runners : {
+        lz_key            = lz_key
+        gh_runner_key     = gh_runner_key
+        deploy            = gh_runner.deploy
+        token_vault_id    = gh_runner.token_vault_id
+        token_secret_name = gh_runner.token_secret_name
+        project           = lz.project
+      }
+  ]])
 }
 
 module "ctags" {
