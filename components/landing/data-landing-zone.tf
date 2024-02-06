@@ -34,7 +34,7 @@ module "data_landing_zone" {
       delegations = {
         gh-runners-delegation = {
           service_name = "Microsoft.ContainerInstance/containerGroups"
-          actions      = ["Microsoft.Network/virtualNetworks/subnets/join/action"]
+          actions      = ["Microsoft.Network/virtualNetworks/subnets/action"]
         }
       }
     }
