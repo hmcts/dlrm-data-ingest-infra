@@ -41,4 +41,5 @@ module "data_landing_zone" {
   }
   hub_vnet_name           = var.hub_vnet_name
   hub_resource_group_name = var.hub_resource_group_name
+  legacy_databases        = each.value.legacy_databases
 }
