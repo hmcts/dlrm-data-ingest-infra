@@ -30,5 +30,13 @@ landing_zones = {
         token_secret_name = "dlrm-ingestionengine-token"
       }
     }
+    legacy_databases = {
+      legacy-sql = {
+        publisher_name = "windowsserver-gen2preview"
+        offer          = "MicrosoftWindowsServer"
+        sku            = "2012-r2-datacenter-gen2"
+        version        = "9600.19431.1908092124"
+      }
+    }
   }
 }
