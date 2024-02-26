@@ -21,6 +21,10 @@ landing_zones = {
       {
         name = "dominic.leary@justice.gov.uk"
         type = "User"
+      },
+      {
+        name = "DTS DLRM Data Ingestion Admin (env:sandbox)"
+        type = "Group"
       }
     ]
     gh_runners = {
