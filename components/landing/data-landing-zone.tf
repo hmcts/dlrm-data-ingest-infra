@@ -1,5 +1,5 @@
 module "data_landing_zone" {
-  source = "github.com/hmcts/terraform-module-data-landing-zone?ref=main"
+  source = "github.com/hmcts/terraform-module-data-landing-zone?ref=feat%2Fupdate-resource-structure-to-work-with-IPKit"
 
   for_each = var.landing_zones
 
@@ -39,7 +39,8 @@ module "data_landing_zone" {
       }
     }
   }
-  hub_vnet_name           = var.hub_vnet_name
-  hub_resource_group_name = var.hub_resource_group_name
-  legacy_databases        = each.value.legacy_databases
+  hub_vnet_name                  = var.hub_vnet_name
+  hub_resource_group_name        = var.hub_resource_group_name
+  legacy_databases               = each.value.legacy_databases
+  use_microsoft_ip_kit_structure = each.value.use_microsoft_ip_kit_structure
 }

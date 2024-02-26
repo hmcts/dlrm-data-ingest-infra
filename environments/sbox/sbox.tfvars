@@ -12,7 +12,8 @@ mgmt_additional_kv_access_policies = {
 
 landing_zones = {
   "00" = {
-    project = "example landing zone"
+    use_microsoft_ip_kit_structure = true
+    project                        = "example landing zone"
     role_based_access_control = [
       {
         name = "prasanna.krishnan@justice.gov.uk"
