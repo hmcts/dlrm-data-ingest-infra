@@ -21,6 +21,10 @@ landing_zones = {
       {
         name = "dominic.leary@justice.gov.uk"
         type = "User"
+      },
+      {
+        name = "DTS DLRM Data Ingestion Admin (env:sandbox)"
+        type = "Group"
       }
     ]
     gh_runners = {
@@ -38,5 +42,9 @@ landing_zones = {
         version        = "14393.6709.240206"
       }
     }
+  }
+  "01" = {
+    use_microsoft_ip_kit_structure = true
+    project                        = "ajb test temp"
   }
 }
