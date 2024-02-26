@@ -33,9 +33,9 @@ landing_zones = {
     legacy_databases = {
       legacy-sql = {
         publisher_name = "MicrosoftWindowsServer"
-        offer          = "windowsserver-gen2preview"
-        sku            = "2012-r2-datacenter-gen2"
-        version        = "9600.19431.1908092124"
+        offer          = "WindowsServer"
+        sku            = "2016-datacenter-gensecond"
+        version        = "14393.6709.240206"
       }
     }
   }
