@@ -44,5 +44,18 @@ landing_zones = {
         version        = "14393.6709.240206"
       }
     }
+    additional_nsg_rules = {
+      AllowRDPInbound = {
+        priority                   = 100
+        direction                  = "Inbound"
+        access                     = "Allow"
+        protocol                   = "Tcp"
+        source_port_range          = "*"
+        destination_port_range     = "3389"
+        source_address_prefixes    = ["194.33.192.0/24", "194.33.196.0/24", "194.33.248.0/24", "194.33.249.0/24"]
+        destination_address_prefix = "*"
+        description                = "Allow RDP inbound from MoJ Ranges."
+      }
+    }
   }
 }
