@@ -26,6 +26,7 @@ landing_zones = {
       {
         name = "DTS DLRM Data Ingestion Admin (env:sandbox)"
         type = "Group"
+        roles = ["Owner", "Storage Blob Data Owner"]
       }
     ]
     gh_runners = {

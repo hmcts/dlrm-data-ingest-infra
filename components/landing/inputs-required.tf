@@ -18,10 +18,10 @@ variable "landing_zones" {
   type = map(object({
     use_microsoft_ip_kit_structure = optional(bool, false)
     role_based_access_control = optional(list(object({
-      name = optional(string)
-      type = optional(string, "user")
-      mail = optional(string),
-      role = optional(string, "Owner")
+      name  = optional(string)
+      type  = optional(string, "user")
+      mail  = optional(string),
+      roles = optional(list(string), ["Owner"])
     })), [])
     project = string
     gh_runners = optional(map(object({

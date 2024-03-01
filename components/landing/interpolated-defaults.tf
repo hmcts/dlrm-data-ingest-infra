@@ -9,15 +9,17 @@ locals {
   flattened_rbac = flatten([
     for lz_key, lz in var.landing_zones : [
       for rg in module.data_landing_zone[lz_key].resource_groups : [
-        for rbac in lz.role_based_access_control : {
-          lz_key = lz_key
-          key    = "${lz_key}-${rg.name}-${rbac.type}-${rbac.name == null ? "" : rbac.name}${rbac.mail == null ? "" : rbac.mail}"
-          name   = rbac.name
-          type   = rbac.type
-          mail   = rbac.mail
-          role   = rbac.role
-          scope  = rg.id
-        }
+        for rbac in lz.role_based_access_control : [
+          for role in rbac.roles : {
+            lz_key = lz_key
+            key    = "${lz_key}-${rg.name}-${rbac.type}-${replace(role, " ", "-")}-${rbac.name == null ? "" : rbac.name}${rbac.mail == null ? "" : rbac.mail}"
+            name   = rbac.name
+            type   = rbac.type
+            mail   = rbac.mail
+            role   = role
+            scope  = rg.id
+          }
+        ]
       ]
     ]
   ])
