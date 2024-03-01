@@ -45,8 +45,19 @@ landing_zones = {
       }
     }
     additional_nsg_rules = {
-      AllowRDPInbound = {
-        priority                   = 100
+      Allow-F5-VPN-Inbound = {
+        priority                   = 220
+        direction                  = "Inbound"
+        access                     = "Allow"
+        protocol                   = "*"
+        source_port_range          = "*"
+        destination_port_range     = "*"
+        source_address_prefix      = "10.99.72.0/21"
+        destination_address_prefix = "*"
+        description                = "Allow F5 VPN."
+      }
+      Allow-MoJ-RDP-Inbound = {
+        priority                   = 250
         direction                  = "Inbound"
         access                     = "Allow"
         protocol                   = "Tcp"
