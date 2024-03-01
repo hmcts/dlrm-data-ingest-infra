@@ -37,6 +37,7 @@ landing_zones = {
     }
     legacy_databases = {
       legacy-sql = {
+        public_ip      = true
         publisher_name = "MicrosoftWindowsServer"
         offer          = "WindowsServer"
         sku            = "2016-datacenter-gensecond"
