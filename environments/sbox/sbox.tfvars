@@ -45,13 +45,6 @@ landing_zones = {
         sku            = "2016-datacenter-gensecond"
         version        = "14393.6709.240206"
       }
-      sql2008 = {
-        public_ip      = true
-        publisher_name = "MicrosoftWindowsServer"
-        offer          = "WindowsServer"
-        sku            = "2016-datacenter-gensecond"
-        version        = "14393.6709.240206"
-      }
     }
     additional_nsg_rules = {
       Allow-F5-VPN-Inbound = {
