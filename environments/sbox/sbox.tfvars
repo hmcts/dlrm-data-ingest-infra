@@ -77,5 +77,6 @@ landing_zones = {
         description                = "Allow RDP inbound from MoJ Ranges."
       }
     }
+    additional_vnet_address_space = ["10.247.5.0/24", "10.247.6.0/24"]
   }
 }

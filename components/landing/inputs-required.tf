@@ -57,6 +57,7 @@ variable "landing_zones" {
       destination_application_security_group_ids = optional(list(string))
       description                                = optional(string)
     })))
+    additional_vnet_address_space = optional(list(string), [])
   }))
 }
 
