@@ -44,4 +44,5 @@ module "data_landing_zone" {
   legacy_databases               = each.value.legacy_databases
   use_microsoft_ip_kit_structure = each.value.use_microsoft_ip_kit_structure
   additional_nsg_rules           = each.value.additional_nsg_rules
+  key_vault_readers              = ["145da22b-a3cb-4ba8-b735-22c94b5eea6c"]
 }
