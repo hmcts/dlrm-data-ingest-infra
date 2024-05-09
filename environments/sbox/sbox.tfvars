@@ -20,6 +20,10 @@ landing_zones = {
         type = "User"
       },
       {
+        name = "Matt.Lorentzen@HMCTS.NET"
+        type = "User"
+      },
+      {
         name = "dominic.leary@justice.gov.uk"
         type = "User"
       },
