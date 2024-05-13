@@ -76,7 +76,7 @@ landing_zones = {
     }
     additional_vnet_address_space = ["10.247.5.0/24", "10.247.6.0/24"]
   }
-  "01" = {
+  "02" = {
     project                        = "DLRM Ingestion Engine"
     use_microsoft_ip_kit_structure = true
     role_based_access_control = [
