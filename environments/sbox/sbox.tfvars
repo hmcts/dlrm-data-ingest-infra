@@ -31,7 +31,7 @@ landing_zones = {
         name = "qiang.zhou@hmcts.net"
         type = "User"
         roles = ["Owner", "Storage Blob Data Owner"]
-      }
+      },
       {
         name  = "DTS DLRM Data Ingestion Admin (env:sandbox)"
         type  = "Group"
@@ -101,7 +101,7 @@ landing_zones = {
   #       name = "qiang.zhou@hmcts.net"
   #       type = "User"
   #       roles = ["Owner", "Storage Blob Data Owner"]
-  #     }
+  #     },
   #     {
   #       name  = "DTS DLRM Data Ingestion Admin (env:sandbox)"
   #       type  = "Group"
