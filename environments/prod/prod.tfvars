@@ -20,4 +20,63 @@ existing_purview_account = {
   }
 }
 
-landing_zones = {}
+landing_zones = {
+  "00" = {
+    project                        = "DLRM Ingestion Engine"
+    use_microsoft_ip_kit_structure = true
+    role_based_access_control = [
+      {
+        name = "prasanna.krishnan@justice.gov.uk"
+        type = "User"
+      },
+      {
+        name = "dominic.leary@justice.gov.uk"
+        type = "User"
+      },
+      {
+        name  = "qiang.zhou@hmcts.net"
+        type  = "User"
+        roles = ["Owner", "Storage Blob Data Owner"]
+      },
+      {
+        name  = "DTS DLRM Data Ingestion Admin (env:production)"
+        type  = "Group"
+        roles = ["Owner", "Storage Blob Data Owner"]
+      }
+    ]
+    legacy_databases = {
+      legacy-sql = {
+        computer_name  = "ingest00-legacy"
+        public_ip      = true
+        publisher_name = "MicrosoftWindowsServer"
+        offer          = "WindowsServer"
+        sku            = "2016-datacenter-gensecond"
+        version        = "14393.6709.240206"
+      }
+    }
+    additional_nsg_rules = {
+      Allow-F5-VPN-Inbound = {
+        priority                   = 220
+        direction                  = "Inbound"
+        access                     = "Allow"
+        protocol                   = "*"
+        source_port_range          = "*"
+        destination_port_range     = "*"
+        source_address_prefix      = "10.99.72.0/21"
+        destination_address_prefix = "*"
+        description                = "Allow F5 VPN."
+      }
+      Allow-MoJ-RDP-Inbound = {
+        priority                   = 250
+        direction                  = "Inbound"
+        access                     = "Allow"
+        protocol                   = "Tcp"
+        source_port_range          = "*"
+        destination_port_ranges    = ["3389", "1433", "1434"]
+        source_address_prefixes    = ["194.33.192.0/24", "194.33.196.0/24", "194.33.248.0/24", "194.33.249.0/24"]
+        destination_address_prefix = "*"
+        description                = "Allow RDP inbound from MoJ Ranges."
+      }
+    }
+  }
+}
