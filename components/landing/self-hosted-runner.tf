@@ -14,14 +14,15 @@ resource "azurerm_container_group" "runner" {
   subnet_ids          = [module.data_landing_zone[each.value.lz_key].subnet_ids["vnet-gh-runners"]]
   container {
     name   = "runner"
-    image  = "hmctspublic.azurecr.io/github-runner:prod-84d74135-1707147900"
+    image  = "hmctspublic.azurecr.io/github-runner:prod-ed028da1-1716299295"
     cpu    = "0.5"
     memory = "1.5"
     environment_variables = {
-      GH_OWNER      = "hmcts"
-      GH_REPOSITORY = each.value.gh_runner_key
-      GH_TOKEN      = data.azurerm_key_vault_secret.token[each.key].value
-      LABELS        = var.env
+      RUNNER_NAME_PREFIX = "landing${each.value.lz_key}-${var.env}-runner"
+      GH_OWNER           = "hmcts"
+      GH_REPOSITORY      = each.value.gh_runner_key
+      GH_TOKEN           = data.azurerm_key_vault_secret.token[each.key].value
+      LABELS             = var.env
     }
     ports {
       port     = 8080
