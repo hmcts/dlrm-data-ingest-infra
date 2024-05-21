@@ -4,10 +4,6 @@ locals {
   ssptl_vnet_resource_group = local.is_sbox ? "ss-ptlsbox-network-rg" : "ss-ptl-network-rg"
 }
 
-data "azurerm_resource_group" "this" {
-  name = var.resource_group_name
-}
-
 data "azurerm_subnet" "ssptl-00" {
   provider             = azurerm.ssptl
   name                 = "aks-00"
