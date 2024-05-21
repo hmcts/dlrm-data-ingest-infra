@@ -21,6 +21,7 @@ resource "azurerm_container_group" "runner" {
       GH_OWNER      = "hmcts"
       GH_REPOSITORY = each.value.gh_runner_key
       GH_TOKEN      = data.azurerm_key_vault_secret.token[each.key].value
+      LABELS        = var.env
     }
     ports {
       port     = 8080
