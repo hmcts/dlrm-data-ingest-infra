@@ -27,7 +27,7 @@ module "storage" {
 resource "azurerm_private_endpoint" "this" {
   name                = "ingest${var.landing_zone_key}logic${var.env}-pe"
   resource_group_name = var.resource_group_name
-  location            = data.azurerm_resource_group.this.location
+  location            = "uksouth"
   subnet_id           = var.private_endpoint_subnet_id
   tags                = var.common_tags
 
