@@ -7,8 +7,8 @@ module "logic" {
     azurerm.cftptl = azurerm.cftptl
   }
   env                        = var.env
-  landing_zone_key           = each.value.lz_key
-  resource_group_name        = module.data_landing_zone[each.key].resource_groups["logic"].name
+  landing_zone_key           = each.key
+  resource_group_name        = "ingest${each.key}-logic-${var.env}"
   common_tags                = merge(module.ctags.common_tags, { "Data-Ingest-Project" = each.value.project })
   private_endpoint_subnet_id = module.data_landing_zone[each.key].subnet_ids["vnet-services"]
   logicapp_subnet_id         = module.data_landing_zone[each.key].subnet_ids["vnet-data-product-001"]
