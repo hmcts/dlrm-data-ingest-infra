@@ -39,6 +39,13 @@ landing_zones = {
         roles = ["Owner", "Storage Blob Data Owner"]
       }
     ]
+    gh_runners = {
+      "dlrm-ingestionengine" = {
+        deploy            = true
+        token_vault_id    = "/subscriptions/da8a21e5-d260-4162-9391-6bdadf9103f8/resourceGroups/ingest-mgmt-rg-stg/providers/Microsoft.KeyVault/vaults/ingest-mgmt-kv-stg"
+        token_secret_name = "dlrm-ingestionengine-token"
+      }
+    }
     legacy_databases = {
       legacy-sql = {
         computer_name  = "ingest00-legacy"
