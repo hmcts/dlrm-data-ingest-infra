@@ -1,6 +1,11 @@
 module "logic" {
-  source                     = "./../../modules/ipkit_logic"
-  for_each                   = var.landing_zones
+  source   = "./../../modules/ipkit_logic"
+  for_each = var.landing_zones
+  providers = {
+    azurerm        = azurerm
+    azurerm.ssptl  = azurerm.ssptl
+    azurerm.cftptl = azurerm.cftptl
+  }
   env                        = var.env
   landing_zone_key           = each.value.lz_key
   resource_group_name        = module.landing_zone[each.key].resource_groups["logic"].name
