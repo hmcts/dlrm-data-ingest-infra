@@ -39,10 +39,11 @@ module "data_landing_zone" {
       }
     }
   }
-  hub_vnet_name                  = var.hub_vnet_name
-  hub_resource_group_name        = var.hub_resource_group_name
-  legacy_databases               = each.value.legacy_databases
-  use_microsoft_ip_kit_structure = each.value.use_microsoft_ip_kit_structure
-  additional_nsg_rules           = each.value.additional_nsg_rules
-  key_vault_readers              = ["145da22b-a3cb-4ba8-b735-22c94b5eea6c"]
+  hub_vnet_name                        = var.hub_vnet_name
+  hub_resource_group_name              = var.hub_resource_group_name
+  legacy_databases                     = each.value.legacy_databases
+  use_microsoft_ip_kit_structure       = each.value.use_microsoft_ip_kit_structure
+  adf_deploy_purview_private_endpoints = each.value.adf_deploy_purview_private_endpoints
+  additional_nsg_rules                 = each.value.additional_nsg_rules
+  key_vault_readers                    = ["145da22b-a3cb-4ba8-b735-22c94b5eea6c"]
 }
