@@ -11,4 +11,9 @@ resource "azurerm_logic_app_standard" "this" {
   identity {
     type = "SystemAssigned"
   }
+
+  app_settings = {
+    "APPINSIGHTS_INSTRUMENTATIONKEY" = module.application_insights.instrumentation_key
+    "APPINSIGHTS_CONNECTION_STRING"  = module.application_insights.connection_string
+  }
 }
