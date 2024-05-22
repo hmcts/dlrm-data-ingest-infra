@@ -40,10 +40,11 @@ resource "azapi_resource" "sql_conn" {
 }
 
 resource "azapi_resource" "sql_conn_access" {
-  type      = "Microsoft.Web/connections/accessPolicies@2018-07-01-preview"
-  name      = "LogicAppSqlConnAccessPolicies"
-  parent_id = azapi_resource.sql_conn.id
-  location  = "uksouth"
+  type                      = "Microsoft.Web/connections/accessPolicies@2018-07-01-preview"
+  name                      = "LogicAppSqlConnAccessPolicies"
+  parent_id                 = azapi_resource.sql_conn.id
+  schema_validation_enabled = false
+  location                  = "uksouth"
   body = {
     principal = {
       type = "ActiveDirectory"
