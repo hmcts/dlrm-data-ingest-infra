@@ -23,6 +23,7 @@ resource "azurerm_logic_app_standard" "this" {
 resource "azapi_resource" "sql_conn" {
   type     = "Microsoft.Web/connections@2016-06-01"
   name     = "ingest${var.landing_zone_key}-sqlConn-${var.env}"
+  parent_id = "/subscriptions/${data.azurerm_client_config.this.subscription_id}/resourceGroups/${var.resource_group_name}"
   location = "uksouth"
   body = {
     properties = {
