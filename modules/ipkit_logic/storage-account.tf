@@ -1,28 +1,22 @@
-module "storage" {
-  source                            = "github.com/hmcts/cnp-module-storage-account?ref=feat%2Finfra-encryption"
-  env                               = var.env
-  storage_account_name              = "ingest${var.landing_zone_key}logic${var.env}"
-  resource_group_name               = var.resource_group_name
-  location                          = "uksouth"
-  account_kind                      = "StorageV2"
-  account_tier                      = "Standard"
-  account_replication_type          = "LRS"
-  enable_hns                        = false
-  enable_sftp                       = false
-  enable_nfs                        = false
-  enable_data_protection            = false
-  enable_versioning                 = false
-  pim_roles                         = {}
-  infrastructure_encryption_enabled = false
-  default_action                    = "Allow"
+resource "azurerm_storage_account" "this" {
+  name                      = "ingest${var.landing_zone_key}logic${var.env}"
+  resource_group_name       = var.resource_group_name
+  location                  = "uksouth"
+  account_tier              = var.storage_account_tier
+  account_kind              = var.storage_account_kind
+  account_replication_type  = var.storage_replication_type
+  enable_https_traffic_only = true
+  tags                      = var.common_tags
+}
 
-  sa_subnets = [
-    data.azurerm_subnet.ssptl-00.id,
-    data.azurerm_subnet.ssptl-01.id
-  ]
+resource "azurerm_storage_account_network_rules" "this" {
+  storage_account_id = azurerm_storage_account.this.id
+  depends_on         = [azurerm_logic_app_standard.this]
 
-  team_contact = "#dtspo-orange"
-  common_tags  = var.common_tags
+  default_action             = "Deny"
+  ip_rules                   = []
+  virtual_network_subnet_ids = [data.azurerm_subnet.ssptl-00.id, data.azurerm_subnet.ssptl-01.id]
+  bypass                     = ["AzureServices"]
 }
 
 resource "azurerm_private_endpoint" "this" {

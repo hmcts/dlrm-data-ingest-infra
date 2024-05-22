@@ -4,4 +4,5 @@ resource "azurerm_service_plan" "this" {
   location            = "uksouth"
   os_type             = var.os_type
   sku_name            = var.asp_sku_name
+  tags                = var.common_tags
 }
