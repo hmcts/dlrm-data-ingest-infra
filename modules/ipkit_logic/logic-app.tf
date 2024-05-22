@@ -22,20 +22,34 @@ resource "azurerm_logic_app_standard" "this" {
 
 resource "azapi_resource" "sql_conn" {
   type      = "Microsoft.Web/connections@2016-06-01"
-  name      = "ingest${var.landing_zone_key}-sqlConn-${var.env}"
+  name      = "LogicAppSqlConn"
   parent_id = "/subscriptions/${data.azurerm_client_config.this.subscription_id}/resourceGroups/${var.resource_group_name}"
   location  = "uksouth"
+
   body = {
     properties = {
-      displayName = "ingest${var.landing_zone_key}-sql-${var.env}"
+      displayName = "sql"
+      parameterValues = {
+        oauthMI = {}
+      }
       api = {
-        name        = "sql",
-        displayName = "SQL Server",
-        description = "Microsoft SQL Server is a relational database management system developed by Microsoft. Connect to SQL Server to manage data. You can perform various actions such as create, update, get, and delete on rows in a table.",
-        iconUri     = "https://connectoricons-prod.azureedge.net/releases/v1.0.1686/1.0.1686.3706/sql/icon.png",
-        brandColor  = "#ba141a",
-        id          = "/subscriptions/${data.azurerm_client_config.this.subscription_id}/providers/Microsoft.Web/locations/uksouth/managedApis/sql",
-        type        = "Microsoft.Web/locations/managedApis"
+        id = "/subscriptions/${data.azurerm_client_config.this.subscription_id}/providers/Microsoft.Web/locations/uksouth/managedApis/sql",
+      }
+    }
+  }
+}
+
+resource "azapi_resource" "sql_conn_access" {
+  type      = "Microsoft.Web/connections/accessPolicies@2018-07-01-preview"
+  name      = "LogicAppSqlConnAccessPolicies"
+  parent_id = azapi_resource.sql_conn.id
+  location  = "uksouth"
+  body = {
+    principal = {
+      type = "ActiveDirectory"
+      identity = {
+        objectId = azurerm_logic_app_standard.this.identity[0].principal_id
+        tenantId = data.azurerm_client_config.this.tenant_id
       }
     }
   }
