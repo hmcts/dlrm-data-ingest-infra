@@ -20,38 +20,14 @@ resource "azurerm_logic_app_standard" "this" {
   }
 }
 
-resource "azapi_resource" "sql_conn" {
-  type      = "Microsoft.Web/connections@2016-06-01"
-  name      = "LogicAppSqlConn"
-  parent_id = "/subscriptions/${data.azurerm_client_config.this.subscription_id}/resourceGroups/${var.resource_group_name}"
-  location  = "uksouth"
-
-  body = {
-    properties = {
-      displayName = "sql"
-      parameterValues = {
-        oauthMI = ""
-      }
-      api = {
-        id = "/subscriptions/${data.azurerm_client_config.this.subscription_id}/providers/Microsoft.Web/locations/uksouth/managedApis/sql",
-      }
+resource "azurerm_resource_group_template_deployment" "sqlConn" {
+  name                = "logicapp-sql-conn-deployment"
+  resource_group_name = var.resource_group_name
+  deployment_mode     = "Incremental"
+  parameters_content = jsonencode({
+    "identityId" = {
+      value = azurerm_logic_app_standard.this.identity[0].principal_id
     }
-  }
-}
-
-resource "azapi_resource" "sql_conn_access" {
-  type                      = "Microsoft.Web/connections/accessPolicies@2018-07-01-preview"
-  name                      = "LogicAppSqlConnAccessPolicies"
-  parent_id                 = azapi_resource.sql_conn.id
-  schema_validation_enabled = false
-  location                  = "uksouth"
-  body = {
-    principal = {
-      type = "ActiveDirectory"
-      identity = {
-        objectId = azurerm_logic_app_standard.this.identity[0].principal_id
-        tenantId = data.azurerm_client_config.this.tenant_id
-      }
-    }
-  }
+  })
+  template_content = file("${path.module}/templates/sql-connection.json")
 }
