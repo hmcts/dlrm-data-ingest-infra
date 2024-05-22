@@ -27,9 +27,9 @@ resource "azurerm_private_endpoint" "this" {
   tags                = var.common_tags
 
   private_service_connection {
-    name                           = module.storage.storageaccount_name
+    name                           = azurerm_storage_account.this.name
     is_manual_connection           = false
-    private_connection_resource_id = module.storage.storageaccount_id
+    private_connection_resource_id = azurerm_storage_account.this.id
     subresource_names              = ["blob"]
   }
 
