@@ -23,3 +23,5 @@ data "azurerm_private_dns_zone" "blob" {
   name                = "privatelink.blob.core.windows.net"
   resource_group_name = "core-infra-intsvc-rg"
 }
+
+data "azurerm_client_config" "this" {}

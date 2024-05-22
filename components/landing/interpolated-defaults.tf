@@ -44,6 +44,11 @@ locals {
         project                           = lz.project
       }
   ]])
+  long_environment = {
+    "sbox" = "sandbox"
+    "stg"  = "staging"
+    "prod" = "production"
+  }
 }
 
 module "ctags" {
