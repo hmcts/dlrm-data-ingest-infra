@@ -30,7 +30,7 @@ resource "azapi_resource" "sql_conn" {
     properties = {
       displayName = "sql"
       parameterValues = {
-        oauthMI = {}
+        oauthMI = ""
       }
       api = {
         id = "/subscriptions/${data.azurerm_client_config.this.subscription_id}/providers/Microsoft.Web/locations/uksouth/managedApis/sql",
