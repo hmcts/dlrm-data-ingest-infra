@@ -35,6 +35,9 @@
       "apiVersion": "2018-07-01-preview",
       "name": "[format('{0}/{1}', 'LogicAppSqlConn', 'LogicAppSqlConnAccessPolicies')]",
       "location": "[parameters('location')]",
+      "dependsOn": [
+        "[resourceId('Microsoft.Web/connections', 'LogicAppSqlConn')]"
+      ],
       "properties": {
         "principal": {
           "type": "ActiveDirectory",
