@@ -6,6 +6,7 @@ resource "azurerm_logic_app_standard" "this" {
   storage_account_name       = azurerm_storage_account.this.name
   storage_account_access_key = azurerm_storage_account.this.primary_access_key
   version                    = "~4"
+  tags                       = var.common_tags
 
   virtual_network_subnet_id = var.logicapp_subnet_id
 
