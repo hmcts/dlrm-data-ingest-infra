@@ -3,8 +3,8 @@ resource "azurerm_logic_app_standard" "this" {
   resource_group_name        = var.resource_group_name
   location                   = "uksouth"
   app_service_plan_id        = azurerm_service_plan.this.id
-  storage_account_name       = module.storage.storageaccount_name
-  storage_account_access_key = module.storage.storageaccount_primary_access_key
+  storage_account_name       = azurerm_storage_account.this.name
+  storage_account_access_key = azurerm_storage_account.this.primary_access_key
   version                    = "~4"
 
   virtual_network_subnet_id = var.logicapp_subnet_id
