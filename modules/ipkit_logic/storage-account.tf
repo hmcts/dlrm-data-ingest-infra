@@ -15,7 +15,7 @@ resource "azurerm_storage_account_network_rules" "this" {
 
   default_action             = "Deny"
   ip_rules                   = []
-  virtual_network_subnet_ids = [data.azurerm_subnet.ssptl-00.id, data.azurerm_subnet.ssptl-01.id]
+  virtual_network_subnet_ids = [data.azurerm_subnet.ssptl-00.id, data.azurerm_subnet.ssptl-01.id, var.logicapp_subnet_id]
   bypass                     = ["AzureServices"]
 }
 
