@@ -14,6 +14,7 @@ module "storage" {
   enable_versioning                 = false
   pim_roles                         = {}
   infrastructure_encryption_enabled = false
+  default_action                    = "Allow"
 
   sa_subnets = [
     data.azurerm_subnet.ssptl-00.id,
