@@ -19,8 +19,8 @@ resource "azurerm_logic_app_standard" "this" {
     "APPINSIGHTS_CONNECTION_STRING"     = module.application_insights.connection_string
     "FUNCTIONS_WORKER_RUNTIME"          = "node"
     "WEBSITE_NODE_DEFAULT_VERSION"      = "~14"
-    "sql_databaseName"                  = "MetadataControl"
-    "sql_serverName"                    = "ingest${var.landing_zone_key}-metadata-mssql-${var.env}"
+    "sql_databaseName"                  = var.sql_database_name
+    "sql_serverName"                    = var.sql_server_fqdn
     "WEBSITE_CONTENTOVERVNET"           = "1"
     "WEBSITE_RUN_FROM_PACKAGE"          = "0"
     "ServiceProviders.Sql.QueryTimeout" = "00:02:00"

@@ -12,4 +12,6 @@ module "logic" {
   common_tags                = merge(module.ctags.common_tags, { "Data-Ingest-Project" = each.value.project })
   private_endpoint_subnet_id = module.data_landing_zone[each.key].subnet_ids["vnet-services"]
   logicapp_subnet_id         = module.data_landing_zone[each.key].subnet_ids["vnet-data-product-001"]
+  sql_database_name          = "MetadataControl"
+  sql_server_fqdn            = module.data_landing_zone[each.key].metadata_mssql.fqdn
 }
