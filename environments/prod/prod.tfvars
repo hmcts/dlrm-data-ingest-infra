@@ -63,16 +63,16 @@ landing_zones = {
       }
     }
     additional_nsg_rules = {
-      Allow-F5-VPN-Inbound = {
+      Allow-Prod-Bastion-Inbound = {
         priority                   = 220
         direction                  = "Inbound"
         access                     = "Allow"
         protocol                   = "*"
         source_port_range          = "*"
         destination_port_range     = "*"
-        source_address_prefix      = "10.99.72.0/21"
+        source_address_prefixes    = ["10.11.8.37", "10.11.8.38"]
         destination_address_prefix = "*"
-        description                = "Allow F5 VPN."
+        description                = "Allow Prod Bastion to Data Ingest Services."
       }
       Allow-MoJ-RDP-Inbound = {
         priority                   = 250
