@@ -49,6 +49,17 @@ locals {
     "stg"  = "staging"
     "prod" = "production"
   }
+
+
+  include_in_autoshutdown = var.env == "prod" ? "false" : "true"
+
+  auto_shutdown_common_tags = merge(
+    {
+      "startupMode"  = "always",
+      "autoShutdown" = local.include_in_autoshutdown
+    },
+    module.ctags.common_tags
+  )
 }
 
 module "ctags" {
