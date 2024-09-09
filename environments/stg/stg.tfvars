@@ -10,6 +10,10 @@ mgmt_additional_kv_access_policies = {
   }
 }
 
+eventhub_ns_sku = null
+message_retention = null
+services = null
+
 landing_zones = {
   "00" = {
     project                              = "DLRM Ingestion Engine"
