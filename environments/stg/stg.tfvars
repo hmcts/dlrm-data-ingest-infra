@@ -10,9 +10,11 @@ mgmt_additional_kv_access_policies = {
   }
 }
 
-eventhub_ns_sku = null
-message_retention = null
-services = null
+#Event Hub settings
+
+eventhub_ns_sku = "Premium"
+message_retention = "190"
+services = []
 
 landing_zones = {
   "00" = {
