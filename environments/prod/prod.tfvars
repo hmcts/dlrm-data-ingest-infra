@@ -12,9 +12,9 @@ mgmt_additional_kv_access_policies = {
 
 #Event Hub settings
 
-eventhub_ns_sku = "Premium"
+eventhub_ns_sku   = "Premium"
 message_retention = "190"
-services = []
+services          = []
 
 existing_purview_account = {
   resource_id                    = "/subscriptions/da8a21e5-d260-4162-9391-6bdadf9103f8/resourceGroups/ingest-mgmt-rg-stg/providers/Microsoft.Purview/accounts/ingest-mgmt-purview-stg"
@@ -96,6 +96,8 @@ landing_zones = {
 }
 
 private_link_access = [
-  endpoint_resource_id = "/subscriptions/e9674938-57cb-43ff-a440-1917658e468c/providers/Microsoft.Security/datascanners/StorageDataScanner",
-  endpoint_tenant_id   = "531ff96d-0ae9-462a-8d2d-bec7c0b42082"
+  {
+    endpoint_resource_id = "/subscriptions/e9674938-57cb-43ff-a440-1917658e468c/providers/Microsoft.Security/datascanners/StorageDataScanner"
+    endpoint_tenant_id   = "531ff96d-0ae9-462a-8d2d-bec7c0b42082"
+  }
 ]
