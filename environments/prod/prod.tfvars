@@ -94,3 +94,8 @@ landing_zones = {
     }
   }
 }
+
+private_link_access = [
+  endpoint_resource_id = "/subscriptions/e9674938-57cb-43ff-a440-1917658e468c/providers/Microsoft.Security/datascanners/StorageDataScanner"
+  endpoint_tenant_id   = "531ff96d-0ae9-462a-8d2d-bec7c0b42082"
+]
