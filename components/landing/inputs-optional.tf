@@ -12,3 +12,9 @@ variable "existing_purview_account" {
   })
   default = null
 }
+# Azure Monitor
+variable "install_azure_monitor" {
+  description = "Install Azure Monitor Agent."
+  type        = bool
+  default     = false
+}
