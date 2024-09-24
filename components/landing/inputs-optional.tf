@@ -18,3 +18,9 @@ variable "install_azure_monitor" {
   type        = bool
   default     = false
 }
+
+variable "systemassigned_identity" {
+  description = "Assign System identity"
+  type        = bool
+  default     = false
+}

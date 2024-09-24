@@ -87,4 +87,5 @@ landing_zones = {
     }
   }
 }
-install_azure_monitor = true
+install_azure_monitor   = true
+systemassigned_identity = true
