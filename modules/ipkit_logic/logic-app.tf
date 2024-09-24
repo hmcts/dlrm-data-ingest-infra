@@ -17,7 +17,7 @@ resource "azurerm_logic_app_standard" "this" {
   app_settings = {
     "APPINSIGHTS_INSTRUMENTATIONKEY"    = module.application_insights.instrumentation_key
     "APPINSIGHTS_CONNECTION_STRING"     = module.application_insights.connection_string
-    "FUNCTIONS_WORKER_RUNTIME"          = "node"
+    "FUNCTIONS_WORKER_RUNTIME"          = "dotnet"
     "WEBSITE_NODE_DEFAULT_VERSION"      = "~14"
     "sql_databaseName"                  = var.sql_database_name
     "sql_serverName"                    = var.sql_server_fqdn
@@ -34,6 +34,9 @@ resource "azurerm_resource_group_template_deployment" "sqlConn" {
   parameters_content = jsonencode({
     "identityId" = {
       value = azurerm_logic_app_standard.this.identity[0].principal_id
+    }
+    location = {
+      value = "uksouth"
     }
   })
   template_content = file("${path.module}/templates/sql-connection.json")
