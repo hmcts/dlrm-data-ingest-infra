@@ -10,6 +10,7 @@ module "data_landing_zone" {
     azurerm.cftptl = azurerm.cftptl
     azurerm.soc    = azurerm.soc
     azurerm.cnp    = azurerm.cnp
+    azurerm.dcr    = azurerm.dcr
   }
 
   env                                              = var.env
@@ -46,4 +47,9 @@ module "data_landing_zone" {
   adf_deploy_purview_private_endpoints = each.value.adf_deploy_purview_private_endpoints
   additional_nsg_rules                 = each.value.additional_nsg_rules
   key_vault_readers                    = ["145da22b-a3cb-4ba8-b735-22c94b5eea6c"]
+
+
+  install_azure_monitor   = var.install_azure_monitor
+  systemassigned_identity = var.systemassigned_identity
+  private_link_access     = var.private_link_access
 }

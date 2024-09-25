@@ -21,4 +21,5 @@ module "data_mgmt_zone" {
   eventhub_ns_sku   = var.eventhub_ns_sku
   services          = var.services
   message_retention = var.message_retention
+  zone_redundant    = var.zone_redundant
 }

@@ -12,9 +12,9 @@ mgmt_additional_kv_access_policies = {
 
 #Event Hub settings
 
-eventhub_ns_sku = "Standard"
+eventhub_ns_sku   = "Standard"
 message_retention = "7"
-services = []
+services          = []
 
 landing_zones = {
   "00" = {
@@ -87,3 +87,5 @@ landing_zones = {
     }
   }
 }
+install_azure_monitor   = true
+systemassigned_identity = true
