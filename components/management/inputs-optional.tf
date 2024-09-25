@@ -23,3 +23,8 @@ variable "mgmt_additional_kv_access_policies" {
   }))
   default = {}
 }
+variable "zone_redundant" {
+  type        = bool
+  default     = false
+  description = "Allows you to make eventhub namespace zone reduntdant"
+}
