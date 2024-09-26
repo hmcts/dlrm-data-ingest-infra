@@ -101,3 +101,5 @@ private_link_access = [
     endpoint_tenant_id   = "531ff96d-0ae9-462a-8d2d-bec7c0b42082"
   }
 ]
+install_azure_monitor   = true
+systemassigned_identity = true
