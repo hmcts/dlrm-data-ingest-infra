@@ -91,11 +91,11 @@ install_azure_monitor   = true
 systemassigned_identity = true
 
 github_configuration = {
-   "github_account_1" = {
-     branch_name        = "main"
-     git_url            = "https://github.com/org/repo.git"
-     repository_name    = "repo"
-     root_folder        = "/"
-     publishing_enabled = true
-   }
- }
+  "github_account_1" = {
+    branch_name        = "main"
+    git_url            = "https://github.com/org/repo.git"
+    repository_name    = "repo"
+    root_folder        = "/"
+    publishing_enabled = true
+  }
+}
