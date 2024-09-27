@@ -52,4 +52,5 @@ module "data_landing_zone" {
   install_azure_monitor   = var.install_azure_monitor
   systemassigned_identity = var.systemassigned_identity
   private_link_access     = var.private_link_access
+  github_configuration    = var.github_configuration
 }
