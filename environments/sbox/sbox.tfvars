@@ -90,8 +90,6 @@ landing_zones = {
 install_azure_monitor   = true
 systemassigned_identity = true
 
-/*
-
 github_configuration = {
   "github_account_1" = {
     branch_name        = "main"
@@ -101,5 +99,3 @@ github_configuration = {
     publishing_enabled = true
   }
 }
-
-*/
