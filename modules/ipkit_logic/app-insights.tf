@@ -1,5 +1,5 @@
 module "application_insights" {
-  source = "github.com/hmcts/terraform-module-application-insights?ref=main"
+  source = "github.com/hmcts/terraform-module-application-insights?ref=4.x"
 
   product             = "data-landing"
   env                 = var.env
