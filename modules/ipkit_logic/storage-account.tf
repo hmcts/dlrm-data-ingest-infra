@@ -1,12 +1,11 @@
 resource "azurerm_storage_account" "this" {
-  name                      = "ingest${var.landing_zone_key}logic${var.env}"
-  resource_group_name       = var.resource_group_name
-  location                  = "uksouth"
-  account_tier              = var.storage_account_tier
-  account_kind              = var.storage_account_kind
-  account_replication_type  = var.storage_replication_type
-  enable_https_traffic_only = true
-  tags                      = var.common_tags
+  name                     = "ingest${var.landing_zone_key}logic${var.env}"
+  resource_group_name      = var.resource_group_name
+  location                 = "uksouth"
+  account_tier             = var.storage_account_tier
+  account_kind             = var.storage_account_kind
+  account_replication_type = var.storage_replication_type
+  tags                     = var.common_tags
 }
 
 resource "azurerm_storage_account_network_rules" "this" {
