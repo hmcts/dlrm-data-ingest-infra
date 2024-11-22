@@ -15,6 +15,7 @@ mgmt_additional_kv_access_policies = {
 eventhub_ns_sku   = "Standard"
 message_retention = "7"
 services          = []
+eventhub_capacity = 25
 
 landing_zones = {
   "00" = {
