@@ -12,11 +12,10 @@ mgmt_additional_kv_access_policies = {
 
 #Event Hub settings
 
-eventhub_ns_sku   = "Premium"
-message_retention = "190"
-services          = []
-eventhub_capacity = 25
-
+eventhub_ns_sku       = "Premium"
+message_retention     = "190"
+services              = []
+eventhub_capacity     = 25
 auto_inflate          = true
 kafka_enabled         = true
 public_network_access = "Enabled"

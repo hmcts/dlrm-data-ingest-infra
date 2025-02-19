@@ -17,3 +17,5 @@ resource "azurerm_eventhub_namespace" "sbox-dlrm-eventhub-ns" {
   minimum_tls_version      = "1.2"
   maximum_throughput_units = 25
 }
+
+
