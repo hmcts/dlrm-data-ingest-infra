@@ -1,5 +1,5 @@
 module "data_landing_zone" {
-  source = "github.com/hmcts/terraform-module-data-landing-zone?ref=main"
+  source = "github.com/hmcts/terraform-module-data-landing-zone?ref=DTSPO-23027-Add-Bastion-Hosts"
 
   for_each = var.landing_zones
 
@@ -53,37 +53,4 @@ module "data_landing_zone" {
   install_azure_monitor   = var.install_azure_monitor
   systemassigned_identity = var.systemassigned_identity
   install_azure_bastion   = var.install_azure_bastion
-}
-
-# Define the Azure Bastion subnet
-resource "azurerm_subnet" "bastion_subnet" {
-  name                 = "AzureBastionSubnet"
-  resource_group_name  = var.hub_resource_group_name
-  virtual_network_name = module.data_landing_zone.hub_vnet_name
-  address_prefixes     = ["10.0.1.0/27"]
-}
-
-# Define the Azure Bastion resource
-resource "azurerm_bastion_host" "example" {
-  name                = "example-bastion"
-  location            = "uksouth"
-  resource_group_name = var.hub_resource_group_name
-
-  dns_name = "example-bastion"
-  sku      = "Basic"
-
-  ip_configuration {
-    name                 = "configuration"
-    subnet_id            = azurerm_subnet.bastion_subnet.id
-    public_ip_address_id = azurerm_public_ip.example.id
-  }
-}
-
-# Define the public IP for Azure Bastion
-resource "azurerm_public_ip" "example" {
-  name                = "example-bastion-pip"
-  location            = "uksouth"
-  resource_group_name = var.hub_resource_group_name
-  allocation_method   = "Static"
-  sku                 = "Standard"
 }
