@@ -45,3 +45,26 @@ variable "resource_group_name" {
   type        = string
 }
 
+variable "auto_inflate" {
+  type        = bool
+  default     = false
+  description = "Allows auto-inflate feature"
+}
+
+variable "kafka_enabled" {
+  type        = bool
+  default     = true
+  description = "Determines whether the Kafka protocol is enabled for the namespace"
+}
+
+variable "public_network_access" {
+  type        = string
+  default     = "Enabled"
+  description = "Determines whether the public network can access the event hub namespace."
+}
+
+variable "disable_local_auth" {
+  type        = bool
+  default     = true
+  description = "Determines whether local authentication methods are allowed"
+}
