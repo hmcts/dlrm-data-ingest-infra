@@ -12,10 +12,13 @@ mgmt_additional_kv_access_policies = {
 
 #Event Hub settings
 
-eventhub_ns_sku   = "Standard"
-message_retention = "7"
+eventhub_ns_sku   = "Premium"
+message_retention = "190"
 services          = []
 eventhub_capacity = 25
+
+eventhub_namespace_name = "sbox-dlrm-eventhub-ns"
+resource_group_name     = "ingest-mgmt-rg-sbox"
 
 landing_zones = {
   "00" = {

@@ -34,3 +34,13 @@ variable "eventhub_capacity" {
   default     = 1
   description = "The capacity of the eventhub namespace."
 }
+
+variable "eventhub_namespace_name" {
+  description = "Name of the Event Hub namespace"
+  type        = string
+}
+
+variable "resource_group_name" {
+  description = "Name of the resource group"
+  type        = string
+}
