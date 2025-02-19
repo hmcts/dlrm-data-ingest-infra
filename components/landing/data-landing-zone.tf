@@ -64,7 +64,7 @@ resource "azurerm_subnet" "bastion_subnet" {
 # Define the Azure Bastion resource
 resource "azurerm_bastion_host" "example" {
   name                = "example-bastion"
-  location            = var.location
+  location            = "uksouth"
   resource_group_name = var.hub_resource_group_name
 
   dns_name = "example-bastion"
@@ -80,7 +80,7 @@ resource "azurerm_bastion_host" "example" {
 # Define the public IP for Azure Bastion
 resource "azurerm_public_ip" "example" {
   name                = "example-bastion-pip"
-  location            = var.location
+  location            = "uksouth"
   resource_group_name = var.hub_resource_group_name
   allocation_method   = "Static"
   sku                 = "Standard"
