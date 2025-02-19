@@ -29,7 +29,4 @@ module "data_mgmt_zone" {
   public_network_access = var.public_network_access
   disable_local_auth    = var.disable_local_auth
 
-  resource_group_name     = var.resource_group_name
-  eventhub_namespace_name = var.eventhub_namespace_name
-
 }

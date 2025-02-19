@@ -17,6 +17,11 @@ message_retention = "190"
 services          = []
 eventhub_capacity = 25
 
+auto_inflate          = true
+kafka_enabled         = true
+public_network_access = "Enabled"
+disable_local_auth    = true
+
 eventhub_namespace_name = "sbox-dlrm-eventhub-ns"
 resource_group_name     = "ingest-mgmt-rg-sbox"
 
