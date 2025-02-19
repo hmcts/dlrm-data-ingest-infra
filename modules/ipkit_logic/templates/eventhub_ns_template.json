@@ -24,8 +24,8 @@
                 "startupMode": "always"
             },
             "sku": {
-                "name": "Standard",
-                "tier": "Standard",
+                "name": "Premium",
+                "tier": "Premium",
                 "capacity": 15
             },
             "properties": {
