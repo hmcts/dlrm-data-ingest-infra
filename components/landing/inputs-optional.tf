@@ -24,3 +24,10 @@ variable "systemassigned_identity" {
   type        = bool
   default     = false
 }
+
+# Azure Bastion
+variable "install_azure_bastion" {
+  description = "Install Azure Bastion."
+  type        = bool
+  default     = false
+}
