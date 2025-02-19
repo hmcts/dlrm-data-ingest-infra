@@ -1,7 +1,3 @@
-provider "azurerm" {
-  features {}
-}
-
 resource "azurerm_template_deployment" "sbox-dlrm-eventhub-ns" {
   name                = "sbox-dlrm-eventhub-ns"
   resource_group_name = "ingest-mgmt-rg-sbox"
