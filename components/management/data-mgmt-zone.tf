@@ -24,8 +24,4 @@ module "data_mgmt_zone" {
   zone_redundant    = var.zone_redundant
   eventhub_capacity = var.eventhub_capacity
 
-  resource_group_name     = var.resource_group_name
-  eventhub_namespace_name = var.eventhub_namespace_name
-
-
 }
