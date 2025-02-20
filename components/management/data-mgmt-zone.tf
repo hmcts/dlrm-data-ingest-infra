@@ -24,8 +24,4 @@ module "data_mgmt_zone" {
   zone_redundant    = var.zone_redundant
   eventhub_capacity = var.eventhub_capacity
 
-  auto_inflate_enabled          = var.auto_inflate_enabled
-  public_network_access_enabled = var.public_network_access_enabled
-  local_authentication_enabled  = var.local_authentication_enabled
-
 }
