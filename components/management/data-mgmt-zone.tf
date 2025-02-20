@@ -18,14 +18,14 @@ module "data_mgmt_zone" {
   additional_kv_access_policies = var.mgmt_additional_kv_access_policies
 
   # Event Hub configuration
-  eventhub_ns_sku       = var.eventhub_ns_sku
-  services              = var.services
-  message_retention     = var.message_retention
-  zone_redundant        = var.zone_redundant
-  eventhub_capacity     = var.eventhub_capacity
-  auto_inflate          = var.auto_inflate
-  kafka_enabled         = var.kafka_enabled
-  public_network_access = var.public_network_access
-  disable_local_auth    = var.disable_local_auth
+  eventhub_ns_sku   = var.eventhub_ns_sku
+  services          = var.services
+  message_retention = var.message_retention
+  zone_redundant    = var.zone_redundant
+  eventhub_capacity = var.eventhub_capacity
+
+  auto_inflate_enabled          = var.auto_inflate_enabled
+  public_network_access_enabled = var.public_network_access_enabled
+  local_authentication_enabled  = var.local_authentication_enabled
 
 }
