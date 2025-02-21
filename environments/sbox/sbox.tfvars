@@ -151,3 +151,4 @@ landing_zones = {
 }
 install_azure_monitor   = true
 systemassigned_identity = true
+install_azure_bastion   = true
