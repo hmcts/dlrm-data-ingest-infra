@@ -53,7 +53,7 @@ variable "auto_inflate_enabled" {
 
 variable "public_network_access_enabled" {
   type        = string
-  default     = "Enabled"
+  default     = true
   description = "Determines whether the public network can access the event hub namespace."
 }
 
