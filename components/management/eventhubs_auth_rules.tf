@@ -6,9 +6,6 @@ resource "azurerm_eventhub_namespace_authorization_rule" "dlrm_eventhub_namespac
   send                = true
   manage              = false
 
-  lifecycle {
-    ignore_changes = [rights]
-  }
 }
 
 resource "azurerm_eventhub_namespace_authorization_rule" "root_manage_shared_access_key" {
@@ -19,9 +16,6 @@ resource "azurerm_eventhub_namespace_authorization_rule" "root_manage_shared_acc
   send                = true
   manage              = true
 
-  lifecycle {
-    ignore_changes = [rights]
-  }
 }
 
 resource "azurerm_eventhub_authorization_rule" "evh_joh_pub_dev_adls_account_key" {
@@ -34,9 +28,6 @@ resource "azurerm_eventhub_authorization_rule" "evh_joh_pub_dev_adls_account_key
   send   = true
   manage = true
 
-  lifecycle {
-    ignore_changes = [listen, send, manage]
-  }
 }
 
 resource "azurerm_eventhub_authorization_rule" "evh_bl_pub_dev_uks_dlrm_01_aria_bails" {
@@ -49,9 +40,6 @@ resource "azurerm_eventhub_authorization_rule" "evh_bl_pub_dev_uks_dlrm_01_aria_
   send   = true
   manage = true
 
-  lifecycle {
-    ignore_changes = [listen, send, manage]
-  }
 }
 
 resource "azurerm_eventhub_authorization_rule" "evh_bl_ack_dev_uks_dlrm_01_ariabailsack" {
@@ -64,9 +52,6 @@ resource "azurerm_eventhub_authorization_rule" "evh_bl_ack_dev_uks_dlrm_01_ariab
   send   = true
   manage = true
 
-  lifecycle {
-    ignore_changes = [listen, send, manage]
-  }
 }
 
 resource "azurerm_eventhub_authorization_rule" "evh_bl_dl_dev_uks_dlrm_01_evh_bl_dl_dev_uks_dlrm_01" {
@@ -79,9 +64,6 @@ resource "azurerm_eventhub_authorization_rule" "evh_bl_dl_dev_uks_dlrm_01_evh_bl
   send   = true
   manage = true
 
-  lifecycle {
-    ignore_changes = [listen, send, manage]
-  }
 }
 
 resource "azurerm_eventhub_authorization_rule" "evh_joh_dl_dev_uks_dlrm_01_joh_deadletterque" {
@@ -94,9 +76,6 @@ resource "azurerm_eventhub_authorization_rule" "evh_joh_dl_dev_uks_dlrm_01_joh_d
   send   = false
   manage = false
 
-  lifecycle {
-    ignore_changes = [listen]
-  }
 }
 
 resource "azurerm_eventhub_authorization_rule" "evh_apl_dl_dev_uks_dlrm_01_manager" {
@@ -109,9 +88,6 @@ resource "azurerm_eventhub_authorization_rule" "evh_apl_dl_dev_uks_dlrm_01_manag
   listen = true
   send   = true
 
-  lifecycle {
-    ignore_changes = [manage, listen, send]
-  }
 }
 
 resource "azurerm_eventhub_authorization_rule" "evh_td_dl_dev_uks_dlrm_01_test_dl" {
@@ -124,9 +100,6 @@ resource "azurerm_eventhub_authorization_rule" "evh_td_dl_dev_uks_dlrm_01_test_d
   listen = true
   send   = true
 
-  lifecycle {
-    ignore_changes = [manage, listen, send]
-  }
 }
 
 resource "azurerm_eventhub_authorization_rule" "evh_td_pub_dev_uks_dlrm_01_test_nsa" {
@@ -139,7 +112,4 @@ resource "azurerm_eventhub_authorization_rule" "evh_td_pub_dev_uks_dlrm_01_test_
   listen = true
   send   = true
 
-  lifecycle {
-    ignore_changes = [manage, listen, send]
-  }
 }
