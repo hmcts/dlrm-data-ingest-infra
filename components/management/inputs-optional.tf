@@ -13,7 +13,6 @@ variable "existing_purview_account" {
   default = null
 }
 
-
 variable "mgmt_additional_kv_access_policies" {
   description = "Additional access policies to add to the management zone key vault"
   type = map(object({
