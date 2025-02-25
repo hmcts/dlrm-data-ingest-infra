@@ -1,7 +1,7 @@
 resource "azurerm_eventhub_namespace" "sbox-dlrm-eventhub-ns" {
-  name                = var.eventhub_namespace_name # Reference the parameter for the name
+  name                = var.eventhub_namespace_name
   location            = "uksouth"
-  resource_group_name = var.resource_group_name # Reference the resource group where this should be created
+  resource_group_name = var.resource_group_name
   sku                 = "Premium"
 
   tags = {
