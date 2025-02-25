@@ -46,7 +46,7 @@ variable "resource_group_name" {
 
 variable "auto_inflate_enabled" {
   type        = bool
-  default     = false
+  default     = true
   description = "Allows auto-inflate feature"
 }
 
