@@ -17,6 +17,16 @@ message_retention = "7"
 services          = []
 eventhub_capacity = 25
 
+existing_purview_account = {
+  resource_id                    = "/subscriptions/df72bb30-d6fb-47bd-82ee-5eb87473ddb3/resourceGroups/ingest-mgmt-rg-sbox/providers/Microsoft.Purview/accounts/ingest-mgmt-purview-sbox"
+  managed_storage_account_id     = "/subscriptions/df72bb30-d6fb-47bd-82ee-5eb87473ddb3/resourceGroups/ingest-mgmt-purview-sbox/providers/Microsoft.Storage/storageAccounts/scanuksouthojlgpfa"
+  managed_event_hub_namespace_id = "/subscriptions/df72bb30-d6fb-47bd-82ee-5eb87473ddb3/resourcegroups/ingest-mgmt-purview-sbox/providers/Microsoft.EventHub/namespaces/Atlas-9be4da85-1798-4608-bee0-5f5232885d13"
+  identity = {
+    principal_id = "07d3ffe2-9db8-4145-8da3-f9927aea685e"
+    tenant_id    = "531ff96d-0ae9-462a-8d2d-bec7c0b42082"
+  }
+}
+
 landing_zones = {
   "00" = {
     project                        = "DLRM Ingestion Engine"
