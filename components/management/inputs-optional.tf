@@ -13,7 +13,6 @@ variable "existing_purview_account" {
   default = null
 }
 
-
 variable "mgmt_additional_kv_access_policies" {
   description = "Additional access policies to add to the management zone key vault"
   type = map(object({
@@ -33,4 +32,32 @@ variable "eventhub_capacity" {
   type        = number
   default     = 1
   description = "The capacity of the eventhub namespace."
+}
+
+variable "eventhub_namespace_name" {
+  description = "Name of the Event Hub namespace"
+  type        = string
+}
+
+variable "resource_group_name" {
+  description = "Name of the resource group"
+  type        = string
+}
+
+variable "auto_inflate_enabled" {
+  type        = bool
+  default     = true
+  description = "Allows auto-inflate feature"
+}
+
+variable "public_network_access_enabled" {
+  type        = string
+  default     = true
+  description = "Determines whether the public network can access the event hub namespace."
+}
+
+variable "local_authentication_enabled" {
+  type        = bool
+  default     = true
+  description = "Determines whether local authentication methods are allowed"
 }
