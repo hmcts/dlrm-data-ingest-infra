@@ -12,7 +12,7 @@ mgmt_additional_kv_access_policies = {
 
 #Event Hub settings
 
-eventhub_ns_sku   = "Standard"
+eventhub_ns_sku   = "Premium"
 message_retention = "7"
 services          = []
 eventhub_capacity = 25
