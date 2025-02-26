@@ -11,10 +11,10 @@ mgmt_additional_kv_access_policies = {
 }
 
 #Event Hub settings
-
-eventhub_ns_sku   = "Premium"
-message_retention = "190"
-services          = []
+eventhub_namespace_name = "stg-dlrm-eventhub-ns"
+eventhub_ns_sku         = "Premium"
+message_retention       = "190"
+services                = []
 
 landing_zones = {
   "00" = {
