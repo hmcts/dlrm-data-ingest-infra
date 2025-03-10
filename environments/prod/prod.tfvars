@@ -14,7 +14,7 @@ mgmt_additional_kv_access_policies = {
 
 eventhub_ns_sku   = "Premium"
 message_retention = "190"
-services          = []
+services          = {}
 
 existing_purview_account = {
   resource_id                    = "/subscriptions/da8a21e5-d260-4162-9391-6bdadf9103f8/resourceGroups/ingest-mgmt-rg-stg/providers/Microsoft.Purview/accounts/ingest-mgmt-purview-stg"
