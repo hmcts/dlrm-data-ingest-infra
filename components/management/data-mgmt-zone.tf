@@ -20,7 +20,6 @@ module "data_mgmt_zone" {
   # Event Hub configuration
   eventhub_ns_sku   = var.eventhub_ns_sku
   services          = var.services
-  message_retention = var.message_retention
   zone_redundant    = var.zone_redundant
   eventhub_capacity = var.eventhub_capacity
 }
