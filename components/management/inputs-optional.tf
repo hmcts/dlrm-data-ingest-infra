@@ -34,3 +34,15 @@ variable "eventhub_capacity" {
   default     = 1
   description = "The capacity of the eventhub namespace."
 }
+
+variable "auto_inflate_enabled" {
+  type        = bool
+  default     = false
+  description = "Allows you to enable auto inflate in eventhub namespace."
+}
+
+variable "maximum_throughput_units" {
+  type        = number
+  default     = 1
+  description = "Max number of throughput units in eventhub namespace."
+}

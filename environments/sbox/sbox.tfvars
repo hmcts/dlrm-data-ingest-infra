@@ -12,10 +12,20 @@ mgmt_additional_kv_access_policies = {
 
 #Event Hub settings
 
-eventhub_ns_sku   = "Premium"
-message_retention = "7"
-services          = ["Eventhub1", "Eventhub2"]
-eventhub_capacity = 25
+eventhub_ns_sku = "Premium"
+services = {
+  "eventhub1" = {
+    partition_count   = 1
+    message_retention = "1"
+  }
+  "eventhub2" = {
+    partition_count   = 18
+    message_retention = "1"
+  }
+}
+eventhub_capacity        = 25
+auto_inflate_enabled     = true
+maximum_throughput_units = 25
 
 landing_zones = {
   "00" = {
