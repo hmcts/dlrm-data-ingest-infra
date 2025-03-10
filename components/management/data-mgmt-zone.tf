@@ -22,4 +22,5 @@ module "data_mgmt_zone" {
   services          = var.services
   zone_redundant    = var.zone_redundant
   eventhub_capacity = var.eventhub_capacity
+  message_retention = var.message_retention
 }
