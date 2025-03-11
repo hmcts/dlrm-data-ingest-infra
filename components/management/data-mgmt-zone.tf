@@ -24,4 +24,5 @@ module "data_mgmt_zone" {
   eventhub_capacity        = var.eventhub_capacity
   auto_inflate_enabled     = var.auto_inflate_enabled
   maximum_throughput_units = var.maximum_throughput_units
+  eventhub_auth_rules      = var.eventhub_auth_rules
 }
