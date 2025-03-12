@@ -69,6 +69,21 @@ eventhub_auth_rules = {
   "evh-td-pub-dev-uks-dlrm-01"  = { name = "test-nsa", listen = true, send = true, manage = true }
 }
 
+eventhub_namespace_auth_rules = {
+  "dlrm-eventhub-namespace-sender" = {
+    name   = "dlrm-eventhub-namespace-sender"
+    listen = false
+    send   = true
+    manage = false
+  }
+  "RootManageSharedAccessKey" = {
+    name   = "RootManageSharedAccessKey"
+    listen = true
+    send   = true
+    manage = true
+  }
+}
+
 
 landing_zones = {
   "00" = {
