@@ -70,12 +70,6 @@ eventhub_auth_rules = {
 }
 
 eventhub_namespace_auth_rules = {
-  "dlrm-eventhub-namespace-sender" = {
-    name   = "dlrm-eventhub-namespace-sender"
-    listen = false
-    send   = true
-    manage = false
-  }
   "RootManageSharedAccessKey" = {
     name   = "RootManageSharedAccessKey"
     listen = true
