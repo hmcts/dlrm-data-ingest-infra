@@ -69,15 +69,6 @@ eventhub_auth_rules = {
   "evh-td-pub-dev-uks-dlrm-01"  = { name = "test-nsa", listen = true, send = true, manage = true }
 }
 
-eventhub_namespace_auth_rules = {
-  "RootManageSharedAccessKey" = {
-    name   = "RootManageSharedAccessKey"
-    listen = true
-    send   = true
-    manage = true
-  }
-}
-
 eventhub_consumer_groups = {
   "evh-apl-pub-dev-uks-dlrm-01" = { name = "preview_data_consumer_group" }
   "evh-joh-pub-dev-uks-dlrm-01" = { name = "preview_data_consumer_group" }
