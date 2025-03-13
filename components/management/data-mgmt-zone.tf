@@ -26,4 +26,5 @@ module "data_mgmt_zone" {
   maximum_throughput_units      = var.maximum_throughput_units
   eventhub_auth_rules           = var.eventhub_auth_rules
   eventhub_namespace_auth_rules = var.eventhub_namespace_auth_rules
+  eventhub_consumer_groups      = var.eventhub_consumer_groups
 }

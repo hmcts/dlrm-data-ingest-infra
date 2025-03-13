@@ -78,6 +78,13 @@ eventhub_namespace_auth_rules = {
   }
 }
 
+eventhub_consumer_groups = {
+  "evh-apl-pub-dev-uks-dlrm-01" = { name = "preview_data_consumer_group" }
+  "evh-joh-pub-dev-uks-dlrm-01" = { name = "preview_data_consumer_group" }
+  "evh-td-pub-dev-uks-dlrm-01"  = { name = "preview_data_consumer_group" }
+  "evh-apl-dl-dev-uks-dlrm-01"  = { name = "test" }
+  "evh-td-dl-dev-uks-dlrm-01"   = { name = "test" }
+}
 
 landing_zones = {
   "00" = {
