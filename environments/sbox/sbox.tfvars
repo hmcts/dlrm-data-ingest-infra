@@ -56,7 +56,7 @@ services = {
 }
 eventhub_capacity        = 25
 auto_inflate_enabled     = false
-maximum_throughput_units = 25
+maximum_throughput_units = 0
 
 eventhub_auth_rules = {
   "evh-apl-dl-dev-uks-dlrm-01"  = { name = "manager", listen = true, send = true, manage = true }
