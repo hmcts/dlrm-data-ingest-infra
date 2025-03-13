@@ -60,12 +60,12 @@ maximum_throughput_units = 25
 
 eventhub_auth_rules = {
   "evh-apl-dl-dev-uks-dlrm-01"  = { name = "manager", listen = true, send = true, manage = true }
-  "evh-bl-ack-dev-uks-dlrm-01"  = { name = "ariabailsack", listen = true, send = false, manage = false }
-  "evh-bl-dl-dev-uks-dlrm-01"   = { name = "evh-bl-dl-dev-uks-dlrm-01", listen = true, send = true, manage = false }
-  "evh-bl-pub-dev-uks-dlrm-01"  = { name = "aria-bails", listen = false, send = true, manage = false }
-  "evh-joh-dl-dev-uks-dlrm-01"  = { name = "JOH-deadletterque", listen = true, send = false, manage = true }
-  "evh-joh-pub-dev-uks-dlrm-01" = { name = "ADLSAccountKey", listen = true, send = true, manage = false }
-  "evh-td-dl-dev-uks-dlrm-01"   = { name = "test-dl", listen = false, send = true, manage = false }
+  "evh-bl-ack-dev-uks-dlrm-01"  = { name = "ariabailsack", listen = true, send = true, manage = true }
+  "evh-bl-dl-dev-uks-dlrm-01"   = { name = "evh-bl-dl-dev-uks-dlrm-01", listen = true, send = true, manage = true }
+  "evh-bl-pub-dev-uks-dlrm-01"  = { name = "aria-bails", listen = true, send = true, manage = true }
+  "evh-joh-dl-dev-uks-dlrm-01"  = { name = "JOH-deadletterque", listen = true, send = false, manage = false }
+  "evh-joh-pub-dev-uks-dlrm-01" = { name = "ADLSAccountKey", listen = true, send = true, manage = true }
+  "evh-td-dl-dev-uks-dlrm-01"   = { name = "test-dl", listen = true, send = true, manage = true }
   "evh-td-pub-dev-uks-dlrm-01"  = { name = "test-nsa", listen = true, send = true, manage = true }
 }
 
