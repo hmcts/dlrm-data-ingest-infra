@@ -11,11 +11,80 @@ mgmt_additional_kv_access_policies = {
 }
 
 #Event Hub settings
+eventhub_ns_sku = "Premium"
+services = {
+  "evh-apl-ack-dev-uks-dlrm-01" = {
+    partition_count   = 1
+    message_retention = "1"
+  }
+  "evh-apl-dl-dev-uks-dlrm-01" = {
+    partition_count   = 1
+    message_retention = "1"
+  }
+  "evh-apl-pub-dev-uks-dlrm-01" = {
+    partition_count   = 18
+    message_retention = "1"
+  }
+  "evh-bl-ack-dev-uks-dlrm-01" = {
+    partition_count   = 10
+    message_retention = "1"
+  }
+  "evh-bl-dl-dev-uks-dlrm-01" = {
+    partition_count   = 8
+    message_retention = "1"
+  }
+  "evh-bl-pub-dev-uks-dlrm-01" = {
+    partition_count   = 1
+    message_retention = "1"
+  }
+  "evh-joh-dl-dev-uks-dlrm-01" = {
+    partition_count   = 1
+    message_retention = "1"
+  }
+  "evh-joh-pub-dev-uks-dlrm-01" = {
+    partition_count   = 18
+    message_retention = "1"
+  }
+  "evh-td-dl-dev-uks-dlrm-01" = {
+    partition_count   = 1
+    message_retention = "1"
+  }
+  "evh-td-pub-dev-uks-dlrm-01" = {
+    partition_count   = 18
+    message_retention = "1"
+  }
+}
+eventhub_capacity        = 25
+auto_inflate_enabled     = true
+maximum_throughput_units = 25
 
-eventhub_ns_sku   = "Standard"
-message_retention = "7"
-services          = []
-eventhub_capacity = 25
+eventhub_auth_rules = {
+  "evh-apl-dl-dev-uks-dlrm-01"  = { name = "manager", listen = true, send = true, manage = true }
+  "evh-bl-ack-dev-uks-dlrm-01"  = { name = "ariabailsack", listen = true, send = true, manage = true }
+  "evh-bl-dl-dev-uks-dlrm-01"   = { name = "evh-bl-dl-dev-uks-dlrm-01", listen = true, send = true, manage = true }
+  "evh-bl-pub-dev-uks-dlrm-01"  = { name = "aria-bails", listen = true, send = true, manage = true }
+  "evh-joh-dl-dev-uks-dlrm-01"  = { name = "JOH-deadletterque", listen = true, send = false, manage = false }
+  "evh-joh-pub-dev-uks-dlrm-01" = { name = "ADLSAccountKey", listen = true, send = true, manage = true }
+  "evh-td-dl-dev-uks-dlrm-01"   = { name = "test-dl", listen = true, send = true, manage = true }
+  "evh-td-pub-dev-uks-dlrm-01"  = { name = "test-nsa", listen = true, send = true, manage = true }
+}
+
+eventhub_namespace_auth_rules = {
+  "RootManageSharedAccessKey" = {
+    name   = "RootManageSharedAccessKey"
+    listen = true
+    send   = true
+    manage = true
+  }
+}
+
+eventhub_consumer_groups = {
+  "evh-apl-pub-dev-uks-dlrm-01" = { name = "preview_data_consumer_group" }
+  "evh-joh-pub-dev-uks-dlrm-01" = { name = "preview_data_consumer_group" }
+  "evh-td-pub-dev-uks-dlrm-01"  = { name = "preview_data_consumer_group" }
+  "evh-apl-dl-dev-uks-dlrm-01"  = { name = "test" }
+  "evh-td-dl-dev-uks-dlrm-01"   = { name = "test" }
+}
 
 landing_zones = {
   "00" = {

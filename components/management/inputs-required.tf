@@ -38,7 +38,5 @@ variable "hub_subscription_id" {
   type        = string
 }
 
-
 variable "eventhub_ns_sku" {}
 variable "services" {}
-variable "message_retention" {}
