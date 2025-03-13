@@ -55,7 +55,7 @@ services = {
   }
 }
 eventhub_capacity        = 25
-auto_inflate_enabled     = true
+auto_inflate_enabled     = false
 maximum_throughput_units = 25
 
 eventhub_auth_rules = {
