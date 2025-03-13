@@ -54,7 +54,7 @@ services = {
     message_retention = "1"
   }
 }
-eventhub_capacity        = 25
+eventhub_capacity        = 16
 auto_inflate_enabled     = false
 maximum_throughput_units = 0
 
