@@ -208,6 +208,15 @@ landing_zones = {
       }
     }
   }
+  "01" = {
+    project                        = "AJB Test Zone"
+    role_based_access_control = [
+      {
+        name = "alex.bance@justice.gov.uk"
+        type = "User"
+      },
+    ]
+  }
 }
 install_azure_monitor   = true
 systemassigned_identity = true
