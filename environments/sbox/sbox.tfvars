@@ -208,7 +208,7 @@ landing_zones = {
       }
     }
   }
-  "01" = {
+  "09" = {
     project                        = "AJB Test Zone"
     role_based_access_control = [
       {
