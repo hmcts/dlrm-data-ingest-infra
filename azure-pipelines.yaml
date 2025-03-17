@@ -118,6 +118,7 @@ stages:
           steps:
             - ${{ if and(contains(deployment.component, 'landing'), ne(deployment.environment, 'prod')) }}:
               - task: AzureCLI@2
+                displayName: 'Get Purview Account Details'
                 inputs:
                   azureSubscription: ${{ deployment.service_connection }}
                   scriptType: 'bash'
