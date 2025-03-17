@@ -80,6 +80,7 @@ eventhub_consumer_groups = {
 landing_zones = {
   "00" = {
     project                        = "DLRM Ingestion Engine"
+    deploy_bastion                 = true
     use_microsoft_ip_kit_structure = true
     role_based_access_control = [
       {
@@ -145,6 +146,7 @@ landing_zones = {
   }
   "01" = {
     project                        = "DLRM Ingestion Engine"
+    deploy_bastion                 = true
     use_microsoft_ip_kit_structure = true
     role_based_access_control = [
       {
@@ -209,7 +211,7 @@ landing_zones = {
     }
   }
   "09" = {
-    project                        = "AJB Test Zone"
+    project = "AJB Test Zone"
     role_based_access_control = [
       {
         name = "alex.bance@justice.gov.uk"
