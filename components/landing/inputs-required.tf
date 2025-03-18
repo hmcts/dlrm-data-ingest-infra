@@ -18,6 +18,7 @@ variable "landing_zones" {
   type = map(object({
     use_microsoft_ip_kit_structure       = optional(bool, false)
     adf_deploy_purview_private_endpoints = optional(bool, true)
+    deploy_bastion                       = optional(bool, false)
     role_based_access_control = optional(list(object({
       name  = optional(string)
       type  = optional(string, "user")

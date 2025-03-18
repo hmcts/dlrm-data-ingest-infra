@@ -118,11 +118,13 @@ stages:
           steps:
             - ${{ if and(contains(deployment.component, 'landing'), ne(deployment.environment, 'prod')) }}:
               - task: AzureCLI@2
+                displayName: 'Get Purview Account Details'
                 inputs:
                   azureSubscription: ${{ deployment.service_connection }}
                   scriptType: 'bash'
                   scriptLocation: 'inlineScript'
                   inlineScript: |
+                    set -e
                     az extension add --name purview
                     purviewAccountDetails=$(az purview account list --resource-group ingest-mgmt-rg-${{ deployment.environment }} --query "[0] | { resource_id: id, managed_storage_account_id: managedResources.storageAccount, managed_event_hub_namespace_id: managedResources.eventHubNamespace, identity: { principal_id: identity.principalId, tenant_id: identity.tenantId } }" | jq tostring)
                     echo "##vso[task.setvariable variable=purview]$purviewAccountDetails"
