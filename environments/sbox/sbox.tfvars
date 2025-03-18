@@ -54,9 +54,8 @@ services = {
     message_retention = "1"
   }
 }
-eventhub_capacity        = 16
-auto_inflate_enabled     = false
-maximum_throughput_units = 0
+eventhub_capacity    = 16
+auto_inflate_enabled = false
 
 eventhub_auth_rules = {
   "evh-apl-dl-dev-uks-dlrm-01"  = { name = "manager", listen = true, send = true, manage = true }
