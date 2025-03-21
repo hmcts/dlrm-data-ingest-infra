@@ -104,7 +104,7 @@ landing_zones = {
 
     additional_vnet_address_space = ["10.247.8.0/24"]
     additional_subnets = {
-      "private-endpoints" = {
+      "ingest00-aria-migration-${var.env}" = {
         address_prefixes = ["10.247.8.0/27"]
       }
     }
@@ -178,7 +178,7 @@ landing_zones = {
 
     additional_vnet_address_space = ["10.247.7.0/24"]
     additional_subnets = {
-      "private-endpoints" = {
+      "ingest01-aria-migration-${var.env}" = {
         address_prefixes = ["10.247.7.0/27"]
       }
     }
