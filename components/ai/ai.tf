@@ -1,5 +1,5 @@
 module "ai_services" {
-  source                       = "github.com/hmcts/terraform-module-ai-services"
+  source                       = "git::https://github.com/hmcts/terraform-module-ai-services?ref=main"
   env                          = var.env
   project                      = var.project
   existing_resource_group_name = azurerm_resource_group.rg.name
