@@ -45,7 +45,7 @@ parameters:
         environment: 'sbox'
         component: 'ai'
         service_connection: 'DTS-DATAINGEST-SBOX'
-        dependsOn: 'sbox_routes'
+        dependsOn: 'sbox_landing'
       - deployment: 'stg_routes'
         environment: 'stg'
         component: 'routes'
