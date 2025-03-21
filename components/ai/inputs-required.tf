@@ -19,6 +19,6 @@ variable "location" {
 }
 
 variable "project" {
-  type        = string
-  default     = "sds"
+  type    = string
+  default = "sds"
 }
