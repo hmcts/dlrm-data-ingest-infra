@@ -101,6 +101,14 @@ landing_zones = {
         roles = ["Owner", "Storage Blob Data Owner"]
       }
     ]
+
+    additional_vnet_address_space = ["10.247.8.0/24"]
+    additional_subnets = {
+      "private-endpoints" = {
+        address_prefixes = ["10.247.8.0/27"]
+      }
+    }
+    
     gh_runners = {
       "dlrm-ingestionengine" = {
         deploy            = true
@@ -167,6 +175,13 @@ landing_zones = {
         roles = ["Owner", "Storage Blob Data Owner"]
       }
     ]
+
+    additional_vnet_address_space = ["10.247.7.0/24"]
+    additional_subnets = {
+      "private-endpoints" = {
+        address_prefixes = ["10.247.7.0/27"]
+      }
+    }
     gh_runners = {
       "dlrm-ingestionengine" = {
         deploy            = true
