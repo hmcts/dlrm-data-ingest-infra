@@ -22,3 +22,7 @@ variable "project" {
   type    = string
   default = "sds"
 }
+
+variable "component" {
+  type = string
+}

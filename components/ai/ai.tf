@@ -3,7 +3,7 @@ module "ai_services" {
   env                          = var.env
   project                      = var.project
   existing_resource_group_name = azurerm_resource_group.rg.name
-  common_tags                  = var.common_tags
+  common_tags                  = module.common_tags.tags
   product                      = var.product
   component                    = var.component
   storage_account_id           = module.storage.storage_account_id

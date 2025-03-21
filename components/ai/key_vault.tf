@@ -1,4 +1,4 @@
-module "version_reporter_key_vault" {
+module "key_vault" {
   source = "git::https://github.com/hmcts/cnp-module-key-vault?ref=master"
 
   product                 = var.prodcut
