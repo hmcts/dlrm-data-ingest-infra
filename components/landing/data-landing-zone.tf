@@ -1,5 +1,5 @@
 module "data_landing_zone" {
-  source = "github.com/hmcts/terraform-module-data-landing-zone?ref=feat/bastion"
+  source = "github.com/hmcts/terraform-module-data-landing-zone?ref=feat%2Fbastion"
 
   for_each = var.landing_zones
 
