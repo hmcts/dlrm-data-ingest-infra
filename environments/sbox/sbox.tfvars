@@ -104,11 +104,14 @@ landing_zones = {
 
     additional_vnet_address_space = ["10.247.8.0/24"]
     additional_subnets = {
-      "ingest00-aria-migration-${var.env}" = {
-        address_prefixes = ["10.247.8.0/27"]
+      name_override    = "ingest00-aria-migration-${var.env}"
+      address_prefixes = ["10.247.8.0/27"]
+      delegations = {
+        service_name = "Microsoft.Storage/storageAccounts"
+        actions      = ["Microsoft.Network/virtualNetworks/subnets/action"]
       }
     }
-    
+
     gh_runners = {
       "dlrm-ingestionengine" = {
         deploy            = true
@@ -178,10 +181,14 @@ landing_zones = {
 
     additional_vnet_address_space = ["10.247.7.0/24"]
     additional_subnets = {
-      "ingest01-aria-migration-${var.env}" = {
-        address_prefixes = ["10.247.7.0/27"]
+      service_name     = "ingest01-aria-migration-${var.env}"
+      address_prefixes = ["10.247.7.0/27"]
+      delegations = {
+        service_name = "Microsoft.Storage/storageAccounts"
+        actions      = ["Microsoft.Network/virtualNetworks/subnets/action"]
       }
     }
+
     gh_runners = {
       "dlrm-ingestionengine" = {
         deploy            = true
