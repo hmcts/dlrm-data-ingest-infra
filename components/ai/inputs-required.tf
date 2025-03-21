@@ -24,5 +24,6 @@ variable "project" {
 }
 
 variable "component" {
-  type = string
+  type    = string
+  default = "ai"
 }
