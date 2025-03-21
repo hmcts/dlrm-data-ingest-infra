@@ -1,6 +1,7 @@
 module "ai_services" {
   source                       = "github.com/hmcts/terraform-module-ai-services"
   env                          = var.env
+  project                      = var.project
   existing_resource_group_name = azurerm_resource_group.rg.name
   common_tags                  = var.common_tags
   product                      = var.product

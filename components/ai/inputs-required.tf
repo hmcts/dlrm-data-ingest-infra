@@ -17,3 +17,8 @@ variable "location" {
   type    = string
   default = "uksouth"
 }
+
+variable "project" {
+  type        = string
+  default     = "sds"
+}
