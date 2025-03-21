@@ -6,7 +6,7 @@ module "storage" {
   location                 = var.location
   account_kind             = "Standard"
   account_replication_type = "ZRS"
-  common_tags              = module.common_tags.tags
+  common_tags              = module.common_tags.common_tags
 }
 
 module "common_tags" {
