@@ -57,6 +57,23 @@ locals {
     "startupMode"  = "always",
     "autoShutdown" = local.include_in_autoshutdown
   }
+
+  additional_subnets = {
+    for lz_key, lz in var.landing_zones : lz_key => merge(
+      lz.additional_subnets,
+      length(lz.gh_runners) > 0 ? {
+        gh-runners = {
+          address_prefixes = [cidrsubnet(cidrsubnet(local.data_ingest_address_space, 6, local.subnet_starting_index[var.env] + (parseint(lz_key, 10) * 2) + 1), 3, 6)]
+          delegations = {
+            gh-runners-delegation = {
+              service_name = "Microsoft.ContainerInstance/containerGroups"
+              actions      = ["Microsoft.Network/virtualNetworks/subnets/action"]
+            }
+          }
+        }
+      } : {} # False expression for the conditional operator
+    )
+  }
 }
 
 module "ctags" {
