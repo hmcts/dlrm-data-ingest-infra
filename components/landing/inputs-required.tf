@@ -60,6 +60,15 @@ variable "landing_zones" {
       description                                = optional(string)
     })))
     additional_vnet_address_space = optional(list(string), [])
+    additional_subnets = optional(map(object({
+      name              = string
+      address_space     = list(string)
+      service_endpoints = optional(list(string), [])
+      delegations = optional(list(object({
+        name         = string
+        service_name = string
+      })), [])
+    })), {})
   }))
 }
 
