@@ -34,7 +34,9 @@ module "data_landing_zone" {
   additional_subnets = length(each.value.additional_subnets) == 0 ? {} : merge(
     each.value.additional_subnets,
     each.key == "gh_runners" ? {
-      address_prefixes = [cidrsubnet(cidrsubnet(local.data_ingest_address_space, 6, local.subnet_starting_index[var.env] + (parseint(each.key, 10) * 2)), 3, 6)]
+      "gh_runners_subnet" = {
+        address_prefixes = [cidrsubnet(cidrsubnet(local.data_ingest_address_space, 6, local.subnet_starting_index[var.env] + (parseint(each.key, 10) * 2)), 3, 6)]
+      }
     } : {}
   )
 
