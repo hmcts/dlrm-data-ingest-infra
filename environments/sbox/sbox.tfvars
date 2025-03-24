@@ -101,6 +101,19 @@ landing_zones = {
         roles = ["Owner", "Storage Blob Data Owner"]
       }
     ]
+
+    additional_vnet_address_space = ["10.247.8.0/24"]
+    additional_subnets = {
+      ingest00-aria-migration-sbox = {
+        name_override    = "ingest00-aria-migration-sbox"
+        address_prefixes = ["10.247.8.0/27"]
+        delegations = {
+          service_name = "Microsoft.Storage/storageAccounts"
+          actions      = ["Microsoft.Network/virtualNetworks/subnets/action"]
+        }
+      }
+    }
+
     gh_runners = {
       "dlrm-ingestionengine" = {
         deploy            = true
@@ -167,6 +180,19 @@ landing_zones = {
         roles = ["Owner", "Storage Blob Data Owner"]
       }
     ]
+
+    additional_vnet_address_space = ["10.247.7.0/24"]
+    additional_subnets = {
+      ingest01-aria-migration-sbox = {
+        name_override    = "ingest01-aria-migration-sbox"
+        address_prefixes = ["10.247.7.0/27"]
+        delegations = {
+          service_name = "Microsoft.Storage/storageAccounts"
+          actions      = ["Microsoft.Network/virtualNetworks/subnets/action"]
+        }
+      }
+    }
+
     gh_runners = {
       "dlrm-ingestionengine" = {
         deploy            = true
