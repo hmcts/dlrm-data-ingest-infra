@@ -64,10 +64,10 @@ variable "landing_zones" {
       name_override     = optional(string)
       address_prefixes  = list(string)
       service_endpoints = optional(list(string), [])
-      delegations = optional(object({
+      delegations = optional(map(object({
         service_name = string,
         actions      = optional(list(string), [])
-      }))
+      })))
     })))
   }))
 }
