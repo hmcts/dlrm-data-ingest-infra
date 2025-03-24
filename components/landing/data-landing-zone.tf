@@ -31,17 +31,8 @@ module "data_landing_zone" {
   data_product_002_subnet_address_space            = [cidrsubnet(cidrsubnet(local.data_ingest_address_space, 6, local.subnet_starting_index[var.env] + (parseint(each.key, 10) * 2) + 1), 2, 2)]
   bastion_host_subnet_address_space                = each.value.deploy_bastion ? [cidrsubnet(cidrsubnet(local.data_ingest_address_space, 6, local.subnet_starting_index[var.env] + (parseint(each.key, 10) * 2)), 2, 3)] : null
   bastion_host_source_ip_allowlist                 = ["194.33.192.0/24", "194.33.196.0/24", "194.33.248.0/24", "194.33.249.0/24"]
-  additional_subnets = length(each.value.gh_runners) == 0 ? {} : {
-    gh-runners = {
-      address_prefixes = [cidrsubnet(cidrsubnet(local.data_ingest_address_space, 6, local.subnet_starting_index[var.env] + (parseint(each.key, 10) * 2) + 1), 3, 6)]
-      delegations = {
-        gh-runners-delegation = {
-          service_name = "Microsoft.ContainerInstance/containerGroups"
-          actions      = ["Microsoft.Network/virtualNetworks/subnets/action"]
-        }
-      }
-    }
-  }
+  additional_subnets                               = length(each.value.additional_subnets) == 0 ? {} : each.value.additional_subnets
+
   hub_vnet_name                        = var.hub_vnet_name
   hub_resource_group_name              = var.hub_resource_group_name
   legacy_databases                     = each.value.legacy_databases
