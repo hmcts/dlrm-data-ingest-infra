@@ -107,9 +107,13 @@ landing_zones = {
       ingest00-aria-migration-sbox = {
         name_override    = "ingest00-aria-migration-sbox"
         address_prefixes = ["10.247.8.0/27"]
+        }
+      }
+
+      gh_runners = {
         delegations = {
-          storage = {
-            service_name = "Microsoft.Storage/storageAccounts"
+          gh-runners-delegation = {
+            service_name = "Microsoft.ContainerInstance/containerGroups"
             actions      = ["Microsoft.Network/virtualNetworks/subnets/action"]
           }
         }
@@ -187,9 +191,13 @@ landing_zones = {
       ingest01-aria-migration-sbox = {
         name_override    = "ingest01-aria-migration-sbox"
         address_prefixes = ["10.247.7.0/27"]
+        }
+      }
+
+      gh_runners = {
         delegations = {
-          storage = {
-            service_name = "Microsoft.Storage/storageAccounts"
+          gh-runners-delegation = {
+            service_name = "Microsoft.ContainerInstance/containerGroups"
             actions      = ["Microsoft.Network/virtualNetworks/subnets/action"]
           }
         }
