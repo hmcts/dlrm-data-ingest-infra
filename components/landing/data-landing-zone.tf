@@ -31,7 +31,14 @@ module "data_landing_zone" {
   data_product_002_subnet_address_space            = [cidrsubnet(cidrsubnet(local.data_ingest_address_space, 6, local.subnet_starting_index[var.env] + (parseint(each.key, 10) * 2) + 1), 2, 2)]
   bastion_host_subnet_address_space                = each.value.deploy_bastion ? [cidrsubnet(cidrsubnet(local.data_ingest_address_space, 6, local.subnet_starting_index[var.env] + (parseint(each.key, 10) * 2)), 2, 3)] : null
   bastion_host_source_ip_allowlist                 = ["194.33.192.0/24", "194.33.196.0/24", "194.33.248.0/24", "194.33.249.0/24"]
-  additional_subnets                               = each.value.additional_subnets
+  additional_subnets = each.value.additional_subnets == null && length(each.value.gh_runners) == 0 ? {} : merge(
+    each.value.additional_subnets,
+    each.key == "gh_runners" ? {
+      "gh_runners_subnet" = {
+        address_prefixes = [cidrsubnet(cidrsubnet(local.data_ingest_address_space, 6, local.subnet_starting_index[var.env] + (parseint(each.key, 10) * 2)), 3, 6)]
+      }
+    } : {}
+  )
 
   hub_vnet_name                        = var.hub_vnet_name
   hub_resource_group_name              = var.hub_resource_group_name

@@ -107,7 +107,7 @@ landing_zones = {
       ingest00-aria-migration-sbox = {
         name_override    = "ingest00-aria-migration-sbox"
         address_prefixes = ["10.247.8.0/27"]
-        }
+      }
 
       gh_runners = {
         delegations = {
