@@ -107,13 +107,8 @@ landing_zones = {
       ingest00-aria-migration-sbox = {
         name_override    = "ingest00-aria-migration-sbox"
         address_prefixes = ["10.247.8.0/27"]
-        delegations = {
-          service_name = "Microsoft.Storage/storageAccounts"
-          actions      = ["Microsoft.Network/virtualNetworks/subnets/action"]
-        }
       }
     }
-
     gh_runners = {
       "dlrm-ingestionengine" = {
         deploy            = true
@@ -186,10 +181,6 @@ landing_zones = {
       ingest01-aria-migration-sbox = {
         name_override    = "ingest01-aria-migration-sbox"
         address_prefixes = ["10.247.7.0/27"]
-        delegations = {
-          service_name = "Microsoft.Storage/storageAccounts"
-          actions      = ["Microsoft.Network/virtualNetworks/subnets/action"]
-        }
       }
     }
 
@@ -200,6 +191,7 @@ landing_zones = {
         token_secret_name = "dlrm-ingestionengine-token"
       }
     }
+
     legacy_databases = {
       legacy-sql = {
         computer_name  = "ingest01-legacy"
