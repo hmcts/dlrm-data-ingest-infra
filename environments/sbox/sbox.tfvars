@@ -196,11 +196,21 @@ landing_zones = {
       }
 
       gh_runners = {
-        "dlrm-ingestionengine" = {
-          deploy            = true
-          token_vault_id    = "/subscriptions/df72bb30-d6fb-47bd-82ee-5eb87473ddb3/resourceGroups/ingest-mgmt-rg-sbox/providers/Microsoft.KeyVault/vaults/ingest-mgmt-kv-sbox"
-          token_secret_name = "dlrm-ingestionengine-token"
+        address_prefixes = [cidrsubnet(cidrsubnet(local.data_ingest_address_space, 6, local.subnet_starting_index[var.env] + (parseint(each.key, 10) * 2) + 1), 3, 6)]
+        delegations = {
+          gh-runners-delegation = {
+            service_name = "Microsoft.ContainerInstance/containerGroups"
+            actions      = ["Microsoft.Network/virtualNetworks/subnets/action"]
+          }
         }
+      }
+    }
+
+    gh_runners = {
+      "dlrm-ingestionengine" = {
+        deploy            = true
+        token_vault_id    = "/subscriptions/df72bb30-d6fb-47bd-82ee-5eb87473ddb3/resourceGroups/ingest-mgmt-rg-sbox/providers/Microsoft.KeyVault/vaults/ingest-mgmt-kv-sbox"
+        token_secret_name = "dlrm-ingestionengine-token"
       }
     }
 
