@@ -114,15 +114,6 @@ landing_zones = {
           }
         }
       }
-
-      gh_runners = {
-        delegations = {
-          gh-runners-delegation = {
-            service_name = "Microsoft.ContainerInstance/containerGroups"
-            actions      = ["Microsoft.Network/virtualNetworks/subnets/action"]
-          }
-        }
-      }
     }
     gh_runners = {
       "dlrm-ingestionengine" = {
@@ -199,15 +190,6 @@ landing_zones = {
         delegations = {
           storage = {
             service_name = "Microsoft.Storage/storageAccounts"
-            actions      = ["Microsoft.Network/virtualNetworks/subnets/action"]
-          }
-        }
-      }
-
-      gh_runners = {
-        delegations = {
-          gh-runners-delegation = {
-            service_name = "Microsoft.ContainerInstance/containerGroups"
             actions      = ["Microsoft.Network/virtualNetworks/subnets/action"]
           }
         }
