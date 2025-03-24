@@ -7,7 +7,7 @@ module "storage" {
   account_kind               = "StorageV2"
   account_replication_type   = "ZRS"
   common_tags                = module.common_tags.common_tags
-  private_endpoint_subnet_id = azurerm_subnet.private_endpoint_subnet.id
+  private_endpoint_subnet_id = data.azurerm_subnet.private_endpoint_subnet.id
 }
 
 module "common_tags" {
