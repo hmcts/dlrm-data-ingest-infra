@@ -10,3 +10,15 @@ module "key_vault" {
   create_managed_identity = true
   common_tags             = module.common_tags.common_tags
 }
+
+resource "azurerm_key_vault_secret" "cognitive_account_primary_access_key" {
+  name         = "cognitive-account-primary-access-key"
+  value        = module.ai.cognitive_account_primary_access_key
+  key_vault_id = module.key_vault.key_vault_id
+}
+
+resource "azurerm_key_vault_secret" "cognitive_account_secondary_access_key" {
+  name         = "cognitive-account-secondary-access-key"
+  value        = module.ai.cognitive_account_secondary_access_key
+  key_vault_id = module.key_vault.key_vault_id
+}
