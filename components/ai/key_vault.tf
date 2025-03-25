@@ -7,7 +7,6 @@ module "key_vault" {
   object_id               = data.azurerm_client_config.current.object_id
   resource_group_name     = azurerm_resource_group.rg.name
   product_group_name      = "DTS Platform Operations"
-  create_managed_identity = true
   common_tags             = module.common_tags.common_tags
 }
 
