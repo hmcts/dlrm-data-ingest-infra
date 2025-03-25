@@ -1,14 +1,13 @@
 module "key_vault" {
   source = "git::https://github.com/hmcts/cnp-module-key-vault?ref=master"
 
-  name                    = "${var.product}-${var.component}-kv-${var.env}"
-  product                 = var.product
-  env                     = var.env
-  object_id               = data.azurerm_client_config.current.object_id
-  resource_group_name     = azurerm_resource_group.rg.name
-  product_group_name      = "DTS Platform Operations"
-  create_managed_identity = true
-  common_tags             = module.common_tags.common_tags
+  name                = "${var.product}-${var.component}-kv-${var.env}"
+  product             = var.product
+  env                 = var.env
+  object_id           = data.azurerm_client_config.current.object_id
+  resource_group_name = azurerm_resource_group.rg.name
+  product_group_name  = "DTS Platform Operations"
+  common_tags         = module.common_tags.common_tags
 }
 
 resource "azurerm_key_vault_secret" "cognitive_account_primary_access_key" {
