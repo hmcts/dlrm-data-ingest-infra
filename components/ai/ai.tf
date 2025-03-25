@@ -1,4 +1,4 @@
-module "ai_services" {
+module "ai" {
   source                       = "git::https://github.com/hmcts/terraform-module-ai-services?ref=main"
   env                          = var.env
   project                      = var.project
