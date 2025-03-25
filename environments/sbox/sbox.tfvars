@@ -10,8 +10,6 @@ mgmt_additional_kv_access_policies = {
   }
 }
 
-additional_vnet_address_space = ["10.247.5.0/24"]
-
 #Event Hub settings
 eventhub_ns_sku = "Premium"
 services = {
