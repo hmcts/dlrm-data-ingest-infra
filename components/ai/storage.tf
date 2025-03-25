@@ -1,13 +1,14 @@
 module "storage" {
-  source                     = "git::https://github.com/hmcts/cnp-module-storage-account?ref=4.x"
-  env                        = var.env
-  storage_account_name       = "${replace(var.product, "-", "")}${var.component}"
-  resource_group_name        = azurerm_resource_group.rg.name
-  location                   = var.location
-  account_kind               = "StorageV2"
-  account_replication_type   = "ZRS"
-  common_tags                = module.common_tags.common_tags
-  private_endpoint_subnet_id = data.azurerm_subnet.private_endpoint_subnet.id
+  source                        = "git::https://github.com/hmcts/cnp-module-storage-account?ref=4.x"
+  env                           = var.env
+  storage_account_name          = "${replace(var.product, "-", "")}${var.component}${var.env}"
+  resource_group_name           = azurerm_resource_group.rg.name
+  location                      = var.location
+  account_kind                  = "StorageV2"
+  account_replication_type      = "ZRS"
+  common_tags                   = module.common_tags.common_tags
+  private_endpoint_subnet_id    = data.azurerm_subnet.private_endpoint_subnet.id
+  public_network_access_enabled = false
 }
 
 module "common_tags" {
