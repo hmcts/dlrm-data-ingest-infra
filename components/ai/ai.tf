@@ -9,4 +9,5 @@ module "ai_services" {
   storage_account_id           = module.storage.storageaccount_id
   key_vault_id                 = module.key_vault.key_vault_id
   application_insights_id      = module.application_insights.id
+  cognitive_account_kind       = "FormRecognizer"
 }
