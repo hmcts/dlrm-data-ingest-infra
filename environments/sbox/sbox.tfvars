@@ -87,6 +87,14 @@ landing_zones = {
         type = "User"
       },
       {
+        name = "prasanna.krishnan@hmcts.net"
+        type = "User"
+      },
+      {
+        name = "Isabella.O'Hara@HMCTS.NET"
+        type = "User"
+      },
+      {
         name = "dominic.leary@justice.gov.uk"
         type = "User"
       },
@@ -158,6 +166,14 @@ landing_zones = {
     role_based_access_control = [
       {
         name = "prasanna.krishnan@justice.gov.uk"
+        type = "User"
+      },
+      {
+        name = "prasanna.krishnan@hmcts.net"
+        type = "User"
+      },
+      {
+        name = "Isabella.O'Hara@HMCTS.NET"
         type = "User"
       },
       {
