@@ -1,5 +1,5 @@
 module "data_landing_zone" {
-  source = "github.com/hmcts/terraform-module-data-landing-zone?ref=feat%2Fbastion"
+  source = "github.com/hmcts/terraform-module-data-landing-zone?ref=feat%2Fsftp-storage"
 
   for_each = var.landing_zones
 
@@ -39,7 +39,7 @@ module "data_landing_zone" {
   adf_deploy_purview_private_endpoints             = each.value.adf_deploy_purview_private_endpoints
   additional_nsg_rules                             = each.value.additional_nsg_rules
   key_vault_readers                                = ["145da22b-a3cb-4ba8-b735-22c94b5eea6c"]
-
+  deploy_sftp_storage                              = each.value.deploy_sftp_storage
 
   install_azure_monitor   = var.install_azure_monitor
   systemassigned_identity = var.systemassigned_identity
