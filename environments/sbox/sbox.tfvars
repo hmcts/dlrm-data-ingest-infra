@@ -80,6 +80,7 @@ landing_zones = {
   "00" = {
     project                        = "DLRM Ingestion Engine"
     deploy_bastion                 = true
+    deploy_sftp_storage            = true
     use_microsoft_ip_kit_structure = true
     role_based_access_control = [
       {

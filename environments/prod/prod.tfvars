@@ -31,6 +31,7 @@ landing_zones = {
   "00" = {
     project                              = "DLRM Ingestion Engine"
     use_microsoft_ip_kit_structure       = true
+    deploy_sftp_storage                  = true
     adf_deploy_purview_private_endpoints = false
     role_based_access_control = [
       {
