@@ -4,3 +4,4 @@ resource "azurerm_role_assignment" "roles" {
   role_definition_name = each.value.role
   principal_id         = lower(each.value.type) == "user" ? data.azuread_user.principal[each.key].object_id : lower(each.value.type) == "group" ? data.azuread_group.principal[each.key].object_id : data.azuread_service_principal.principal[each.key].object_id
 }
+
