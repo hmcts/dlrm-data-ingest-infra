@@ -1,5 +1,5 @@
 module "data_landing_zone" {
-  source = "github.com/hmcts/terraform-module-data-landing-zone?ref=feat%2Fsftp-storage"
+  source = "github.com/hmcts/terraform-module-data-landing-zone?ref=main"
 
   for_each = var.landing_zones
 
@@ -30,7 +30,7 @@ module "data_landing_zone" {
   data_product_001_subnet_address_space            = [cidrsubnet(cidrsubnet(local.data_ingest_address_space, 6, local.subnet_starting_index[var.env] + (parseint(each.key, 10) * 2) + 1), 2, 1)]
   data_product_002_subnet_address_space            = [cidrsubnet(cidrsubnet(local.data_ingest_address_space, 6, local.subnet_starting_index[var.env] + (parseint(each.key, 10) * 2) + 1), 2, 2)]
   bastion_host_subnet_address_space                = each.value.deploy_bastion ? [cidrsubnet(cidrsubnet(local.data_ingest_address_space, 6, local.subnet_starting_index[var.env] + (parseint(each.key, 10) * 2)), 2, 3)] : null
-  bastion_host_source_ip_allowlist                 = ["194.33.192.0/24", "194.33.196.0/24", "194.33.248.0/24", "194.33.249.0/24"]
+  bastion_host_source_ip_allowlist                 = ["*"]
   additional_subnets                               = local.additional_subnets[each.key]
   hub_vnet_name                                    = var.hub_vnet_name
   hub_resource_group_name                          = var.hub_resource_group_name
