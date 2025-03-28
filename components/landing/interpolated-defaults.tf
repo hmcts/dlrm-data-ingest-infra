@@ -63,7 +63,7 @@ locals {
       lz.additional_subnets,
       length(lz.gh_runners) > 0 ? {
         gh-runners = {
-          address_prefixes = [cidrsubnet(cidrsubnet(local.data_ingest_address_space, 6, local.subnet_starting_index[var.env] + (parseint(lz_key, 10) * 2) + 1), 3, 6)]
+          address_prefixes = [cidrsubnet(cidrsubnet(local.data_ingest_address_space, 6, local.subnet_starting_index[var.env] + (parseint(lz_key, 10) * 2) + 1), 4, 13)]
           delegations = {
             gh-runners-delegation = {
               service_name = "Microsoft.ContainerInstance/containerGroups"
