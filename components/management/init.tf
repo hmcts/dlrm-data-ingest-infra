@@ -22,8 +22,8 @@ provider "azurerm" {
 }
 
 provider "azurerm" {
-  alias                      = "ssptl"
-  skip_provider_registration = true
+  alias                           = "ssptl"
+  resource_provider_registrations = "none"
   features {}
   subscription_id = local.ssptl_sub_id
 }

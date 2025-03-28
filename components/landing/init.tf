@@ -28,29 +28,29 @@ provider "azurerm" {
 }
 
 provider "azurerm" {
-  alias                      = "ssptl"
-  skip_provider_registration = true
+  alias                           = "ssptl"
+  resource_provider_registrations = "none"
   features {}
   subscription_id = local.ssptl_sub_id
 }
 
 provider "azurerm" {
-  alias                      = "cftptl"
-  skip_provider_registration = true
+  alias                           = "cftptl"
+  resource_provider_registrations = "none"
   features {}
   subscription_id = local.cftptl_sub_id
 }
 
 provider "azurerm" {
-  alias                      = "soc"
-  skip_provider_registration = true
+  alias                           = "soc"
+  resource_provider_registrations = "none"
   features {}
   subscription_id = local.soc_sub_id
 }
 
 provider "azurerm" {
-  alias                      = "cnp"
-  skip_provider_registration = true
+  alias                           = "cnp"
+  resource_provider_registrations = "none"
   features {}
   subscription_id = local.is_prod ? local.cnp_prod_sub_id : local.cnp_nonprod_sub_id
 }
