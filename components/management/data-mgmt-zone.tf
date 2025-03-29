@@ -1,5 +1,5 @@
 module "data_mgmt_zone" {
-  source = "github.com/hmcts/terraform-module-data-management-zone?ref=main"
+  source = "github.com/hmcts/terraform-module-data-management-zone?ref=4.x"
 
   providers = {
     azurerm       = azurerm,
