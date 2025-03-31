@@ -10,7 +10,7 @@ module "storage" {
   private_endpoint_subnet_id    = data.azurerm_subnet.private_endpoint_subnet.id
   public_network_access_enabled = false
   ip_rules                      = var.ip_rules
-  sa_subnets                    = data.azure_devops_agent_subnet.subnet_id
+  sa_subnets                    = data.azure_devops_agent_subnet.id
 }
 
 module "common_tags" {
