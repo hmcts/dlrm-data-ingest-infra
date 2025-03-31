@@ -27,3 +27,7 @@ variable "component" {
   type    = string
   default = "ai"
 }
+
+variable "ip_rules" {
+  default = []
+}

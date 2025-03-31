@@ -11,3 +11,10 @@ data "azurerm_subnet" "private_endpoint_subnet" {
   virtual_network_name = data.azurerm_virtual_network.vnet.name
   resource_group_name  = data.azurerm_virtual_network.vnet.resource_group_name
 }
+
+data "azurerm_subnet" "azure_devops_agent_subnet" {
+  provider             = azurerm.ssptl
+  name                 = "aks-00"
+  virtual_network_name = local.is_sbox ? "ss-ptlsbox-vnet" : "ss-ptl-vnet"
+  resource_group_name  = local.is_sbox ? "ss-ptlsbox-network-rg" : "ss-ptl-network-rg"
+}

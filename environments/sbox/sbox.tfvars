@@ -10,6 +10,21 @@ mgmt_additional_kv_access_policies = {
   }
 }
 
+# AI Services settings
+min_node_count = 1
+
+# Storage account settings
+ip_rules = [
+  "51.11.24.49",       # Azure ML Workspace UK South IP
+  "51.104.8.64/27",    # Azure ML Workspace UK South IP
+  "51.104.24.96/28",   # Azure ML Workspace UK South IP
+  "51.105.67.16/28",   # Azure ML Workspace UK South IP
+  "51.105.75.128/28",  # Azure ML Workspace UK South IP
+  "51.140.146.208/28", # Azure ML Workspace UK South IP
+  "51.143.214.32/28",  # Azure ML Workspace UK South IP
+  "52.151.111.249"     # Azure ML Workspace UK South IP
+]
+
 #Event Hub settings
 eventhub_ns_sku = "Premium"
 services = {
