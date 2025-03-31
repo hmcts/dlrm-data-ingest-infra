@@ -7,7 +7,7 @@ data "azurerm_virtual_network" "vnet" {
 }
 
 data "azurerm_subnet" "private_endpoint_subnet" {
-  name                 = "ingest00-aria-migration-${var.env}"
+  name                 = "ingest00-services-${var.env}"
   virtual_network_name = data.azurerm_virtual_network.vnet.name
   resource_group_name  = data.azurerm_virtual_network.vnet.resource_group_name
 }
