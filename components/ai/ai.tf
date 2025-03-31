@@ -11,4 +11,5 @@ module "ai" {
   application_insights_id      = module.application_insights.id
   cognitive_account_kind       = "FormRecognizer"
   subnet_id                    = data.azurerm_subnet.private_endpoint_subnet.id
+  min_node_count               = var.min_node_count
 }

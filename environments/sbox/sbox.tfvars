@@ -10,6 +10,9 @@ mgmt_additional_kv_access_policies = {
   }
 }
 
+# AI Services settings
+min_node_count = 1
+
 # Storage account settings
 ip_rules = [
   "51.11.24.49",       # Azure ML Workspace UK South IP
