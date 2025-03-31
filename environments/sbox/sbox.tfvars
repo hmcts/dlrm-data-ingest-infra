@@ -257,7 +257,7 @@ landing_zones = {
       }
     }
   }
-  "00" = {
+  "02" = {
     project                        = "DLRM Ingestion Engine"
     deploy_bastion                 = true
     deploy_sftp_storage            = true
