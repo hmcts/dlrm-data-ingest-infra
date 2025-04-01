@@ -1,5 +1,5 @@
 module "ai" {
-  source                       = "git::https://github.com/hmcts/terraform-module-ai-services?ref=DTSPO-24907/private-endpoint"
+  source                       = "git::https://github.com/hmcts/terraform-module-ai-services?ref=main"
   env                          = var.env
   project                      = var.project
   existing_resource_group_name = azurerm_resource_group.rg.name
@@ -13,4 +13,5 @@ module "ai" {
   cognitive_account_sku        = var.cognitive_account_sku
   subnet_id                    = data.azurerm_subnet.private_endpoint_subnet.id
   min_node_count               = var.min_node_count
+  ip_rules                     = var.cognitive_account_ip_rules
 }

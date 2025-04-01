@@ -16,3 +16,11 @@ variable "min_node_count" {
   type        = number
   default     = 0
 }
+
+variable "ip_rules" {
+  default = []
+}
+
+variable "cognitive_account_ip_rules" {
+  default = []
+}
