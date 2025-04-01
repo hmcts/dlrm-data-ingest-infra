@@ -89,7 +89,7 @@ variables:
   - name: timeoutInMinutes
     value: 240
   - name: agentImage
-    value: ubuntu-20.04
+    value: ubuntu-latest
   - name: product
     value: dlrm-ingest
   - name: terraformInitSubscription
