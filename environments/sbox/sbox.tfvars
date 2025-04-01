@@ -207,14 +207,6 @@ landing_zones = {
       }
     ]
 
-    additional_vnet_address_space = ["10.247.7.0/24"]
-    additional_subnets = {
-      ingest01-aria-migration-sbox = {
-        name_override    = "ingest01-aria-migration-sbox"
-        address_prefixes = ["10.247.7.0/27"]
-      }
-    }
-
     gh_runners = {
       "dlrm-ingestionengine" = {
         deploy            = true
