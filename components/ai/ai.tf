@@ -10,6 +10,7 @@ module "ai" {
   key_vault_id                 = module.key_vault.key_vault_id
   application_insights_id      = module.application_insights.id
   cognitive_account_kind       = "FormRecognizer"
+  cognitive_account_sku        = var.cognitive_account_sku
   subnet_id                    = data.azurerm_subnet.private_endpoint_subnet.id
   min_node_count               = var.min_node_count
 }
