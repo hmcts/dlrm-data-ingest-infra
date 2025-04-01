@@ -28,10 +28,6 @@ variable "component" {
   default = "ai"
 }
 
-variable "ip_rules" {
-  default = []
-}
-
 variable "cognitive_account_sku" {
   default = "F0"
 }

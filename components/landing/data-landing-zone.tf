@@ -1,5 +1,5 @@
 module "data_landing_zone" {
-  source = "github.com/hmcts/terraform-module-data-landing-zone?ref=main"
+  source = "github.com/hmcts/terraform-module-data-landing-zone?ref=DTSPO-24907/add-service-endpoint"
 
   for_each = var.landing_zones
 
