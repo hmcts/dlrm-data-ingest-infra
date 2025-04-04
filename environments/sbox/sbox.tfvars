@@ -11,7 +11,7 @@ mgmt_additional_kv_access_policies = {
 }
 
 # AI Services settings
-min_node_count = 1
+min_node_count        = 1
 cognitive_account_sku = "S0"
 
 # Storage account settings
