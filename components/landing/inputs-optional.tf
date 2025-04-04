@@ -24,3 +24,9 @@ variable "systemassigned_identity" {
   type        = bool
   default     = false
 }
+
+variable "f5_subscription_id" {
+  description = "The subscription ID for the F5 VPN."
+  type        = string
+  default     = "ed302caf-ec27-4c64-a05e-85731c3ce90e"
+}
