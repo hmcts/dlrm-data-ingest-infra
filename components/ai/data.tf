@@ -18,3 +18,8 @@ data "azurerm_subnet" "azure_devops_agent_subnet" {
   virtual_network_name = local.is_sbox ? "ss-ptlsbox-vnet" : "ss-ptl-vnet"
   resource_group_name  = local.is_sbox ? "ss-ptlsbox-network-rg" : "ss-ptl-network-rg"
 }
+
+data "azuread_group" "poc_group" {
+  display_name     = "DTS DLRM ARIA Migration"
+  security_enabled = true
+}
