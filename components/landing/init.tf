@@ -32,6 +32,13 @@ provider "azurerm" {
 }
 
 provider "azurerm" {
+  alias                           = "f5"
+  resource_provider_registrations = "none"
+  features {}
+  subscription_id = var.f5_subscription_id
+}
+
+provider "azurerm" {
   alias                           = "ssptl"
   resource_provider_registrations = "none"
   features {}
