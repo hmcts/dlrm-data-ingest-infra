@@ -87,7 +87,7 @@ parameters:
       - deployment: 'prod_ai'
         environment: 'prod'
         component: 'ai'
-        service_connection: 'DTS-DATAINGEST-SBOX'
+        service_connection: 'DTS-DATAINGEST-PROD'
         dependsOn: 'prod_landing'
 
 variables:
