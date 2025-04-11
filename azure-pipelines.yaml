@@ -84,6 +84,11 @@ parameters:
         dependsOn: 
           - 'prod_mgmt'
           - 'stg_landing'
+      - deployment: 'prod_ai'
+        environment: 'prod'
+        component: 'ai'
+        service_connection: 'DTS-DATAINGEST-SBOX'
+        dependsOn: 'prod_landing'
 
 variables:
   - name: timeoutInMinutes
