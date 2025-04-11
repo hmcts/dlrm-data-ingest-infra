@@ -33,14 +33,15 @@ variable "landing_zones" {
       token_secret_name = string
     })), {})
     legacy_databases = optional(map(object({
-      size           = optional(string, "Standard_D4ds_v5")
-      type           = optional(string, "windows")
-      public_ip      = optional(bool, false)
-      computer_name  = optional(string)
-      publisher_name = string
-      offer          = string
-      sku            = string
-      version        = string
+      size            = optional(string, "Standard_D4ds_v5")
+      type            = optional(string, "windows")
+      public_ip       = optional(bool, false)
+      computer_name   = optional(string)
+      publisher_name  = string
+      offer           = string
+      os_disk_size_gb = optional(number, 127)
+      sku             = string
+      version         = string
     })), {})
     additional_nsg_rules = optional(map(object({
       name_override                              = optional(string)
