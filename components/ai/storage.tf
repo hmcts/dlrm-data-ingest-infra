@@ -9,8 +9,7 @@ module "storage" {
   common_tags                   = module.common_tags.common_tags
   private_endpoint_subnet_id    = data.azurerm_subnet.private_endpoint_subnet.id
   public_network_access_enabled = true
-  ip_rules                      = var.ip_rules
-  sa_subnets                    = [data.azurerm_subnet.azure_devops_agent_subnet.id]
+  default_action                = "Allow"
 }
 
 module "common_tags" {
