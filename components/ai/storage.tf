@@ -9,6 +9,7 @@ module "storage" {
   common_tags                   = module.common_tags.common_tags
   private_endpoint_subnet_id    = data.azurerm_subnet.private_endpoint_subnet.id
   public_network_access_enabled = true
+  default_action                = "Allow"
 }
 
 module "common_tags" {
