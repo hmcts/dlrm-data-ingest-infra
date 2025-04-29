@@ -74,7 +74,7 @@ services = {
     message_retention = "1"
   }
 }
-eventhub_capacity    = 16
+eventhub_capacity    = 1
 auto_inflate_enabled = false
 
 eventhub_auth_rules = {
