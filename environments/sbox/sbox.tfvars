@@ -299,6 +299,10 @@ landing_zones = {
       }
     }
   }
+"09" = {
+    project                        = "AJB Example Zone"
+    use_microsoft_ip_kit_structure = true
+  }
 }
 install_azure_monitor   = true
 systemassigned_identity = true
