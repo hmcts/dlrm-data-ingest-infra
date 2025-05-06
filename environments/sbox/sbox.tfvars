@@ -54,7 +54,7 @@ services = {
     message_retention = "1"
   }
   "evh-bl-pub-dev-uks-dlrm-01" = {
-    partition_count   = 1
+    partition_count   = 10
     message_retention = "1"
   }
   "evh-joh-dl-dev-uks-dlrm-01" = {
