@@ -37,11 +37,12 @@ variable "landing_zones" {
       type            = optional(string, "windows")
       public_ip       = optional(bool, false)
       computer_name   = optional(string)
-      publisher_name  = string
-      offer           = string
+      publisher_name  = optional(string)
+      offer           = optional(string)
+      sku             = optional(string)
+      version         = optional(string)
+      source_image_id = optional(string)
       os_disk_size_gb = optional(number, 127)
-      sku             = string
-      version         = string
     })), {})
     additional_nsg_rules = optional(map(object({
       name_override                              = optional(string)
