@@ -105,3 +105,5 @@ landing_zones = {
 }
 install_azure_monitor   = true
 systemassigned_identity = true
+
+arm_object_id = "68549602-2dd5-4230-bf3b-8d35a11164d5"

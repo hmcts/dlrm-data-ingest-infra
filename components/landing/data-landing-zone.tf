@@ -40,6 +40,7 @@ module "data_landing_zone" {
   additional_nsg_rules                             = each.value.additional_nsg_rules
   key_vault_readers                                = ["145da22b-a3cb-4ba8-b735-22c94b5eea6c"]
   deploy_sftp_storage                              = each.value.deploy_sftp_storage
+  arm_object_id                                    = var.arm_object_id
 
   install_azure_monitor   = var.install_azure_monitor
   systemassigned_identity = var.systemassigned_identity

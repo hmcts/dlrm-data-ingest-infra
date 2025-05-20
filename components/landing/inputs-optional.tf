@@ -30,3 +30,9 @@ variable "f5_subscription_id" {
   type        = string
   default     = "ed302caf-ec27-4c64-a05e-85731c3ce90e"
 }
+
+variable "arm_object_id" {
+  description = "The object id of the Archiving with Records Management service principal."
+  type        = string
+  default     = "10a46d0d-f32a-4252-9c52-65e3a829002a"
+}
