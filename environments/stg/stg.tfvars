@@ -93,4 +93,4 @@ install_azure_monitor   = true
 systemassigned_identity = true
 zone_redundant          = true
 
-arm_object_id = "10a46d0d-f32a-4252-9c52-65e3a829002a"
+arm_object_id = "fd6e5281-058b-490f-8c90-186c7f057502"
