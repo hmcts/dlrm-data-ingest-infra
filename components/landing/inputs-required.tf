@@ -95,3 +95,8 @@ variable "hub_subscription_id" {
   description = "The ID of the subscription containing the HUB virtual network."
   type        = string
 }
+
+variable "arm_object_id" {
+  description = "The object id of the Archiving with Records Management service principal."
+  type        = string
+}
