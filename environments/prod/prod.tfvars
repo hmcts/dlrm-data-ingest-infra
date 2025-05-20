@@ -67,13 +67,14 @@ landing_zones = {
     }
     legacy_databases = {
       legacy-sql = {
-        computer_name   = "ingest00-legacy"
-        public_ip       = true
-        publisher_name  = "MicrosoftWindowsServer"
-        offer           = "WindowsServer"
-        os_disk_size_gb = 500
-        sku             = "2016-datacenter-gensecond"
-        version         = "14393.6709.240206"
+        computer_name       = "ingest00-legacy"
+        public_ip           = true
+        publisher_name      = "MicrosoftWindowsServer"
+        offer               = "WindowsServer"
+        os_disk_size_gb     = 500
+        sku                 = "2016-datacenter-gensecond"
+        version             = "14393.6709.240206"
+        secure_boot_enabled = false
       }
     }
     additional_nsg_rules = {
