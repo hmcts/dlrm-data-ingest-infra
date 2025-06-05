@@ -7,15 +7,16 @@ resource "azurerm_role_assignment" "poc_group" {
 }
 
 resource "azurerm_role_assignment" "blob_contributor_from_compute_instance" {
-  count                = var.env == "prod" ? 1 : 0
+  for_each             = module.ai.compute_instance_identity
   scope                = data.azurerm_storage_account.ingest_storage_account.id
   role_definition_name = "Storage Blob Data Contributor"
-  principal_id         = module.ai.compute_instance_identity
+  principal_id         = each.value
 }
 
 resource "azurerm_role_assignment" "sa_contributor_from_compute_instance" {
-  count                = var.env == "prod" ? 1 : 0
+  for_each = module.ai.compute_instance_identity
+
   scope                = data.azurerm_storage_account.ingest_storage_account.id
   role_definition_name = "Contributor"
-  principal_id         = module.ai.compute_instance_identity
+  principal_id         = each.value
 }
