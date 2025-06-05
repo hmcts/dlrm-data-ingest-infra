@@ -14,4 +14,5 @@ module "ai" {
   subnet_id                    = data.azurerm_subnet.private_endpoint_subnet.id
   min_node_count               = var.min_node_count
   ip_rules                     = var.cognitive_account_ip_rules
+  instances                    = var.ml_compute_instances
 }
