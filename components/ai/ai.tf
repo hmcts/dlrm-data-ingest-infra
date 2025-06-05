@@ -1,5 +1,5 @@
 module "ai" {
-  source                       = "git::https://github.com/hmcts/terraform-module-ai-services?ref=DTSPO-26119/use-compute-instance"
+  source                       = "git::https://github.com/hmcts/terraform-module-ai-services?ref=main"
   env                          = var.env
   project                      = var.project
   existing_resource_group_name = azurerm_resource_group.rg.name
