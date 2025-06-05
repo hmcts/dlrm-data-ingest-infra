@@ -302,3 +302,6 @@ install_azure_monitor   = true
 systemassigned_identity = true
 
 arm_object_id = "fd6e5281-058b-490f-8c90-186c7f057502"
+
+# AI module settings
+ml_compute_instances = 0

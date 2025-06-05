@@ -24,3 +24,9 @@ variable "ip_rules" {
 variable "cognitive_account_ip_rules" {
   default = []
 }
+
+variable "ml_compute_instances" {
+  description = "Number of compute instances to create"
+  type        = number
+  default     = 1
+}

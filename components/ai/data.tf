@@ -23,3 +23,8 @@ data "azuread_group" "poc_group" {
   display_name     = "DTS DLRM ARIA Migration"
   security_enabled = true
 }
+
+data "azurerm_storage_account" "ingest_storage_account" {
+  name                = "ingest00sftp${var.env}"
+  resource_group_name = "ingest00-main-${var.env}"
+}
