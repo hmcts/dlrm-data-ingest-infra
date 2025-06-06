@@ -1,6 +1,6 @@
-import {
-  to = module.ai.azurerm_storage_account.workspace_storage_account
-  id = data.azurerm_storage_account.workspace_storage_account.id
+moved {
+  from = module.storage.azurerm_storage_account.storage_account
+  to   = module.ai.azurerm_storage_account.workspace_storage_account
 }
 
 module "common_tags" {
