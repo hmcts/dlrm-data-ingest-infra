@@ -6,7 +6,7 @@ module "ai" {
   common_tags                  = module.common_tags.common_tags
   product                      = var.product
   component                    = var.component
-  storage_account_id           = data.azurerm_storage_account.ingest_storage_account.id
+  files_storage_account_id     = data.azurerm_storage_account.ingest_storage_account.id
   key_vault_id                 = module.key_vault.key_vault_id
   application_insights_id      = module.application_insights.id
   cognitive_account_kind       = "FormRecognizer"
