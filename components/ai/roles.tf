@@ -9,7 +9,7 @@ resource "azurerm_role_assignment" "poc_group" {
 resource "azurerm_role_assignment" "poc_group_sa_blob_contributor" {
 
   scope                = data.azurerm_storage_account.ingest_storage_account.id
-  role_definition_name = "Storage Account Data Contributor"
+  role_definition_name = "Storage Blob Data Contributor"
   principal_id         = data.azuread_group.poc_group.object_id
 
 }
