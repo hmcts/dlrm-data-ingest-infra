@@ -1,6 +1,6 @@
-moved {
-  from = module.storage.storage_account_id
-  to   = module.ai.ai_storage_account_id
+import {
+  to = module.ai.azurerm_storage_account.workspace_storage_account
+  id = "/subscriptions/df72bb30-d6fb-47bd-82ee-5eb87473ddb3/resourceGroups/dlrm-ingest-ai-sbox/providers/Microsoft.Storage/storageAccounts/dlrmingestaisasbox"
 }
 
 module "common_tags" {
