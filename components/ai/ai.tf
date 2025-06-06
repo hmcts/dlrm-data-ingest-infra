@@ -17,3 +17,8 @@ module "ai" {
   ip_rules                        = var.cognitive_account_ip_rules
   instances                       = var.ml_compute_instances
 }
+
+import {
+  to = module.ai.azurerm_cognitive_account.cognitive_account
+  id = "/subscriptions/e9674938-57cb-43ff-a440-1917658e468c/resourceGroups/dlrm-ingest-ai-prod/providers/Microsoft.CognitiveServices/accounts/dlrm-ingest-cognitive-standard-prod"
+}
