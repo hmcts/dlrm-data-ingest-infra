@@ -1,6 +1,6 @@
 moved {
   from = module.storage.storage_account_id
-  to = module.ai.ai_storage_account_id
+  to   = module.ai.ai_storage_account_id
 }
 
 module "common_tags" {
