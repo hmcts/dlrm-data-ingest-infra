@@ -30,3 +30,9 @@ variable "ml_compute_instances" {
   type        = number
   default     = 1
 }
+
+variable "existing_cognitive_account_name" {
+  description = "Name of the existing cognitive account"
+  type        = string
+  default     = null
+}
