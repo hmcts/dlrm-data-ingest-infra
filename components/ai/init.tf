@@ -19,7 +19,6 @@ provider "azapi" {}
 
 provider "azurerm" {
   features {}
-  subscription_id = "df72bb30-d6fb-47bd-82ee-5eb87473ddb3"
 }
 
 provider "azurerm" {
