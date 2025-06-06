@@ -107,3 +107,7 @@ install_azure_monitor   = true
 systemassigned_identity = true
 
 arm_object_id = "99309157-39e2-4de2-a17b-d407db15cec2"
+
+# AI settings
+cognitive_account_sku           = "S0"
+existing_cognitive_account_name = "dlrm-ingest-cognitive-standard-prod"

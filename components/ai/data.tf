@@ -28,3 +28,8 @@ data "azurerm_storage_account" "ingest_storage_account" {
   name                = "ingest00sftp${var.env}"
   resource_group_name = "ingest00-main-${var.env}"
 }
+
+data "azurerm_storage_account" "workspace_storage_account" {
+  name                = "dlrmingestaisa${var.env}"
+  resource_group_name = "dlrm-ingest-ai-${var.env}"
+}
