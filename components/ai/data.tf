@@ -30,6 +30,6 @@ data "azurerm_storage_account" "ingest_storage_account" {
 }
 
 data "azurerm_storage_account" "workspace_storage_account" {
-  name                = "dlrmingestai${var.env}"
+  name                = "dlrmingestaisa${var.env}"
   resource_group_name = "dlrm-ingest-ai-${var.env}"
 }
