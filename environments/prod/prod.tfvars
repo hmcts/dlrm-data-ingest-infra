@@ -111,4 +111,4 @@ arm_object_id = "99309157-39e2-4de2-a17b-d407db15cec2"
 # AI settings
 cognitive_account_sku              = "S0"
 existing_cognitive_account_name    = "dlrm-ingest-cognitive-standard-prod"
-compute_instance_public_ip_enabled = false
+compute_instance_public_ip_enabled = true
