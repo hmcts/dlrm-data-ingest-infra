@@ -36,3 +36,9 @@ variable "existing_cognitive_account_name" {
   type        = string
   default     = null
 }
+
+variable "compute_instance_public_ip_enabled" {
+  description = "Enable public IP for compute instances"
+  type        = bool
+  default     = false
+}
