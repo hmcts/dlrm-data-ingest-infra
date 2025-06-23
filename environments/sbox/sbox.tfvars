@@ -170,7 +170,7 @@ landing_zones = {
         protocol                   = "Tcp"
         source_port_range          = "*"
         destination_port_ranges    = ["3389", "1433", "1434"]
-        source_address_prefixes    = ["194.33.192.0/24", "194.33.196.0/24", "194.33.248.0/24", "194.33.249.0/24"]
+        source_address_prefixes    = ["194.33.192.0/24", "194.33.196.0/24", "194.33.248.0/24", "194.33.249.0/24", "128.77.75.64/26"]
         destination_address_prefix = "*"
         description                = "Allow RDP inbound from MoJ Ranges."
       }
