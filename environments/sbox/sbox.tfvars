@@ -30,6 +30,10 @@ ip_rules = [
   "20.3.165.95"        # Document Intelligence Studio
 ]
 
+eventhub_ns_sku          = "Standard"
+services                 = {}
+eventhub_consumer_groups = {}
+
 landing_zones = {
   "00" = {
     project                        = "DLRM Ingestion Engine"
