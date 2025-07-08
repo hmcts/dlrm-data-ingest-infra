@@ -37,6 +37,3 @@ variable "hub_subscription_id" {
   description = "The ID of the subscription containing the HUB virtual network."
   type        = string
 }
-
-variable "eventhub_ns_sku" {}
-variable "services" {}
