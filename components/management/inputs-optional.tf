@@ -23,11 +23,3 @@ variable "mgmt_additional_kv_access_policies" {
   }))
   default = {}
 }
-
-variable "eventhub_consumer_groups" {
-  description = "Event Hub consumer groups configuration"
-  type = map(object({
-    name = string
-  }))
-  default = {}
-}

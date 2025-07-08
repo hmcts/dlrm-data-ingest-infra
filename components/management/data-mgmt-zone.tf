@@ -16,7 +16,4 @@ module "data_mgmt_zone" {
   hub_resource_group_name       = var.hub_resource_group_name
   existing_purview_account      = var.existing_purview_account
   additional_kv_access_policies = var.mgmt_additional_kv_access_policies
-  eventhub_ns_sku               = var.eventhub_ns_sku
-  services                      = var.services
-  eventhub_consumer_groups      = var.eventhub_consumer_groups
 }
