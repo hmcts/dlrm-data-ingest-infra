@@ -14,7 +14,7 @@ resource "azurerm_container_group" "runner" {
   subnet_ids          = [module.data_landing_zone[each.value.lz_key].subnet_ids["vnet-gh-runners"]]
   container {
     name   = "runner"
-    image  = "hmctspublic.azurecr.io/github-runner:prod-2f01d4c5-1716373733"
+    image  = "hmctspublic.azurecr.io/github-runner:prod-8d314ed7-1752675239"
     cpu    = "0.5"
     memory = "1.5"
     environment_variables = {
