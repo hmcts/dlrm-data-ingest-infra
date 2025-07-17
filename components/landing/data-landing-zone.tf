@@ -1,5 +1,5 @@
 module "data_landing_zone" {
-  source = "github.com/hmcts/terraform-module-data-landing-zone?ref=feat%2Fsupport-custom-image"
+  source = "github.com/hmcts/terraform-module-data-landing-zone?ref=main"
 
   for_each = var.landing_zones
 
