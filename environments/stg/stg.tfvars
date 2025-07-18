@@ -60,7 +60,7 @@ landing_zones = {
         computer_name   = "ingest00-legacy"
         public_ip       = true
         source_image_id = "/subscriptions/e9674938-57cb-43ff-a440-1917658e468c/resourceGroups/data-ingest-images-rg/providers/Microsoft.Compute/galleries/dataingest_images/images/windows-2016-sql-server-2008-R2-developer/versions/0.0.1"
-        os_disk_size_gb = 512
+        os_disk_size_gb = 1024
       }
     }
     additional_nsg_rules = {
