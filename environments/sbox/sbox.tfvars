@@ -252,51 +252,6 @@ landing_zones = {
       }
     }
   }
-  "02" = {
-    project                        = "DLRM Ingestion Engine"
-    use_microsoft_ip_kit_structure = true
-    role_based_access_control = [
-      {
-        name = "prasanna.krishnan@justice.gov.uk"
-        type = "User"
-      },
-      {
-        name = "prasanna.krishnan@hmcts.net"
-        type = "User"
-      },
-      {
-        name = "Isabella.O'Hara@HMCTS.NET"
-        type = "User"
-      },
-      {
-        name = "dominic.leary@justice.gov.uk"
-        type = "User"
-      },
-      {
-        name  = "qiang.zhou@hmcts.net"
-        type  = "User"
-        roles = ["Owner", "Storage Blob Data Owner"]
-      },
-      {
-        name  = "DTS DLRM Data Ingestion Admin (env:sandbox)"
-        type  = "Group"
-        roles = ["Owner", "Storage Blob Data Owner"]
-      }
-    ]
-    additional_nsg_rules = {
-      Allow-F5-VPN-Inbound = {
-        priority                   = 220
-        direction                  = "Inbound"
-        access                     = "Allow"
-        protocol                   = "*"
-        source_port_range          = "*"
-        destination_port_range     = "*"
-        source_address_prefix      = "10.99.72.0/21"
-        destination_address_prefix = "*"
-        description                = "Allow F5 VPN."
-      }
-    }
-  }
 }
 install_azure_monitor   = true
 systemassigned_identity = true
