@@ -256,11 +256,12 @@ landing_zones = {
     project        = "Crime Legacy Migration"
     deploy_bastion = true
     role_based_access_control = [
-      {
-        name  = "Michael.hayes@justice.gov.uk"
-        type  = "User"
-        roles = ["Owner", "Storage Blob Data Owner"]
-      },
+      # Needs inviting
+      # {
+      #   name  = "Michael.hayes@justice.gov.uk"
+      #   type  = "User"
+      #   roles = ["Owner", "Storage Blob Data Owner"]
+      # },
       {
         name  = "Andrew.McMahon4@justice.gov.uk"
         type  = "User"
