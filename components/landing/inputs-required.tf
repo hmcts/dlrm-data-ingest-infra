@@ -44,6 +44,7 @@ variable "landing_zones" {
       source_image_id     = optional(string)
       os_disk_size_gb     = optional(number, 127)
       secure_boot_enabled = optional(bool, true)
+      bootstrap_script    = optional(string)
     })), {})
     additional_nsg_rules = optional(map(object({
       name_override                              = optional(string)
