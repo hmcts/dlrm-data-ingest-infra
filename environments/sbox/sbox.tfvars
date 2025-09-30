@@ -255,6 +255,7 @@ landing_zones = {
   "05" = {
     project        = "Crime Legacy Migration"
     deploy_bastion = true
+    use_microsoft_ip_kit_structure = true
     role_based_access_control = [
       {
         name  = "Michael.Hayes_justice.gov.uk#EXT#@HMCTS.NET"
