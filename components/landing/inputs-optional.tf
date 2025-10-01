@@ -30,3 +30,9 @@ variable "f5_subscription_id" {
   type        = string
   default     = "ed302caf-ec27-4c64-a05e-85731c3ce90e"
 }
+
+variable "deploy_shir" {
+  description = "Install SHIR."
+  type        = bool
+  default     = false
+}
