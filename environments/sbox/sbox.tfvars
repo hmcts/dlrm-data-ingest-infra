@@ -256,6 +256,7 @@ landing_zones = {
     project                        = "Crime Legacy Migration"
     deploy_bastion                 = true
     use_microsoft_ip_kit_structure = true
+    deploy_shir                    = true
     role_based_access_control = [
       {
         name  = "Michael.Hayes_justice.gov.uk#EXT#@HMCTS.NET"
@@ -263,7 +264,7 @@ landing_zones = {
         roles = ["Owner", "Storage Blob Data Owner"]
       },
       {
-        name  = "Andrew.McMahon4@justice.gov.uk"
+        name  = "qiang.zhou@hmcts.net"
         type  = "User"
         roles = ["Owner", "Storage Blob Data Owner"]
       }
