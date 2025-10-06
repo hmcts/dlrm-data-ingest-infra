@@ -1,3 +1,5 @@
+data "azurerm_subscription" "current" {}
+
 module "data_landing_zone" {
   source = "github.com/hmcts/terraform-module-data-landing-zone?ref=main"
 
@@ -44,4 +46,16 @@ module "data_landing_zone" {
 
   install_azure_monitor   = var.install_azure_monitor
   systemassigned_identity = var.systemassigned_identity
+}
+
+# For peerings with hub
+resource "azurerm_role_assignment" "reader" {
+  scope                = data.azurerm_subscription.current.id
+  role_definition_name = "Reader"
+  principal_id         = var.network_contributor_principal_id
+}
+resource "azurerm_role_assignment" "network_contributor" {
+  scope                = data.azurerm_subscription.current.id
+  role_definition_name = "Network Contributor"
+  principal_id         = var.network_contributor_principal_id
 }

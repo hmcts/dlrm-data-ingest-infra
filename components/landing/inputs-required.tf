@@ -101,3 +101,11 @@ variable "arm_object_id" {
   description = "The object id of the Archiving with Records Management service principal."
   type        = string
 }
+
+
+# Defaults to nonprod value
+variable "network_contributor_principal_id" {
+  description = "The principal ID to assign the Network Contributor role to at subscription scope."
+  type        = string
+  default     = "1708cfd4-75b3-44a3-943b-4526840772c2"
+}
