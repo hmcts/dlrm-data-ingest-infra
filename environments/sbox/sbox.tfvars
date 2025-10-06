@@ -263,7 +263,7 @@ landing_zones = {
         roles = ["Owner", "Storage Blob Data Owner"]
       },
       {
-        name  = "Andrew.McMahon4@justice.gov.uk"
+        name  = "qiang.zhou@hmcts.net"
         type  = "User"
         roles = ["Owner", "Storage Blob Data Owner"]
       }
