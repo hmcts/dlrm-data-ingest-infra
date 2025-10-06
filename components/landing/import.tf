@@ -46,3 +46,8 @@ import {
   id = "/subscriptions/df72bb30-d6fb-47bd-82ee-5eb87473ddb3/resourceGroups/ingest05-main-sbox/providers/Microsoft.Databricks/workspaces/ingest05-product-databricks001-sbox"
   to = module.data_landing_zone["05"].module.shared_product_databricks.azurerm_databricks_workspace.this
 }
+import {
+  id = "/subscriptions/df72bb30-d6fb-47bd-82ee-5eb87473ddb3/resourceGroups/ingest05-main-sbox/providers/Microsoft.KeyVault/vaults/ingest05-meta001-sbox/objectId/59bab40b-0894-4faf-9f92-0f627108107a"
+  to = module.data_landing_zone["05"].module.metadata_vault["meta001"].azurerm_key_vault_access_policy.creator_access_policy
+}
+
