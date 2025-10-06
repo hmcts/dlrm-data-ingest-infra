@@ -253,9 +253,9 @@ landing_zones = {
     }
   }
   "05" = {
-    project        = "Crime Legacy Migration"
-    deploy_bastion = true
-    deploy_shir    = true
+    project                        = "Crime Legacy Migration"
+    deploy_bastion                 = true
+    use_microsoft_ip_kit_structure = true
     role_based_access_control = [
       {
         name  = "Michael.Hayes_justice.gov.uk#EXT#@HMCTS.NET"
@@ -270,13 +270,13 @@ landing_zones = {
     ]
     legacy_databases = {
       legacy-sql = {
-        computer_name   = "ingest05-legacy"
-        type            = "linux"
-        publisher_name  = "oracle"
-        offer           = "oracle-database"
-        sku             = "oracle_db_12_2_0_1_ee"
-        version         = "latest"
-        os_disk_size_gb = 512
+        computer_name    = "ingest05-legacy"
+        type             = "linux"
+        publisher_name   = "oracle"
+        offer            = "oracle-database"
+        sku              = "oracle_db_12_2_0_1_ee"
+        version          = "latest"
+        os_disk_size_gb  = 512
         bootstrap_script = <<-EOF
           #!/bin/bash
           yum install -y cloud-utils-growpart

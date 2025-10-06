@@ -40,7 +40,7 @@ parameters:
         environment: 'sbox'
         component: 'landing'
         service_connection: 'DTS-DATAINGEST-SBOX'
-        dependsOn: 'sbox_mgmt'
+        dependsOn: 'Precheck'
       - deployment: 'sbox_ai'
         environment: 'sbox'
         component: 'ai'
