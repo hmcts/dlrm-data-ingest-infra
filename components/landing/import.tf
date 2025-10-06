@@ -50,4 +50,16 @@ import {
   id = "/subscriptions/df72bb30-d6fb-47bd-82ee-5eb87473ddb3/resourceGroups/ingest05-main-sbox/providers/Microsoft.KeyVault/vaults/ingest05-meta001-sbox/objectId/59bab40b-0894-4faf-9f92-0f627108107a"
   to = module.data_landing_zone["05"].module.metadata_vault["meta001"].azurerm_key_vault_access_policy.creator_access_policy
 }
+import {
+  id = "/subscriptions/df72bb30-d6fb-47bd-82ee-5eb87473ddb3/resourceGroups/ingest05-main-sbox/providers/Microsoft.KeyVault/vaults/ingest05-meta001-sbox/objectId/fd6e5281-058b-490f-8c90-186c7f057502"
+  to = module.data_landing_zone["05"].azurerm_key_vault_access_policy.arm_secret_access["meta001"]
+}
+import {
+  id = "/subscriptions/df72bb30-d6fb-47bd-82ee-5eb87473ddb3/resourceGroups/ingest05-main-sbox/providers/Microsoft.KeyVault/vaults/ingest05-meta002-sbox/objectId/fd6e5281-058b-490f-8c90-186c7f057502"
+  to = module.data_landing_zone["05"].azurerm_key_vault_access_policy.arm_secret_access["meta002"]
+}
+import {
+  id = "/subscriptions/df72bb30-d6fb-47bd-82ee-5eb87473ddb3/resourceGroups/ingest05-main-sbox/providers/Microsoft.Compute/virtualMachines/ingest05-legacy-sql-sbox/runCommands/ingest05-legacy-sql-sbox-bootstrap"
+  to = module.data_landing_zone["05"].azurerm_virtual_machine_run_command.bootstrap_script["legacy-sql"]
+}
 
