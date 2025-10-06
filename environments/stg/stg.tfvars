@@ -95,3 +95,6 @@ systemassigned_identity = true
 zone_redundant          = true
 
 arm_object_id = "fd6e5281-058b-490f-8c90-186c7f057502"
+
+# Hub tf service principal
+network_contributor_principal_id = "92515ab5-7d61-45f1-9db0-a419e72a0d0b"
