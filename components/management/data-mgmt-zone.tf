@@ -17,6 +17,6 @@ module "data_mgmt_zone" {
   existing_purview_account      = var.existing_purview_account
   additional_kv_access_policies = var.mgmt_additional_kv_access_policies
   # SBOX zones are treated as "dev" environments and need connectivity nonprod environments. So all environments now use SS-PTL ADO Agents.
-  ssptl_vnet_name = "ss-ptl-vnet"
-  ssptl_sub_id    = "ss-ptl-network-rg"
+  ssptl_vnet_name           = "ss-ptl-vnet"
+  ssptl_vnet_resource_group = "ss-ptl-network-rg"
 }
