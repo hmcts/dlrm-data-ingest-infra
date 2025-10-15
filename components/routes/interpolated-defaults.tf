@@ -27,3 +27,15 @@ data "azurerm_route_table" "ssptl" {
   name                = local.ssptl_route_table_name
   resource_group_name = local.ssptl_vnet_resource_group
 }
+
+data "azurerm_route_table" "aat_aks" {
+  provider            = azurerm.aat
+  name                = "aks-aat-route-table"
+  resource_group_name = "cft-aat-network-rg"
+}
+
+data "azurerm_route_table" "aat_appgw" {
+  provider            = azurerm.aat
+  name                = "aks-aat-appgw-route-table"
+  resource_group_name = "cft-aat-network-rg"
+}

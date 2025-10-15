@@ -15,3 +15,10 @@ provider "azurerm" {
   subscription_id = local.ssptl_sub_id
   features {}
 }
+
+provider "azurerm" {
+  alias                           = "aat"
+  resource_provider_registrations = "none"
+  features {}
+  subscription_id = var.aat_subscription_id
+}
