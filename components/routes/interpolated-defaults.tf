@@ -1,5 +1,6 @@
 locals {
-  is_sbox                   = length(regexall(".*(s?box).*", var.env)) > 0
+  # is_sbox                   = length(regexall(".*(s?box).*", var.env)) > 0
+  is_sbox                   = false
   ssptl_sub_id              = local.is_sbox ? "64b1c6d6-1481-44ad-b620-d8fe26a2c768" : "6c4d2513-a873-41b4-afdd-b05a33206631"
   ssptl_vnet_name           = local.is_sbox ? "ss-ptlsbox-vnet" : "ss-ptl-vnet"
   ssptl_route_table_name    = local.is_sbox ? "aks-ptlsbox-route-table" : "aks-ptl-route-table"
