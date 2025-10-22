@@ -26,21 +26,21 @@ parameters:
   - name: environment_components
     type: object
     default:
-      # - deployment: 'sbox_routes'
-      #   environment: 'sbox'
-      #   component: 'routes'
-      #   service_connection: 'DTS-DATAINGEST-SBOX'
-      #   dependsOn: 'Precheck'
-      # - deployment: 'sbox_mgmt'
-      #   environment: 'sbox'
-      #   component: 'management'
-      #   service_connection: 'DTS-DATAINGEST-SBOX'
-      #   dependsOn: 'sbox_routes'
-      # - deployment: 'sbox_landing'
-      #   environment: 'sbox'
-      #   component: 'landing'
-      #   service_connection: 'DTS-DATAINGEST-SBOX'
-      #   dependsOn: 'Precheck'
+#       - deployment: 'sbox_routes'
+#         environment: 'sbox'
+#         component: 'routes'
+#         service_connection: 'DTS-DATAINGEST-SBOX'
+#         dependsOn: 'Precheck'
+#       - deployment: 'sbox_mgmt'
+#         environment: 'sbox'
+#         component: 'management'
+#         service_connection: 'DTS-DATAINGEST-SBOX'
+#         dependsOn: 'sbox_routes'
+#       - deployment: 'sbox_landing'
+#         environment: 'sbox'
+#         component: 'landing'
+#         service_connection: 'DTS-DATAINGEST-SBOX'
+#         dependsOn: 'sbox_mgmt'
       - deployment: 'sbox_ai'
         environment: 'sbox'
         component: 'ai'
@@ -122,10 +122,7 @@ stages:
       dependsOn: ${{ deployment.dependsOn }}
       jobs:
         - job: TerraformPlanApply
-          ${{ if eq(deployment.environment, 'sbox') }}:
-            pool: hmcts-sds-ptlsbox
-          ${{ else }}:
-            pool: hmcts-sds-ptl
+          pool: hmcts-sds-ptl
           timeoutInMinutes: ${{ variables.timeoutInMinutes }}
           steps:
             - ${{ if and(contains(deployment.component, 'landing'), ne(deployment.environment, 'prod')) }}:
