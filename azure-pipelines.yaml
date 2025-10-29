@@ -40,7 +40,7 @@ parameters:
         environment: 'sbox'
         component: 'landing'
         service_connection: 'DTS-DATAINGEST-SBOX'
-        dependsOn: 'Precheck'
+        dependsOn: 'sbox_mgmt'
       - deployment: 'sbox_ai'
         environment: 'sbox'
         component: 'ai'
@@ -55,14 +55,14 @@ parameters:
         environment: 'stg'
         component: 'management'
         service_connection: 'DTS-DATAINGEST-STG'
-        dependsOn: 
+        dependsOn:
           - 'stg_routes'
           - 'sbox_mgmt'
       - deployment: 'stg_landing'
         environment: 'stg'
         component: 'landing'
         service_connection: 'DTS-DATAINGEST-STG'
-        dependsOn: 
+        dependsOn:
           - 'stg_mgmt'
           - 'sbox_landing'
       - deployment: 'prod_routes'
@@ -74,14 +74,14 @@ parameters:
         environment: 'prod'
         component: 'management'
         service_connection: 'DTS-DATAINGEST-PROD'
-        dependsOn: 
+        dependsOn:
           - 'prod_routes'
           - 'stg_mgmt'
       - deployment: 'prod_landing'
         environment: 'prod'
         component: 'landing'
         service_connection: 'DTS-DATAINGEST-PROD'
-        dependsOn: 
+        dependsOn:
           - 'prod_mgmt'
           - 'stg_landing'
       - deployment: 'prod_ai'
@@ -120,10 +120,7 @@ stages:
       dependsOn: ${{ deployment.dependsOn }}
       jobs:
         - job: TerraformPlanApply
-          ${{ if eq(deployment.environment, 'sbox') }}:
-            pool: hmcts-sds-ptlsbox
-          ${{ else }}:
-            pool: hmcts-sds-ptl
+          pool: hmcts-sds-ptl
           timeoutInMinutes: ${{ variables.timeoutInMinutes }}
           steps:
             - ${{ if and(contains(deployment.component, 'landing'), ne(deployment.environment, 'prod')) }}:

@@ -9,6 +9,8 @@ module "ai" {
   files_storage_account_id           = data.azurerm_storage_account.ingest_storage_account.id
   key_vault_id                       = module.key_vault.key_vault_id
   application_insights_id            = module.application_insights.id
+  create_ml_workspace                = true
+  create_cognitive_account           = true
   cognitive_account_kind             = "FormRecognizer"
   cognitive_account_sku              = var.cognitive_account_sku
   existing_cognitive_account_name    = var.existing_cognitive_account_name
