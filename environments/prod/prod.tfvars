@@ -95,6 +95,53 @@ landing_zones = {
       }
     }
   }
+  "05" = {
+    project                        = "Crime Legacy Migration"
+    deploy_bastion                 = true
+    use_microsoft_ip_kit_structure = true
+    role_based_access_control = [
+      {
+        name  = "Michael.Hayes_justice.gov.uk#EXT#@HMCTS.NET"
+        type  = "User"
+        roles = ["Owner", "Storage Blob Data Owner"]
+      },
+      {
+        name  = "Andrew.McMahon4@justice.gov.uk"
+        type  = "User"
+        roles = ["Owner", "Storage Blob Data Owner"]
+      }
+    ]
+    legacy_databases = {
+      legacy-sql = {
+        computer_name    = "ingest05-legacy"
+        type             = "linux"
+        publisher_name   = "oracle"
+        offer            = "oracle-database"
+        sku              = "oracle_db_12_2_0_1_ee"
+        version          = "latest"
+        os_disk_size_gb  = 512
+        bootstrap_script = <<-EOF
+          #!/bin/bash
+          yum install -y cloud-utils-growpart
+          growpart /dev/sda 2
+          btrfs filesystem resize max /
+        EOF
+      }
+    }
+    additional_nsg_rules = {
+      Allow-F5-VPN-Inbound = {
+        priority                   = 220
+        direction                  = "Inbound"
+        access                     = "Allow"
+        protocol                   = "*"
+        source_port_range          = "*"
+        destination_port_range     = "*"
+        source_address_prefix      = "10.99.72.0/21"
+        destination_address_prefix = "*"
+        description                = "Allow F5 VPN."
+      }
+    }
+  }
 }
 install_azure_monitor   = true
 systemassigned_identity = true
