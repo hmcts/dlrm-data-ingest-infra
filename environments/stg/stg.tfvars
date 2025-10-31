@@ -100,9 +100,14 @@ landing_zones = {
         roles = ["Owner", "Storage Blob Data Owner"]
       },
       {
-        name  = "Andrew.McMahon4@justice.gov.uk"
-        type  = "User"
+        name  = "DTS Crime Legacy Data Migration Admin (env:sandbox)"
+        type  = "Group"
         roles = ["Owner", "Storage Blob Data Owner"]
+      },
+      {
+        name  = "DTS Crime Legacy Data Migration User (env:sandbox)"
+        type  = "Group"
+        roles = ["User"]
       }
     ]
     legacy_databases = {
