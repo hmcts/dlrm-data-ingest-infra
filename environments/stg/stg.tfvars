@@ -103,6 +103,11 @@ landing_zones = {
         name  = "DTS Crime Legacy Data Migration Admin (env:staging)"
         type  = "Group"
         roles = ["Owner", "Storage Blob Data Owner"]
+      },
+      {
+        name  = "DTS Crime Legacy Data Migration User (env:staging)"
+        type  = "Group"
+        roles = ["Reader"]
       }
     ]
     legacy_databases = {
