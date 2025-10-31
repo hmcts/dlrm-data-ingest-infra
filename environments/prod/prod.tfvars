@@ -113,7 +113,7 @@ landing_zones = {
       {
         name  = "DTS Crime Legacy Data Migration User (env:production)"
         type  = "Group"
-        roles = ["User"]
+        roles = ["Reader"]
       }
     ]
     legacy_databases = {

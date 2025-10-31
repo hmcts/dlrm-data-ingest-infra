@@ -270,9 +270,8 @@ landing_zones = {
       {
         name  = "DTS Crime Legacy Data Migration User (env:sandbox)"
         type  = "Group"
-        roles = ["User"]
+        roles = ["Reader"]
       }
-      
     ]
     legacy_databases = {
       legacy-sql = {
