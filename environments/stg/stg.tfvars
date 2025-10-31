@@ -105,7 +105,7 @@ landing_zones = {
         roles = ["Owner", "Storage Blob Data Owner"]
       },
       {
-        name  = "DTS Crime Legacy Data Migration User (env:sandbox)"
+        name  = "DTS Crime Legacy Data Migration User (env:staging)"
         type  = "Group"
         roles = ["User"]
       }
