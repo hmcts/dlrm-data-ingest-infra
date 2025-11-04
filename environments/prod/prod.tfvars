@@ -137,7 +137,7 @@ landing_zones = {
     gh_runners = {
       "dlrm-ingestionengine" = {
         deploy            = true
-        token_vault_id    = "/subscriptions/df72bb30-d6fb-47bd-82ee-5eb87473ddb3/resourceGroups/ingest-mgmt-rg-sbox/providers/Microsoft.KeyVault/vaults/ingest-mgmt-kv-sbox"
+        token_vault_id    = "/subscriptions/e9674938-57cb-43ff-a440-1917658e468c/resourceGroups/ingest-mgmt-rg-prod/providers/Microsoft.KeyVault/vaults/ingest-mgmt-kv-prod"
         token_secret_name = "dlrm-ingestionengine-token"
       }
     }
