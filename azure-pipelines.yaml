@@ -144,6 +144,6 @@ stages:
                 terraformInitSubscription: ${{ variables.terraformInitSubscription }}
                 product: ${{ variables.product }}
                 ${{ if and(contains(deployment.component, 'landing'), ne(deployment.environment, 'prod')) }}:
-                  planCommandOptions: '-compact-warnings -var existing_purview_account=$(purview)'
+                  planCommandOptions: '-compact-warnings -parallelism=3 -var existing_purview_account=$(purview)'
                 ${{ else }}:
-                  planCommandOptions: '-compact-warnings'
+                  planCommandOptions: '-compact-warnings -parallelism=3'
