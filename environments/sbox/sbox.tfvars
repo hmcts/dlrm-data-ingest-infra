@@ -311,6 +311,17 @@ landing_zones = {
         destination_address_prefix = "*"
         description                = "Allow F5 VPN."
       }
+      Allow-CLDM-JBox-Inbound = {
+        priority                   = 230
+        direction                  = "Inbound"
+        access                     = "Allow"
+        protocol                   = "*"
+        source_port_range          = "*"
+        destination_port_range     = "*"
+        source_address_prefix      = "10.25.250.6/24"
+        destination_address_prefix = "*"
+        description                = "Allow Crime Legacy Data Migration JBox."
+      }
     }
   }
 }
