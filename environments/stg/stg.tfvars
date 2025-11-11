@@ -155,7 +155,7 @@ landing_zones = {
         protocol                   = "*"
         source_port_range          = "*"
         destination_port_range     = "*"
-        source_address_prefix      = "10.25.250.6/24"
+        source_address_prefix      = "10.25.250.6/32"
         destination_address_prefix = "*"
         description                = "Allow Crime Legacy Data Migration JBox."
       }
