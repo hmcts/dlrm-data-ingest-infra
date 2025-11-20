@@ -114,6 +114,7 @@ landing_zones = {
       legacy-sql = {
         computer_name    = "ingest05-legacy"
         type             = "linux"
+        public_ip        = true
         publisher_name   = "oracle"
         offer            = "oracle-database"
         sku              = "oracle_db_12_2_0_1_ee"
