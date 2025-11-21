@@ -289,7 +289,7 @@ landing_zones = {
             disk_size_gb         = 10240
             lun                  = 0
             caching              = "ReadWrite"
-            storage_account_type = "Premium_LRS"
+            storage_account_type = "StandardSSD_LRS"
           }
         ]
         bootstrap_script = <<-EOF
