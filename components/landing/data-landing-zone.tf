@@ -1,5 +1,5 @@
 module "data_landing_zone" {
-  source = "github.com/hmcts/terraform-module-data-landing-zone?ref=add-data-disks-support"
+  source = "github.com/hmcts/terraform-module-data-landing-zone?ref=feat/add-data-disks-support"
 
   for_each = var.landing_zones
 
