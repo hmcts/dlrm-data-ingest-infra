@@ -2,7 +2,7 @@ trigger:
   batch: true
   branches:
     include:
-      - feat/add-data-disks-support
+      - add-data-disks-support
 
 pr:
   - main
