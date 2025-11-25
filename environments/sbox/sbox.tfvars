@@ -283,44 +283,11 @@ landing_zones = {
         sku             = "oracle_db_12_2_0_1_ee"
         version         = "latest"
         os_disk_size_gb = 512
-        data_disks = [
-          {
-            name                 = "ingest05-legacy-data-disk-01"
-            disk_size_gb         = 10240
-            lun                  = 0
-            caching              = "None"
-            storage_account_type = "StandardSSD_LRS"
-          }
-        ]
         bootstrap_script = <<-EOF
           #!/bin/bash
           yum install -y cloud-utils-growpart
           growpart /dev/sda 2
           btrfs filesystem resize max /
-          
-          # Format and mount the data disk
-          # Wait for the data disk to be available
-          until [ -e /dev/disk/azure/scsi1/lun0 ]; do
-            sleep 1
-          done
-          
-          # Get the device name
-          DATA_DISK=$(readlink -f /dev/disk/azure/scsi1/lun0)
-          
-          # Create btrfs filesystem
-          mkfs.btrfs -f $DATA_DISK
-          
-          # Create mount point
-          mkdir -p /mnt/data
-          
-          # Get UUID
-          DATA_UUID=$(blkid -s UUID -o value $DATA_DISK)
-          
-          # Add to fstab for persistent mount
-          echo "UUID=$DATA_UUID /mnt/data btrfs defaults 0 2" >> /etc/fstab
-          
-          # Mount the disk
-          mount /mnt/data
         EOF
       }
     }
