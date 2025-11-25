@@ -45,6 +45,13 @@ variable "landing_zones" {
       os_disk_size_gb     = optional(number, 127)
       secure_boot_enabled = optional(bool, true)
       bootstrap_script    = optional(string)
+      data_disks = optional(list(object({
+        name                 = string
+        disk_size_gb         = number
+        lun                  = number
+        caching              = optional(string, "ReadWrite")
+        storage_account_type = optional(string, "StandardSSD_LRS")
+      })), [])
     })), {})
     additional_nsg_rules = optional(map(object({
       name_override                              = optional(string)
