@@ -125,7 +125,7 @@ landing_zones = {
             name                 = "ingest05-legacy-data-disk-01"
             disk_size_gb         = 10240
             lun                  = 0
-            caching              = "ReadWrite"
+            caching              = "None"
             storage_account_type = "StandardSSD_LRS"
           }
         ]
