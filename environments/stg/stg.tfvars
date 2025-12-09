@@ -24,6 +24,11 @@ landing_zones = {
     deploy_bastion                       = true
     deploy_sftp_storage                  = true
     adf_deploy_purview_private_endpoints = false
+    additional_vnet_address_space        = ["10.247.25.0/24", "10.247.26.0/24"]
+    subnets = {
+      data_bricks_private_subnet_address_space         = ["10.247.25.0/25"]
+      data_bricks_product_private_subnet_address_space = ["10.247.26.0/25"]
+    }
     role_based_access_control = [
       {
         name = "prasanna.krishnan@justice.gov.uk"
@@ -89,6 +94,8 @@ landing_zones = {
       }
     }
   }
+  // 01 cannot be used as the address space has been assigned to 00
+  //"01" = {}
   "05" = {
     project                        = "Crime Legacy Migration"
     deploy_bastion                 = true
@@ -112,13 +119,13 @@ landing_zones = {
     ]
     legacy_databases = {
       legacy-sql = {
-        computer_name    = "ingest05-legacy"
-        type             = "linux"
-        publisher_name   = "oracle"
-        offer            = "oracle-database"
-        sku              = "oracle_db_12_2_0_1_ee"
-        version          = "latest"
-        os_disk_size_gb  = 512
+        computer_name   = "ingest05-legacy"
+        type            = "linux"
+        publisher_name  = "oracle"
+        offer           = "oracle-database"
+        sku             = "oracle_db_12_2_0_1_ee"
+        version         = "latest"
+        os_disk_size_gb = 512
         data_disks = [
           {
             name                 = "ingest05-legacy-data-disk-01"
