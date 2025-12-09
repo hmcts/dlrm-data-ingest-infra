@@ -22,7 +22,8 @@ variable "landing_zones" {
       mail = optional(string),
       role = optional(string, "Owner")
     })))
-    project = string
+    project                       = string
+    additional_vnet_address_space = optional(list(string), [])
   }))
 }
 
