@@ -72,6 +72,18 @@ variable "landing_zones" {
       description                                = optional(string)
     })))
     additional_vnet_address_space = optional(list(string), [])
+    subnets = optional(object({
+      services_subnet_address_space                    = optional(list(string))
+      data_bricks_public_subnet_address_space          = optional(list(string))
+      data_bricks_private_subnet_address_space         = optional(list(string))
+      data_bricks_product_public_subnet_address_space  = optional(list(string))
+      data_bricks_product_private_subnet_address_space = optional(list(string))
+      data_integration_001_subnet_address_space        = optional(list(string))
+      data_integration_002_subnet_address_space        = optional(list(string))
+      data_product_001_subnet_address_space            = optional(list(string))
+      data_product_002_subnet_address_space            = optional(list(string))
+      services_mysql_subnet_address_space              = optional(list(string))
+    }))
     additional_subnets = optional(map(object({
       name_override     = optional(string)
       address_prefixes  = optional(list(string))
