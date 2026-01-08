@@ -282,12 +282,6 @@ landing_zones = {
         sku              = "oracle_db_12_2_0_1_ee"
         version          = "latest"
         os_disk_size_gb  = 512
-        bootstrap_script = <<-EOF
-          #!/bin/bash
-          yum install -y cloud-utils-growpart
-          growpart /dev/sda 2
-          btrfs filesystem resize max /
-        EOF
       }
     }
 
