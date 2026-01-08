@@ -19,7 +19,7 @@ eventhub_consumer_groups = {}
 
 landing_zones = {
   "00" = {
-    project                              = "DLRM Ingestion Engine"
+    project                              = "ARIA"
     use_microsoft_ip_kit_structure       = true
     deploy_bastion                       = true
     deploy_sftp_storage                  = true
@@ -89,6 +89,61 @@ landing_zones = {
       }
     }
   }
+  "01" = {
+    project                              = "ARIA"
+    use_microsoft_ip_kit_structure       = true
+    deploy_bastion                       = true
+    deploy_sftp_storage                  = true
+    adf_deploy_purview_private_endpoints = false
+    role_based_access_control = [
+      {
+        name = "prasanna.krishnan@justice.gov.uk"
+        type = "User"
+      },
+      {
+        name = "Matt.Lorentzen@HMCTS.NET"
+        type = "User"
+      },
+      {
+        name = "dominic.leary@justice.gov.uk"
+        type = "User"
+      },
+      {
+        name  = "qiang.zhou@hmcts.net"
+        type  = "User"
+        roles = ["Owner", "Storage Blob Data Owner"]
+      },
+      {
+        name  = "DTS DLRM Data Ingestion Admin (env:staging)"
+        type  = "Group"
+        roles = ["Owner", "Storage Blob Data Owner"]
+      }
+    ]
+    additional_nsg_rules = {
+      Allow-F5-VPN-Inbound = {
+        priority                   = 220
+        direction                  = "Inbound"
+        access                     = "Allow"
+        protocol                   = "*"
+        source_port_range          = "*"
+        destination_port_range     = "*"
+        source_address_prefix      = "10.99.72.0/21"
+        destination_address_prefix = "*"
+        description                = "Allow F5 VPN."
+      }
+      Allow-MoJ-RDP-Inbound = {
+        priority                   = 250
+        direction                  = "Inbound"
+        access                     = "Allow"
+        protocol                   = "Tcp"
+        source_port_range          = "*"
+        destination_port_ranges    = ["3389", "1433", "1434"]
+        source_address_prefixes    = ["194.33.192.0/24", "194.33.196.0/24", "194.33.248.0/24", "194.33.249.0/24", "128.77.75.64/26"]
+        destination_address_prefix = "*"
+        description                = "Allow RDP inbound from MoJ Ranges."
+      }
+    }
+  }
   "05" = {
     project                        = "Crime Legacy Migration"
     deploy_bastion                 = true
@@ -112,14 +167,13 @@ landing_zones = {
     ]
     legacy_databases = {
       legacy-sql = {
-        computer_name    = "ingest05-legacy"
-        type             = "linux"
-        public_ip        = true
-        publisher_name   = "oracle"
-        offer            = "oracle-database"
-        sku              = "oracle_db_12_2_0_1_ee"
-        version          = "latest"
-        os_disk_size_gb  = 512
+        computer_name   = "ingest05-legacy"
+        type            = "linux"
+        publisher_name  = "oracle"
+        offer           = "oracle-database"
+        sku             = "oracle_db_12_2_0_1_ee"
+        version         = "latest"
+        os_disk_size_gb = 512
         data_disks = [
           {
             name                 = "ingest05-legacy-data-disk-01"

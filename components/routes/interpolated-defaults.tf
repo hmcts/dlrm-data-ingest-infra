@@ -8,6 +8,9 @@ locals {
   landing_zone_prefixes = flatten([
     for key, landing_zone in var.landing_zones : [cidrsubnet(local.data_ingest_address_space, 6, local.subnet_starting_index[var.env] + (parseint(key, 10) * 2)), cidrsubnet(local.data_ingest_address_space, 6, local.subnet_starting_index[var.env] + (parseint(key, 10) * 2) + 1)]
   ])
+  additional_landing_zone_prefixes = flatten([
+    for key, landing_zone in var.landing_zones : landing_zone.additional_vnet_address_space != null ? landing_zone.additional_vnet_address_space : []
+  ])
   data_ingest_address_space = "10.247.0.0/18"
   subnet_starting_index = {
     "sbox" = 3
