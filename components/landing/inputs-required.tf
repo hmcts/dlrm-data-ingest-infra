@@ -71,6 +71,7 @@ variable "landing_zones" {
       destination_application_security_group_ids = optional(list(string))
       description                                = optional(string)
     })))
+    eventhub_namespace_sku        = optional(string, "Premium")
     additional_vnet_address_space = optional(list(string), [])
     subnets = optional(object({
       services_subnet_address_space                    = optional(list(string))
