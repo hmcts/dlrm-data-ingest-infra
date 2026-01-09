@@ -38,6 +38,7 @@ module "data_landing_zone" {
   use_microsoft_ip_kit_structure                   = each.value.use_microsoft_ip_kit_structure
   adf_deploy_purview_private_endpoints             = each.value.adf_deploy_purview_private_endpoints
   additional_nsg_rules                             = each.value.additional_nsg_rules
+  eventhub_namespace_sku                           = each.value.eventhub_namespace_sku
   key_vault_readers                                = ["145da22b-a3cb-4ba8-b735-22c94b5eea6c"]
   deploy_sftp_storage                              = each.value.deploy_sftp_storage
   arm_object_id                                    = var.arm_object_id
