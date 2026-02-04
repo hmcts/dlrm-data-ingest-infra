@@ -26,22 +26,10 @@ landing_zones = {
     adf_deploy_purview_private_endpoints = false
     role_based_access_control = [
       {
-        name = "prasanna.krishnan@justice.gov.uk"
-        type = "User"
-      },
-      {
-        name = "Matt.Lorentzen@HMCTS.NET"
-        type = "User"
-      },
-      {
-        name = "dominic.leary@justice.gov.uk"
-        type = "User"
-      },
-      {
-        name  = "qiang.zhou@hmcts.net"
-        type  = "User"
-        roles = ["Owner", "Storage Blob Data Owner"]
-      },
+        name = "DTS DLRM Data Ingestion Admin Eligible (env:staging)"
+        type = "Group"
+        roles = ["Reader", "Storage Blob Data Reader"]
+      }
       {
         name  = "DTS DLRM Data Ingestion Admin (env:staging)"
         type  = "Group"
@@ -98,22 +86,10 @@ landing_zones = {
     eventhub_namespace_sku               = "Standard"
     role_based_access_control = [
       {
-        name = "prasanna.krishnan@justice.gov.uk"
-        type = "User"
-      },
-      {
-        name = "Matt.Lorentzen@HMCTS.NET"
-        type = "User"
-      },
-      {
-        name = "dominic.leary@justice.gov.uk"
-        type = "User"
-      },
-      {
-        name  = "qiang.zhou@hmcts.net"
-        type  = "User"
-        roles = ["Owner", "Storage Blob Data Owner"]
-      },
+        name = "DTS DLRM Data Ingestion Admin Eligible (env:staging)"
+        type = "Group"
+        roles = ["Reader", "Storage Blob Data Reader"]
+      }
       {
         name  = "DTS DLRM Data Ingestion Admin (env:staging)"
         type  = "Group"
