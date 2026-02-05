@@ -29,7 +29,7 @@ landing_zones = {
         name = "DTS DLRM Data Ingestion Admin Eligible (env:staging)"
         type = "Group"
         roles = ["Reader", "Storage Blob Data Reader"]
-      }
+      },
       {
         name  = "DTS DLRM Data Ingestion Admin (env:staging)"
         type  = "Group"
@@ -89,7 +89,7 @@ landing_zones = {
         name = "DTS DLRM Data Ingestion Admin Eligible (env:staging)"
         type = "Group"
         roles = ["Reader", "Storage Blob Data Reader"]
-      }
+      },
       {
         name  = "DTS DLRM Data Ingestion Admin (env:staging)"
         type  = "Group"
