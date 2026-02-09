@@ -20,7 +20,7 @@ data "azurerm_subnet" "azure_devops_agent_subnet" {
 }
 
 data "azuread_group" "poc_group" {
-  display_name     = "DTS DLRM ARIA Migration"
+  display_name     = "DTS DLRM ARIA Migration(Temp)"
   security_enabled = true
 }
 
