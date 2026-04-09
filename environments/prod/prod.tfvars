@@ -18,13 +18,13 @@ services                 = {}
 eventhub_consumer_groups = {}
 
 existing_purview_account = {
-  resource_id                    = "/subscriptions/da8a21e5-d260-4162-9391-6bdadf9103f8/resourceGroups/ingest-mgmt-rg-stg/providers/Microsoft.Purview/accounts/ingest-mgmt-purview-stg"
-  managed_storage_account_id     = "/subscriptions/da8a21e5-d260-4162-9391-6bdadf9103f8/resourceGroups/ingest-mgmt-purview-stg/providers/Microsoft.Storage/storageAccounts/scanuksouthjvoivnx"
-  managed_event_hub_namespace_id = "/subscriptions/da8a21e5-d260-4162-9391-6bdadf9103f8/resourcegroups/ingest-mgmt-purview-stg/providers/Microsoft.EventHub/namespaces/Atlas-29d1f0ea-be32-44a6-81aa-3dc42e7b18bb"
   identity = {
-    principal_id = "43a67ac7-4006-4665-95b3-517db7e679f6"
+    principal_id = "060da9a8-9f0d-4313-b26b-335f5c1f12b8"
     tenant_id    = "531ff96d-0ae9-462a-8d2d-bec7c0b42082"
   }
+  managed_event_hub_namespace_id = "/subscriptions/8cbc6f36-7c56-4963-9d36-739db5d00b27/resourceGroups/cft-purview-prod/providers/Microsoft.EventHub/namespaces/Atlas-3cd8cfd4-6675-4724-a3d2-5caa6538062d"
+  managed_storage_account_id     = "/subscriptions/8cbc6f36-7c56-4963-9d36-739db5d00b27/resourceGroups/cft-purview-prod/providers/Microsoft.Storage/storageAccounts/scanuksouthyxcykev"
+  resource_id                    = "/subscriptions/8cbc6f36-7c56-4963-9d36-739db5d00b27/resourceGroups/cft-purview-rg-prod/providers/Microsoft.Purview/accounts/cft-purview-prod"
 }
 
 landing_zones = {

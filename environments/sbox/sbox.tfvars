@@ -261,3 +261,13 @@ arm_object_id = "fd6e5281-058b-490f-8c90-186c7f057502"
 
 # AI module settings
 ml_compute_instances = 0
+
+existing_purview_account = {
+  identity = {
+    principal_id = "060da9a8-9f0d-4313-b26b-335f5c1f12b8"
+    tenant_id    = "531ff96d-0ae9-462a-8d2d-bec7c0b42082"
+  }
+  managed_event_hub_namespace_id = "/subscriptions/8cbc6f36-7c56-4963-9d36-739db5d00b27/resourceGroups/cft-purview-prod/providers/Microsoft.EventHub/namespaces/Atlas-3cd8cfd4-6675-4724-a3d2-5caa6538062d"
+  managed_storage_account_id     = "/subscriptions/8cbc6f36-7c56-4963-9d36-739db5d00b27/resourceGroups/cft-purview-prod/providers/Microsoft.Storage/storageAccounts/scanuksouthyxcykev"
+  resource_id                    = "/subscriptions/8cbc6f36-7c56-4963-9d36-739db5d00b27/resourceGroups/cft-purview-rg-prod/providers/Microsoft.Purview/accounts/cft-purview-prod"
+}
