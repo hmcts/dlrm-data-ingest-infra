@@ -252,6 +252,14 @@ landing_zones = {
         description                = "Allow RDP inbound from MoJ Ranges."
       }
     }
+    additional_paas_databases = {
+      crime-legacy = {
+        sku_name   = "GP_Standard_D2s_v3"
+        version    = "17"
+        storage_mb = 32768
+        type       = "postgresql"
+      }
+    }
   }
 }
 install_azure_monitor   = true

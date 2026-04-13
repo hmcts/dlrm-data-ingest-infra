@@ -83,7 +83,7 @@ variable "landing_zones" {
       data_integration_002_subnet_address_space        = optional(list(string))
       data_product_001_subnet_address_space            = optional(list(string))
       data_product_002_subnet_address_space            = optional(list(string))
-      services_mysql_subnet_address_space              = optional(list(string))
+      services_paas_database_subnet_address_space      = optional(list(string))
     }))
     additional_subnets = optional(map(object({
       name_override     = optional(string)
@@ -94,6 +94,18 @@ variable "landing_zones" {
         actions      = optional(list(string), [])
       })))
     })))
+    additional_paas_databases = optional(map(object({
+      sku_name                     = string
+      tier                         = optional(string)
+      capacity                     = optional(number)
+      family                       = optional(string)
+      version                      = string
+      storage_mb                   = optional(number, 32768)
+      type                         = string
+      collation                    = optional(string)
+      max_size_gb                  = optional(number)
+      geo_redundant_backup_enabled = optional(bool, false)
+    })), {})
   }))
 }
 

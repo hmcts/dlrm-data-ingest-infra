@@ -1,5 +1,5 @@
 module "data_landing_zone" {
-  source = "github.com/hmcts/terraform-module-data-landing-zone?ref=main"
+  source = "github.com/hmcts/terraform-module-data-landing-zone?ref=feat/support-additional-paas-databases"
 
   for_each = var.landing_zones
 
@@ -29,7 +29,7 @@ module "data_landing_zone" {
   data_integration_002_subnet_address_space        = each.value.subnets != null && each.value.subnets.data_integration_002_subnet_address_space != null ? each.value.subnets.data_integration_002_subnet_address_space : [cidrsubnet(cidrsubnet(local.data_ingest_address_space, 6, local.subnet_starting_index[var.env] + (parseint(each.key, 10) * 2) + 1), 3, 1)]
   data_product_001_subnet_address_space            = each.value.subnets != null && each.value.subnets.data_product_001_subnet_address_space != null ? each.value.subnets.data_product_001_subnet_address_space : [cidrsubnet(cidrsubnet(local.data_ingest_address_space, 6, local.subnet_starting_index[var.env] + (parseint(each.key, 10) * 2) + 1), 2, 1)]
   data_product_002_subnet_address_space            = each.value.subnets != null && each.value.subnets.data_product_002_subnet_address_space != null ? each.value.subnets.data_product_002_subnet_address_space : [cidrsubnet(cidrsubnet(local.data_ingest_address_space, 6, local.subnet_starting_index[var.env] + (parseint(each.key, 10) * 2) + 1), 2, 2)]
-  //services_mysql_subnet_address_space              = each.value.subnets != null && each.value.subnets.services_mysql_subnet_address_space != null ? each.value.subnets.services_mysql_subnet_address_space : [cidrsubnet(cidrsubnet(local.data_ingest_address_space, 6, local.subnet_starting_index[var.env] + (parseint(each.key, 10) * 2) + 1), 4, 12)]
+  services_paas_database_subnet_address_space      = each.value.subnets != null && each.value.subnets.services_paas_database_subnet_address_space != null ? each.value.subnets.services_paas_database_subnet_address_space : [cidrsubnet(cidrsubnet(local.data_ingest_address_space, 6, local.subnet_starting_index[var.env] + (parseint(each.key, 10) * 2) + 1), 4, 12)]
   bastion_host_subnet_address_space                = each.value.deploy_bastion ? [cidrsubnet(cidrsubnet(local.data_ingest_address_space, 6, local.subnet_starting_index[var.env] + (parseint(each.key, 10) * 2)), 2, 3)] : null
   additional_subnets                               = local.additional_subnets[each.key]
   hub_vnet_name                                    = var.hub_vnet_name
