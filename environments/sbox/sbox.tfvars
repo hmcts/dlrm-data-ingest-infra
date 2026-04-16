@@ -261,7 +261,7 @@ landing_zones = {
       }
     }
     storage_account_ip_rules = {
-      external = ["35.176.194.253/32"]
+      external = ["35.176.194.253"]
     }
   }
 }
