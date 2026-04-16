@@ -106,6 +106,7 @@ variable "landing_zones" {
       max_size_gb                  = optional(number)
       geo_redundant_backup_enabled = optional(bool, false)
     })), {})
+    storage_account_ip_rules = optional(map(list(string)), {})
   }))
 }
 

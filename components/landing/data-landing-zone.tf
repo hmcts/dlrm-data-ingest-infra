@@ -43,6 +43,7 @@ module "data_landing_zone" {
   key_vault_readers                                = ["145da22b-a3cb-4ba8-b735-22c94b5eea6c"]
   deploy_sftp_storage                              = each.value.deploy_sftp_storage
   arm_object_id                                    = var.arm_object_id
+  storage_account_ip_rules                         = each.value.storage_account_ip_rules
   # SBOX zones are treated as "dev" environments and need connectivity nonprod environments. So all environments now use SS-PTL ADO Agents.
   ssptl_vnet_name           = "ss-ptl-vnet"
   ssptl_vnet_resource_group = "ss-ptl-network-rg"
