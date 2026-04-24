@@ -70,12 +70,17 @@ landing_zones = {
         size            = "Standard_D16ds_v5"
       }
       doc-migration = {
-        os_disk_size_gb = 256
-        size            = "Standard_D4ds_v5"
-        publisher_name  = "canonical"
-        offer           = "ubuntu-24_04-lts"
-        sku             = "server"
-        version         = "latest"
+        type                       = "linux"
+        computer_name              = null
+        subnet_key                 = "doc-migration"
+        os_disk_size_gb            = 256
+        size                       = "Standard_D4ds_v5"
+        publisher_name             = "canonical"
+        offer                      = "ubuntu-24_04-lts"
+        sku                        = "server"
+        version                    = "latest"
+        deploy_AADSSHLoginForLinux = true
+        vm_group_ids               = ["efb2b089-d742-414b-9956-142bf6effb43", "e7ea2042-4ced-45dd-8ae3-e051c6551789"]
       }
     }
     additional_nsg_rules = {
