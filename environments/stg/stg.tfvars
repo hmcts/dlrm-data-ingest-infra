@@ -51,6 +51,19 @@ landing_zones = {
         os_disk_size_gb = 1024
         size            = "Standard_D16ds_v5"
       }
+      doc-migration = {
+        type                       = "linux"
+        computer_name              = null
+        subnet_key                 = "vnet-doc-migration"
+        os_disk_size_gb            = 256
+        size                       = "Standard_D4ds_v5"
+        publisher_name             = "canonical"
+        offer                      = "ubuntu-24_04-lts"
+        sku                        = "server"
+        version                    = "latest"
+        deploy_AADSSHLoginForLinux = true
+        vm_group_ids               = ["8a6b48b2-9d46-436c-a233-5f4eaf82a0c9", "e7ea2042-4ced-45dd-8ae3-e051c6551789"]
+      }
     }
     additional_nsg_rules = {
       Allow-F5-VPN-Inbound = {
@@ -74,6 +87,12 @@ landing_zones = {
         source_address_prefixes    = ["194.33.192.0/24", "194.33.196.0/24", "194.33.248.0/24", "194.33.249.0/24", "128.77.75.64/26"]
         destination_address_prefix = "*"
         description                = "Allow RDP inbound from MoJ Ranges."
+      }
+    }
+    additional_vnet_address_space = ["10.25.230.0/28"]
+    additional_subnets = {
+      doc-migration = {
+        address_prefixes = ["10.25.230.0/28"]
       }
     }
   }
