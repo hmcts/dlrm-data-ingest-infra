@@ -76,6 +76,11 @@ landing_zones = {
         description                = "Allow RDP inbound from MoJ Ranges."
       }
     }
+    additional_subnets = {
+      doc-migration = {
+        address_prefixes = ["10.25.230.0/28"]
+      }
+    }
   }
   "01" = {
     project                              = "ARIA"
