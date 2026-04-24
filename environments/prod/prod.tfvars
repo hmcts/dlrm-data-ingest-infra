@@ -69,6 +69,14 @@ landing_zones = {
         os_disk_size_gb = 1024
         size            = "Standard_D16ds_v5"
       }
+      doc-migration = {
+        os_disk_size_gb = 256
+        size            = "Standard_D4ds_v5"
+        publisher_name  = "canonical"
+        offer           = "ubuntu-24_04-lts"
+        sku             = "server"
+        version         = "latest"
+      }
     }
     additional_nsg_rules = {
       Allow-Prod-Bastion-Inbound = {
@@ -94,6 +102,7 @@ landing_zones = {
         description                = "Allow RDP inbound from MoJ Ranges."
       }
     }
+    additional_vnet_address_space = ["10.24.230.0/28"]
     additional_subnets = {
       doc-migration = {
         address_prefixes = ["10.24.230.0/28"]
