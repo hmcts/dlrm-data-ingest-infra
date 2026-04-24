@@ -36,6 +36,7 @@ variable "landing_zones" {
       size                = optional(string, "Standard_D4ds_v5")
       type                = optional(string, "windows")
       public_ip           = optional(bool, false)
+      subnet_key          = optional(string)
       computer_name       = optional(string)
       publisher_name      = optional(string)
       offer               = optional(string)
@@ -52,6 +53,8 @@ variable "landing_zones" {
         caching              = optional(string, "ReadWrite")
         storage_account_type = optional(string, "StandardSSD_LRS")
       })), [])
+      deploy_AADSSHLoginForLinux = optional(bool, false)
+      vm_admin_group_ids         = optional(list(string), [])
     })), {})
     additional_nsg_rules = optional(map(object({
       name_override                              = optional(string)
