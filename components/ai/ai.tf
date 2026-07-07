@@ -1,5 +1,10 @@
 module "ai" {
-  source                             = "git::https://github.com/hmcts/terraform-module-ai-services?ref=main"
+  source = "git::https://github.com/hmcts/terraform-module-ai-services?ref=reworking-module-DTSPO-32946"
+
+  providers = {
+    azurerm.private_dns = azurerm
+  }
+
   env                                = var.env
   project                            = var.project
   existing_resource_group_name       = azurerm_resource_group.rg.name
