@@ -117,7 +117,6 @@ landing_zones = {
   "05" = {
     project                        = "Crime Legacy Migration"
     deploy_bastion                 = true
-    deploy_shir                    = true
     use_microsoft_ip_kit_structure = true
     role_based_access_control = [
       {
