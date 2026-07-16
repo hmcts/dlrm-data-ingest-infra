@@ -34,6 +34,7 @@ landing_zones = {
     deploy_bastion                       = true
     deploy_sftp_storage                  = true
     adf_deploy_purview_private_endpoints = false
+    eventhub_namespace_capacity          = 4
     role_based_access_control = [
       {
         name = "prasanna.krishnan@justice.gov.uk"

@@ -40,6 +40,7 @@ module "data_landing_zone" {
   additional_nsg_rules                             = each.value.additional_nsg_rules
   additional_paas_databases                        = each.value.additional_paas_databases
   eventhub_namespace_sku                           = each.value.eventhub_namespace_sku
+  eventhub_namespace_capacity                      = each.value.eventhub_namespace_capacity
   key_vault_readers                                = ["145da22b-a3cb-4ba8-b735-22c94b5eea6c"]
   deploy_sftp_storage                              = each.value.deploy_sftp_storage
   arm_object_id                                    = var.arm_object_id

@@ -75,6 +75,7 @@ variable "landing_zones" {
       description                                = optional(string)
     })))
     eventhub_namespace_sku        = optional(string, "Premium")
+    eventhub_namespace_capacity   = optional(number, 1)
     additional_vnet_address_space = optional(list(string), [])
     subnets = optional(object({
       services_subnet_address_space                    = optional(list(string))
