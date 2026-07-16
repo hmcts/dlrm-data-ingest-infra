@@ -1,4 +1,8 @@
 module "ai" {
+  providers = {
+    azurerm             = azurerm
+    azurerm.private_dns = azurerm.private_dns
+  }
   source                             = "git::https://github.com/hmcts/terraform-module-ai-services?ref=main"
   env                                = var.env
   project                            = var.project
