@@ -187,6 +187,30 @@ landing_zones = {
           btrfs filesystem resize max /
         EOF
       }
+      legacy-sql02 = {
+        computer_name   = "ingest05-legacy02"
+        type            = "linux"
+        publisher_name  = "oracle"
+        offer           = "oracle-database"
+        sku             = "oracle_db_12_2_0_1_ee"
+        version         = "latest"
+        os_disk_size_gb = 512
+        data_disks = [
+          {
+            name                 = "ingest05-legacy-data-disk-01"
+            disk_size_gb         = 10240
+            lun                  = 0
+            caching              = "None"
+            storage_account_type = "StandardSSD_LRS"
+          }
+        ]
+        bootstrap_script = <<-EOF
+          #!/bin/bash
+          yum install -y cloud-utils-growpart
+          growpart /dev/sda 2
+          btrfs filesystem resize max /
+        EOF
+      }
     }
 
     gh_runners = {
