@@ -197,7 +197,7 @@ landing_zones = {
         os_disk_size_gb = 512
         data_disks = [
           {
-            name                 = "ingest05-legacy-data-disk-01"
+            name                 = "ingest05-legacy02-data-disk-01"
             disk_size_gb         = 10240
             lun                  = 0
             caching              = "None"
