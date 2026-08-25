@@ -32,6 +32,7 @@ landing_zones = {
     project                              = "DLRM Ingestion Engine"
     use_microsoft_ip_kit_structure       = true
     deploy_bastion                       = true
+    bastion_host_sku                     = "Standard"
     deploy_sftp_storage                  = true
     adf_deploy_purview_private_endpoints = false
     eventhub_namespace_capacity          = 4
