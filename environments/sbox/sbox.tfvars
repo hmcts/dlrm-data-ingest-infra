@@ -154,7 +154,6 @@ landing_zones = {
       doc-migration = {
         type                       = "linux"
         computer_name              = null
-        subnet_key                 = "vnet-doc-migration"
         os_disk_size_gb            = 256
         size                       = "Standard_D4ds_v5"
         publisher_name             = "canonical"
@@ -163,12 +162,6 @@ landing_zones = {
         version                    = "latest"
         deploy_AADSSHLoginForLinux = true
         vm_group_ids               = ["8a6b48b2-9d46-436c-a233-5f4eaf82a0c9", "e7ea2042-4ced-45dd-8ae3-e051c6551789"]
-      }
-    }
-    additional_vnet_address_space = ["10.25.231.0/28"]
-    additional_subnets = {
-      doc-migration = {
-        address_prefixes = ["10.25.231.0/28"]
       }
     }
     additional_nsg_rules = {
