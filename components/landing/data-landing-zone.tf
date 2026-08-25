@@ -1,7 +1,22 @@
+locals {
+  landing_zones_with_scripts = {
+    for key, zone in var.landing_zones : key => merge(zone, {
+      legacy_databases = zone.legacy_databases != null ? {
+        for db_key, db_config in zone.legacy_databases : db_key => merge(
+          db_config,
+          db_config.bootstrap_script_path != null ? {
+            bootstrap_script = file("${path.root}/${db_config.bootstrap_script_path}")
+          } : {}
+        )
+      } : null
+    })
+  }
+}
+
 module "data_landing_zone" {
   source = "github.com/hmcts/terraform-module-data-landing-zone?ref=feat/support-additional-paas-databases"
 
-  for_each = var.landing_zones
+  for_each = local.landing_zones_with_scripts
 
   providers = {
     azurerm        = azurerm
