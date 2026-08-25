@@ -48,6 +48,7 @@ variable "landing_zones" {
       secure_boot_enabled   = optional(bool, true)
       bootstrap_script      = optional(string)
       bootstrap_script_path = optional(string)
+      trigger_bootstrap     = optional(string)
       data_disks = optional(list(object({
         name                 = string
         disk_size_gb         = number
