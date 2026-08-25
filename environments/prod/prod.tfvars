@@ -84,6 +84,7 @@ landing_zones = {
         deploy_AADSSHLoginForLinux = true
         vm_admin_group_ids         = ["efb2b089-d742-414b-9956-142bf6effb43", "e7ea2042-4ced-45dd-8ae3-e051c6551789"]
         bootstrap_script_path      = "scripts/doc-migration-smb-setup.sh"
+        trigger_bootstrap          = "25082026-1426"
       }
     }
     additional_nsg_rules = {
