@@ -14,10 +14,12 @@ resource "azurerm_key_vault_secret" "cognitive_account_primary_access_key" {
   name         = "cognitive-account-primary-access-key"
   value        = module.ai.cognitive_account_primary_access_key[0]
   key_vault_id = module.key_vault.key_vault_id
+  depends_on   = [module.key_vault]
 }
 
 resource "azurerm_key_vault_secret" "cognitive_account_secondary_access_key" {
   name         = "cognitive-account-secondary-access-key"
   value        = module.ai.cognitive_account_secondary_access_key[0]
   key_vault_id = module.key_vault.key_vault_id
+  depends_on   = [module.key_vault]
 }
