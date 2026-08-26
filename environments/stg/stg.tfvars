@@ -272,6 +272,7 @@ landing_zones = {
 install_azure_monitor   = true
 systemassigned_identity = true
 zone_redundant          = true
+ml_compute_instances    = 0
 deploy_openai           = true
 
 arm_object_id = "fd6e5281-058b-490f-8c90-186c7f057502"
