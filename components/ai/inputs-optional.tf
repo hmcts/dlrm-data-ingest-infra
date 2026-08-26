@@ -42,3 +42,15 @@ variable "compute_instance_public_ip_enabled" {
   type        = bool
   default     = false
 }
+
+variable "deploy_openai" {
+  description = "Deploy an Azure OpenAI account."
+  type        = bool
+  default     = false
+}
+
+variable "openai_account_sku" {
+  description = "SKU for the Azure OpenAI account."
+  type        = string
+  default     = "S0"
+}

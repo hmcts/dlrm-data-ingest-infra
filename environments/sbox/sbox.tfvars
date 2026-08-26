@@ -151,6 +151,18 @@ landing_zones = {
         source_image_id = "/subscriptions/e9674938-57cb-43ff-a440-1917658e468c/resourceGroups/data-ingest-images-rg/providers/Microsoft.Compute/galleries/dataingest_images/images/windows-2016-sql-server-2008-R2-developer/versions/0.0.1"
         os_disk_size_gb = 512
       }
+      doc-migration = {
+        type                       = "linux"
+        computer_name              = null
+        os_disk_size_gb            = 256
+        size                       = "Standard_D4ds_v5"
+        publisher_name             = "canonical"
+        offer                      = "ubuntu-24_04-lts"
+        sku                        = "server"
+        version                    = "latest"
+        deploy_AADSSHLoginForLinux = true
+        vm_group_ids               = ["8a6b48b2-9d46-436c-a233-5f4eaf82a0c9", "e7ea2042-4ced-45dd-8ae3-e051c6551789"]
+      }
     }
     additional_nsg_rules = {
       Allow-F5-VPN-Inbound = {
@@ -273,6 +285,7 @@ arm_object_id = "fd6e5281-058b-490f-8c90-186c7f057502"
 
 # AI module settings
 ml_compute_instances = 0
+deploy_openai        = true
 
 existing_purview_account = {
   identity = {
