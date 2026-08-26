@@ -32,6 +32,7 @@ landing_zones = {
     project                              = "DLRM Ingestion Engine"
     use_microsoft_ip_kit_structure       = true
     deploy_bastion                       = true
+    bastion_host_sku                     = "Standard"
     deploy_sftp_storage                  = true
     adf_deploy_purview_private_endpoints = false
     eventhub_namespace_capacity          = 4
@@ -81,7 +82,9 @@ landing_zones = {
         sku                        = "server"
         version                    = "latest"
         deploy_AADSSHLoginForLinux = true
-        vm_group_ids               = ["efb2b089-d742-414b-9956-142bf6effb43", "e7ea2042-4ced-45dd-8ae3-e051c6551789"]
+        vm_admin_group_ids         = ["efb2b089-d742-414b-9956-142bf6effb43", "e7ea2042-4ced-45dd-8ae3-e051c6551789"]
+        bootstrap_script_path      = "scripts/doc-migration-smb-setup.sh"
+        trigger_bootstrap          = "25082026-1426"
       }
     }
     additional_nsg_rules = {

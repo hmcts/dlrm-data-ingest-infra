@@ -1,7 +1,22 @@
+locals {
+  landing_zones_with_scripts = {
+    for key, zone in var.landing_zones : key => merge(zone, {
+      legacy_databases = zone.legacy_databases != null ? {
+        for db_key, db_config in zone.legacy_databases : db_key => merge(
+          db_config,
+          db_config.bootstrap_script_path != null ? {
+            bootstrap_script = file("${path.root}/${db_config.bootstrap_script_path}")
+          } : {}
+        )
+      } : null
+    })
+  }
+}
+
 module "data_landing_zone" {
   source = "github.com/hmcts/terraform-module-data-landing-zone?ref=feat/support-additional-paas-databases"
 
-  for_each = var.landing_zones
+  for_each = local.landing_zones_with_scripts
 
   providers = {
     azurerm        = azurerm
@@ -31,6 +46,7 @@ module "data_landing_zone" {
   data_product_002_subnet_address_space            = each.value.subnets != null && each.value.subnets.data_product_002_subnet_address_space != null ? each.value.subnets.data_product_002_subnet_address_space : [cidrsubnet(cidrsubnet(local.data_ingest_address_space, 6, local.subnet_starting_index[var.env] + (parseint(each.key, 10) * 2) + 1), 2, 2)]
   services_paas_database_subnet_address_space      = each.value.subnets != null && each.value.subnets.services_paas_database_subnet_address_space != null ? each.value.subnets.services_paas_database_subnet_address_space : [cidrsubnet(cidrsubnet(local.data_ingest_address_space, 6, local.subnet_starting_index[var.env] + (parseint(each.key, 10) * 2) + 1), 4, 12)]
   bastion_host_subnet_address_space                = each.value.deploy_bastion ? [cidrsubnet(cidrsubnet(local.data_ingest_address_space, 6, local.subnet_starting_index[var.env] + (parseint(each.key, 10) * 2)), 2, 3)] : null
+  bastion_host_sku                                 = each.value.deploy_bastion ? (each.value.bastion_host_sku != null ? each.value.bastion_host_sku : null) : null
   additional_subnets                               = local.additional_subnets[each.key]
   hub_vnet_name                                    = var.hub_vnet_name
   hub_resource_group_name                          = var.hub_resource_group_name
