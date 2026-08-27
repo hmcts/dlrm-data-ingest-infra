@@ -64,6 +64,17 @@ echo "Parsing mount configuration and creating mount points..." | tee -a "$LOG_F
 # Mount configuration should be JSON format: {"mounts": [{"unc": "\\\\ip\\share", "mountpoint": "/path", "hostname": "hostname", "ip": "ip.ip.ip.ip"}]}
 MOUNT_POINTS=$(echo "$MOUNT_CONFIG" | jq -r '.mounts[] | "\(.unc)|\(.mountpoint)"')
 
+# The health-check reads this file rather than embedding mount points in its
+# code.  Keeping it alongside the mount configuration means a bootstrap rerun
+# updates both the fstab entries and the set of monitored mounts.
+install -d -m 0755 /etc/smb-mount-monitor
+printf '%s\n' "$MOUNT_CONFIG" | jq -r '.mounts[]?.mountpoint' > /etc/smb-mount-monitor/mountpoints
+if [ ! -s /etc/smb-mount-monitor/mountpoints ]; then
+  echo "ERROR: SMB mount configuration contains no mount points" | tee -a "$LOG_FILE"
+  exit 1
+fi
+chmod 0644 /etc/smb-mount-monitor/mountpoints
+
 # First, configure /etc/hosts entries
 echo "Configuring /etc/hosts entries..." | tee -a "$LOG_FILE"
 HOSTS_ENTRIES=$(echo "$MOUNT_CONFIG" | jq -r '.hosts[] | "\(.ip) \(.hostname)"' | sort -u)
@@ -102,6 +113,100 @@ done <<< "$MOUNT_POINTS"
 # Mount all shares
 echo "Mounting all SMB shares..." | tee -a "$LOG_FILE"
 mount -a 2>&1 | tee -a "$LOG_FILE" || echo "WARNING: Some mounts may have failed. Check logs." | tee -a "$LOG_FILE"
+
+# Install the mount health monitor.  It intentionally logs only failures at
+# local0.err because the associated DCR only collects Error-and-higher events
+# from local0.  A per-mount timeout prevents an unreachable CIFS server from
+# making the systemd service run indefinitely.
+install -d -m 0755 /usr/local/sbin
+cat > /usr/local/sbin/smb-mount-monitor <<'EOF'
+#!/bin/bash
+set -u -o pipefail
+
+readonly CONFIG_FILE="/etc/smb-mount-monitor/mountpoints"
+readonly LOGGER="/usr/bin/logger"
+readonly MOUNTPOINT="/usr/bin/mountpoint"
+readonly FINDMNT="/usr/bin/findmnt"
+readonly TIMEOUT="/usr/bin/timeout"
+readonly STAT="/usr/bin/stat"
+
+log_failure() {
+  local failure_code="$1"
+  local monitored_mount="$2"
+  "$LOGGER" -p local0.err -t smb-mount-monitor \
+    "${failure_code} mount=${monitored_mount}"
+}
+
+if [[ ! -r "$CONFIG_FILE" ]]; then
+  # This is deliberately a monitor failure rather than silently succeeding:
+  # without its configuration no mount can be checked.
+  log_failure SMB_MOUNT_MONITOR_CONFIG_MISSING "$CONFIG_FILE"
+  exit 0
+fi
+
+monitored_mount=""
+while IFS= read -r monitored_mount || [[ -n "$monitored_mount" ]]; do
+  # Allow comments and blank lines should the configuration be maintained by
+  # hand in addition to the bootstrap process.
+  [[ -z "$monitored_mount" || "$monitored_mount" == \#* ]] && continue
+
+  if ! "$MOUNTPOINT" -q -- "$monitored_mount"; then
+    log_failure SMB_MOUNT_NOT_MOUNTED "$monitored_mount"
+    continue
+  fi
+
+  filesystem_type=$("$FINDMNT" --noheadings --output FSTYPE --target "$monitored_mount" 2>/dev/null | tr -d '[:space:]')
+  if [[ "$filesystem_type" != "cifs" ]]; then
+    log_failure SMB_MOUNT_WRONG_FSTYPE "$monitored_mount"
+    continue
+  fi
+
+  if ! "$TIMEOUT" --foreground 10s "$STAT" -- "$monitored_mount" >/dev/null 2>&1; then
+    log_failure SMB_MOUNT_UNRESPONSIVE "$monitored_mount"
+  fi
+done < "$CONFIG_FILE"
+
+# Syslog failure records, rather than a failed unit result, are the alerting
+# contract.  This lets every configured mount be checked in one invocation.
+exit 0
+EOF
+chmod 0755 /usr/local/sbin/smb-mount-monitor
+
+cat > /etc/systemd/system/smb-mount-monitor.service <<'EOF'
+[Unit]
+Description=SMB/CIFS mount health check
+After=local-fs.target
+
+[Service]
+Type=oneshot
+ExecStart=/usr/local/sbin/smb-mount-monitor
+TimeoutStartSec=2min
+NoNewPrivileges=true
+PrivateTmp=true
+ProtectKernelTunables=true
+ProtectKernelModules=true
+ProtectControlGroups=true
+RestrictAddressFamilies=AF_UNIX
+EOF
+
+cat > /etc/systemd/system/smb-mount-monitor.timer <<'EOF'
+[Unit]
+Description=Run SMB/CIFS mount health check every two minutes
+
+[Timer]
+OnBootSec=2min
+OnUnitActiveSec=2min
+AccuracySec=15s
+RandomizedDelaySec=15s
+Persistent=true
+Unit=smb-mount-monitor.service
+
+[Install]
+WantedBy=timers.target
+EOF
+
+systemctl daemon-reload
+systemctl enable --now smb-mount-monitor.timer
 
 echo "SMB mount configuration complete at $(date)" | tee -a "$LOG_FILE"
 echo "Mount status:" | tee -a "$LOG_FILE"
