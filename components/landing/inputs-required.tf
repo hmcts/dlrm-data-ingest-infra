@@ -21,6 +21,7 @@ variable "landing_zones" {
     deploy_bastion                       = optional(bool, false)
     bastion_host_sku                     = optional(string, null)
     deploy_sftp_storage                  = optional(bool, false)
+    deploy_function_app                  = optional(bool, false)
     role_based_access_control = optional(list(object({
       name  = optional(string)
       type  = optional(string, "user")
