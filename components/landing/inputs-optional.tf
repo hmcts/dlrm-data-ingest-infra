@@ -26,10 +26,11 @@ variable "systemassigned_identity" {
 }
 
 variable "smb_mount_monitor_alert" {
-  description = "Existing Azure Monitor resources used for the SMB mount failure scheduled-query alert. The Log Analytics Workspace is referenced from the landing-zone module output for the given landing_zone_key; if resource_group_name is not set the alert is deployed to the Log Analytics Workspace's resource group. Supply the existing Action Group and alert resource-group details."
+  description = "Existing Azure Monitor resources used for the SMB mount failure scheduled-query alert. The Log Analytics Workspace is referenced from the landing-zone module output for the given landing_zone_key; if resource_group_name is not set the alert is deployed to the Log Analytics Workspace's resource group. Supply the existing Action Group and alert resource-group details. computer_name must match the syslog Computer field of the VM running the smb-mount-monitor service."
   type = object({
     enabled             = optional(bool, false)
     landing_zone_key    = optional(string, "00")
+    computer_name       = optional(string)
     resource_group_name = optional(string)
     action_group_ids    = optional(list(string), [])
     tags                = optional(map(string), {})
