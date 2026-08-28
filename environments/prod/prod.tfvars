@@ -27,6 +27,14 @@ existing_purview_account = {
   resource_id                    = "/subscriptions/8cbc6f36-7c56-4963-9d36-739db5d00b27/resourceGroups/cft-purview-rg-prod/providers/Microsoft.Purview/accounts/cft-purview-prod"
 }
 
+# SMB mount failure monitoring for the doc-migration VM in landing zone 00
+smb_mount_monitor_alert = {
+  enabled           = true
+  landing_zone_key  = "00"
+  computer_name     = "ingest00-doc-migration-prod"
+  slack_webhook_url = "https://hooks.slack.com/services/TODO/REPLACE/ME" # PLACEHOLDER - replace with the real Slack incoming webhook URL
+}
+
 landing_zones = {
   "00" = {
     project                              = "DLRM Ingestion Engine"
