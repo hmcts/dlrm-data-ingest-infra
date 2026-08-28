@@ -68,7 +68,7 @@ MOUNT_POINTS=$(echo "$MOUNT_CONFIG" | jq -r '.mounts[] | "\(.unc)|\(.mountpoint)
 # code.  Keeping it alongside the mount configuration means a bootstrap rerun
 # updates both the fstab entries and the set of monitored mounts.
 install -d -m 0755 /etc/smb-mount-monitor
-printf '%s\n' "$MOUNT_CONFIG" | jq -r '.mounts[]?.mountpoint' > /etc/smb-mount-monitor/mountpoints
+printf '%s\n' "$MOUNT_CONFIG" | jq -r '.mounts[]?.mountpoint | select(. != null)' | sort -u > /etc/smb-mount-monitor/mountpoints
 if [ ! -s /etc/smb-mount-monitor/mountpoints ]; then
   echo "ERROR: SMB mount configuration contains no mount points" | tee -a "$LOG_FILE"
   exit 1
@@ -101,10 +101,13 @@ while IFS='|' read -r unc mountpoint; do
     mkdir -p "$mountpoint" 2>&1 | tee -a "$LOG_FILE"
     chmod 755 "$mountpoint"
 
-    # Add to fstab if not already present
+    # Add to fstab if not already present.  _netdev orders the mount after
+    # networking; soft makes an unreachable server fail stat with an I/O
+    # error instead of blocking in uninterruptible sleep, which neither
+    # timeout nor systemd can break up on a hard mount.
     if ! grep -q "$(echo "$unc" | sed 's/[\/&]/\\&/g')" /etc/fstab; then
       echo "# SMB Mount: $unc" >> /etc/fstab
-      echo "$unc $mountpoint cifs credentials=/root/.smb-credentials,uid=1000,gid=1000,file_mode=0755,dir_mode=0755,noperm 0 0" >> /etc/fstab
+      echo "$unc $mountpoint cifs credentials=/root/.smb-credentials,uid=1000,gid=1000,file_mode=0755,dir_mode=0755,noperm,_netdev,soft 0 0" >> /etc/fstab
       echo "Added fstab entry for $mountpoint" | tee -a "$LOG_FILE"
     fi
   fi
@@ -116,8 +119,9 @@ mount -a 2>&1 | tee -a "$LOG_FILE" || echo "WARNING: Some mounts may have failed
 
 # Install the mount health monitor.  It intentionally logs only failures at
 # local0.err because the associated DCR only collects Error-and-higher events
-# from local0.  A per-mount timeout prevents an unreachable CIFS server from
-# making the systemd service run indefinitely.
+# from local0.  The fstab entries are soft-mounted (see above) so an
+# unreachable CIFS server makes the per-mount stat timeout fire instead of
+# hanging in uninterruptible sleep.
 install -d -m 0755 /usr/local/sbin
 cat > /usr/local/sbin/smb-mount-monitor <<'EOF'
 #!/bin/bash
@@ -137,9 +141,10 @@ log_failure() {
     "${failure_code} mount=${monitored_mount}"
 }
 
-if [[ ! -r "$CONFIG_FILE" ]]; then
+if [[ ! -s "$CONFIG_FILE" ]]; then
   # This is deliberately a monitor failure rather than silently succeeding:
-  # without its configuration no mount can be checked.
+  # -s also catches a configuration emptied by hand, which would otherwise
+  # disable monitoring entirely with nothing logged.
   log_failure SMB_MOUNT_MONITOR_CONFIG_MISSING "$CONFIG_FILE"
   exit 0
 fi
@@ -198,7 +203,6 @@ OnBootSec=2min
 OnUnitActiveSec=2min
 AccuracySec=15s
 RandomizedDelaySec=15s
-Persistent=true
 Unit=smb-mount-monitor.service
 
 [Install]
