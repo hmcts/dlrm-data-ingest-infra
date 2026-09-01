@@ -289,8 +289,9 @@ existing_purview_account = {
 
 # SMB mount failure monitoring for the doc-migration VM in landing zone 00
 smb_mount_monitor_alert = {
-  enabled           = true
-  landing_zone_key  = "00"
-  computer_name     = "ingest00-doc-migration-stg"
-  slack_webhook_url = "https://hooks.slack.com/services/TODO/REPLACE/ME" # PLACEHOLDER - replace with the real Slack incoming webhook URL
+  enabled                   = true
+  landing_zone_key          = "00"
+  computer_name             = "ingest00-doc-migration-stg"
+  slack_webhook_vault_id    = "/subscriptions/da8a21e5-d260-4162-9391-6bdadf9103f8/resourceGroups/ingest-mgmt-rg-stg/providers/Microsoft.KeyVault/vaults/ingest-mgmt-kv-stg"
+  slack_webhook_secret_name = "smb-mount-slack-webhook"
 }

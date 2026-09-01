@@ -1,11 +1,31 @@
 locals {
-  smb_mount_monitor_alert_enabled = var.smb_mount_monitor_alert.enabled && var.smb_mount_monitor_alert.slack_webhook_url != null
+  smb_mount_monitor_alert_enabled = var.smb_mount_monitor_alert.enabled && var.smb_mount_monitor_alert.slack_webhook_vault_id != null && var.smb_mount_monitor_alert.slack_webhook_secret_name != null
+}
+
+data "azurerm_key_vault_secret" "smb_mount_slack_webhook" {
+  count        = local.smb_mount_monitor_alert_enabled ? 1 : 0
+  key_vault_id = var.smb_mount_monitor_alert.slack_webhook_vault_id
+  name         = var.smb_mount_monitor_alert.slack_webhook_secret_name
 }
 
 check "smb_mount_monitor_alert_computer_name" {
   assert {
     condition     = !var.smb_mount_monitor_alert.enabled || var.smb_mount_monitor_alert.computer_name != null
     error_message = "smb_mount_monitor_alert.computer_name must be set when smb_mount_monitor_alert.enabled is true."
+  }
+}
+
+check "smb_mount_monitor_alert_webhook_vault_id" {
+  assert {
+    condition     = !var.smb_mount_monitor_alert.enabled || var.smb_mount_monitor_alert.slack_webhook_vault_id != null
+    error_message = "smb_mount_monitor_alert.slack_webhook_vault_id must be set when smb_mount_monitor_alert.enabled is true."
+  }
+}
+
+check "smb_mount_monitor_alert_webhook_secret_name" {
+  assert {
+    condition     = !var.smb_mount_monitor_alert.enabled || var.smb_mount_monitor_alert.slack_webhook_secret_name != null
+    error_message = "smb_mount_monitor_alert.slack_webhook_secret_name must be set when smb_mount_monitor_alert.enabled is true."
   }
 }
 
@@ -19,7 +39,7 @@ resource "azurerm_monitor_action_group" "smb_mount_failures_slack" {
 
   webhook_receiver {
     name                    = "slack"
-    service_uri             = each.value.slack_webhook_url
+    service_uri             = data.azurerm_key_vault_secret.smb_mount_slack_webhook[0].value
     use_common_alert_schema = true
   }
 
