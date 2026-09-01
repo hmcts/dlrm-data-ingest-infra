@@ -33,7 +33,7 @@ smb_mount_monitor_alert = {
   landing_zone_key          = "00"
   computer_name             = "ingest00-doc-migration-prod"
   slack_webhook_vault_id    = "/subscriptions/e9674938-57cb-43ff-a440-1917658e468c/resourceGroups/ingest-mgmt-rg-prod/providers/Microsoft.KeyVault/vaults/ingest-mgmt-kv-prod"
-  slack_webhook_secret_name = "smb-mount-slack-webhook"
+  slack_webhook_secret_name = "dtspo-red-slack-webhook"
 }
 
 landing_zones = {
