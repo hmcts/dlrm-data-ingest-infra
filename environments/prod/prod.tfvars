@@ -27,6 +27,15 @@ existing_purview_account = {
   resource_id                    = "/subscriptions/8cbc6f36-7c56-4963-9d36-739db5d00b27/resourceGroups/cft-purview-rg-prod/providers/Microsoft.Purview/accounts/cft-purview-prod"
 }
 
+# SMB mount failure monitoring for the doc-migration VM in landing zone 00
+smb_mount_monitor_alert = {
+  enabled                   = true
+  landing_zone_key          = "00"
+  computer_name             = "ingest00-doc-migration-prod"
+  slack_webhook_vault_id    = "/subscriptions/e9674938-57cb-43ff-a440-1917658e468c/resourceGroups/ingest-mgmt-rg-prod/providers/Microsoft.KeyVault/vaults/ingest-mgmt-kv-prod"
+  slack_webhook_secret_name = "dtspo-red-slack-webhook"
+}
+
 landing_zones = {
   "00" = {
     project                              = "DLRM Ingestion Engine"
