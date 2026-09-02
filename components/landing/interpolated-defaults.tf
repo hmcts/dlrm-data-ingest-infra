@@ -71,6 +71,17 @@ locals {
             }
           }
         }
+      } : {}, # False expression for the conditional operator
+      lz.deploy_function_app ? {
+        function-app = {
+          address_prefixes = [cidrsubnet(cidrsubnet(local.data_ingest_address_space, 6, local.subnet_starting_index[var.env] + (parseint(lz_key, 10) * 2) + 1), 4, 14)]
+          delegations = {
+            function-app-delegation = {
+              service_name = "Microsoft.Web/serverFarms"
+              actions      = ["Microsoft.Network/virtualNetworks/subnets/action"]
+            }
+          }
+        }
       } : {} # False expression for the conditional operator
     )
   }

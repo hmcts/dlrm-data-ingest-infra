@@ -189,6 +189,42 @@ landing_zones = {
       }
     }
   }
+  "01" = {
+    project             = "Document Migration"
+    deploy_function_app = true
+    role_based_access_control = [
+      # No Entra group exists yet for Document Migration; grant Prasanna directly for now.
+      {
+        name  = "prasanna.krishnan@justice.gov.uk"
+        type  = "User"
+        roles = ["Owner", "Storage Blob Data Owner"]
+      },
+      {
+        name  = "prasanna.krishnan@hmcts.net"
+        type  = "User"
+        roles = ["Owner", "Storage Blob Data Owner"]
+      },
+      {
+        name  = "DTS Bootstrap (sub:dts-cftptl-intsvc)"
+        type  = "ServicePrincipal"
+        roles = ["Contributor"]
+      }
+    ]
+    legacy_databases = {
+      doc-migration = {
+        type                       = "linux"
+        computer_name              = null
+        os_disk_size_gb            = 256
+        size                       = "Standard_D4ds_v5"
+        publisher_name             = "canonical"
+        offer                      = "ubuntu-24_04-lts"
+        sku                        = "server"
+        version                    = "latest"
+        deploy_AADSSHLoginForLinux = true
+        vm_group_ids               = ["8a6b48b2-9d46-436c-a233-5f4eaf82a0c9", "e7ea2042-4ced-45dd-8ae3-e051c6551789"]
+      }
+    }
+  }
   "05" = {
     project                        = "Crime Legacy Migration"
     deploy_bastion                 = true
