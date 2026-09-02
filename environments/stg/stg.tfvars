@@ -286,12 +286,3 @@ existing_purview_account = {
   managed_storage_account_id     = "/subscriptions/8cbc6f36-7c56-4963-9d36-739db5d00b27/resourceGroups/cft-purview-prod/providers/Microsoft.Storage/storageAccounts/scanuksouthyxcykev"
   resource_id                    = "/subscriptions/8cbc6f36-7c56-4963-9d36-739db5d00b27/resourceGroups/cft-purview-rg-prod/providers/Microsoft.Purview/accounts/cft-purview-prod"
 }
-
-# SMB mount failure monitoring for the doc-migration VM in landing zone 00
-smb_mount_monitor_alert = {
-  enabled                   = true
-  landing_zone_key          = "00"
-  computer_name             = "ingest00-doc-migration-stg"
-  slack_webhook_vault_id    = "/subscriptions/da8a21e5-d260-4162-9391-6bdadf9103f8/resourceGroups/ingest-mgmt-rg-stg/providers/Microsoft.KeyVault/vaults/ingest-mgmt-kv-stg"
-  slack_webhook_secret_name = "dtspo-red-slack-webhook"
-}
