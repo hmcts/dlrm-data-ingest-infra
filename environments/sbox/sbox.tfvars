@@ -208,6 +208,11 @@ landing_zones = {
         name  = "DTS Bootstrap (sub:dts-cftptl-intsvc)"
         type  = "ServicePrincipal"
         roles = ["Contributor"]
+      },
+      {
+        name  = "DTS ARIA Document Migration (env:sbox)"
+        type  = "Group"
+        roles = ["Reader"]
       }
     ]
     legacy_databases = {
