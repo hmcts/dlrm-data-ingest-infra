@@ -126,6 +126,11 @@ landing_zones = {
         address_prefixes = ["10.24.230.0/28"]
       }
     }
+    metadata_mssql_long_term_retention_policy = {
+      weekly_retention  = "PT0S"
+      monthly_retention = "PT0S"
+      yearly_retention  = "PT0S"
+    }
   }
   "05" = {
     project                        = "Crime Legacy Migration"
@@ -214,6 +219,11 @@ landing_zones = {
         storage_mb = 32768
         type       = "postgresql"
       }
+    }
+    metadata_mssql_long_term_retention_policy = {
+      weekly_retention  = "PT0S"
+      monthly_retention = "PT0S"
+      yearly_retention  = "PT0S"
     }
   }
 }
