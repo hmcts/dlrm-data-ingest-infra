@@ -14,7 +14,7 @@ locals {
 }
 
 module "data_landing_zone" {
-  source = "github.com/hmcts/terraform-module-data-landing-zone?ref=main"
+  source = "github.com/hmcts/terraform-module-data-landing-zone?ref=feat/support-additional-paas-databases"
 
   for_each = local.landing_zones_with_scripts
 
