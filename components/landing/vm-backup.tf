@@ -31,4 +31,9 @@ resource "azurerm_backup_protected_vm" "legacy_database" {
   recovery_vault_name = local.backup_vault_name
   source_vm_id        = local.legacy_database_vm_ids[each.key]
   backup_policy_id    = local.backup_policy_id
+
+  # source_vm_id is a string-built ARM ID, so there is no implicit graph edge to the
+  # VMs created by the landing zone module; enforce ordering so enrollment only
+  # happens after the VMs exist.
+  depends_on = [module.data_landing_zone]
 }
