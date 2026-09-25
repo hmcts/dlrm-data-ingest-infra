@@ -69,3 +69,15 @@ variable "eventhub_consumer_groups" {
     name = string
   }))
 }
+
+variable "vm_backup_schedule_time" {
+  type        = string
+  default     = "23:00"
+  description = "Time of day (HH:MM, UTC) at which daily VM backups are taken."
+}
+
+variable "vm_backup_retention_days" {
+  type        = number
+  default     = 30
+  description = "Number of daily recovery points to retain for VM backups."
+}
