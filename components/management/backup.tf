@@ -10,6 +10,8 @@ resource "azurerm_backup_policy_vm" "daily" {
   name                = "ingest-mgmt-vm-daily-${var.env}"
   resource_group_name = module.data_mgmt_zone.resource_group_name
   recovery_vault_name = azurerm_recovery_services_vault.this.name
+  # V2 is the Enhanced policy, required for Trusted Launch VMs (legacy DB VMs)
+  policy_type = "V2"
 
   backup {
     frequency = "Daily"
