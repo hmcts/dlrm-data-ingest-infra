@@ -160,7 +160,7 @@ landing_zones = {
         data_disks = [
           {
             name                 = "ingest05-legacy-data-disk-01"
-            disk_size_gb         = 10240
+            disk_size_gb         = 1024
             lun                  = 0
             caching              = "None"
             storage_account_type = "StandardSSD_LRS"
