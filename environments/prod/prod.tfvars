@@ -119,6 +119,28 @@ landing_zones = {
         destination_address_prefix = "*"
         description                = "Allow RDP inbound from MoJ Ranges."
       }
+      Block-CFT-AKS-Outbound = {
+        priority                   = 250
+        direction                  = "Outbound"
+        access                     = "Deny"
+        protocol                   = "Tcp"
+        source_port_range          = "*"
+        destination_port_range     = "*"
+        source_address_prefix      = "*"
+        destination_address_prefix = "10.90.64.0/18"
+        description                = "Block CFT AKS outbound traffic."
+      }
+      Block-ARM-Outbound = {
+        priority                   = 251
+        direction                  = "Outbound"
+        access                     = "Deny"
+        protocol                   = "Tcp"
+        source_port_range          = "*"
+        destination_port_range     = "*"
+        source_address_prefix      = "*"
+        destination_address_prefix = "10.110.0.0/19"
+        description                = "Block ARM outbound traffic."
+      }
     }
     additional_vnet_address_space = ["10.24.230.0/28"]
     additional_subnets = {
