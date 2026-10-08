@@ -115,6 +115,13 @@ variable "landing_zones" {
       geo_redundant_backup_enabled = optional(bool, false)
     })), {})
     storage_account_ip_rules = optional(map(list(string)), {})
+    # Requires terraform-module-data-landing-zone / terraform-module-mssql to support passing this through to the MetadataControl database.
+    metadata_mssql_long_term_retention_policy = optional(object({
+      weekly_retention  = optional(string, "PT0S")
+      monthly_retention = optional(string, "PT0S")
+      yearly_retention  = optional(string, "PT0S")
+      week_of_year      = optional(number, 1)
+    }))
   }))
 }
 
