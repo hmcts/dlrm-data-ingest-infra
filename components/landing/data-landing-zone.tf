@@ -14,7 +14,7 @@ locals {
 }
 
 module "data_landing_zone" {
-  source = "github.com/hmcts/terraform-module-data-landing-zone?ref=feat/support-additional-paas-databases"
+  source = "github.com/hmcts/terraform-module-data-landing-zone?ref=feat/optionally-deploy-expensive-resources"
 
   for_each = local.landing_zones_with_scripts
 
@@ -59,6 +59,10 @@ module "data_landing_zone" {
   eventhub_namespace_capacity                      = each.value.eventhub_namespace_capacity
   key_vault_readers                                = ["145da22b-a3cb-4ba8-b735-22c94b5eea6c"]
   deploy_sftp_storage                              = each.value.deploy_sftp_storage
+  deploy_databricks                                = each.value.deploy_databricks
+  deploy_data_factory                              = each.value.deploy_data_factory
+  deploy_synapse                                   = each.value.deploy_synapse
+  deploy_eventhub                                  = each.value.deploy_eventhub
   arm_object_id                                    = var.arm_object_id
   storage_account_ip_rules                         = each.value.storage_account_ip_rules
   # SBOX zones are treated as "dev" environments and need connectivity nonprod environments. So all environments now use SS-PTL ADO Agents.
