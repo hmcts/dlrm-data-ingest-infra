@@ -230,6 +230,63 @@ landing_zones = {
       }
     }
   }
+  "03" = {
+    project                        = "TEC Legacy Migration"
+    deploy_bastion                 = true
+    use_microsoft_ip_kit_structure = true
+    deploy_databricks              = false
+    deploy_data_factory            = false
+    deploy_synapse                 = false
+    deploy_eventhub                = false
+    role_based_access_control = [
+      {
+        name  = "DTS TEC Data Migration Admin (env:sandbox)"
+        type  = "Group"
+        roles = ["Owner", "Storage Blob Data Owner"]
+      },
+      {
+        name  = "DTS TEC Data Migration User (env:sandbox)"
+        type  = "Group"
+        roles = ["Reader"]
+      }
+    ]
+    legacy_databases = {
+      legacy-sql = {
+        computer_name   = "ingest03-legacy"
+        type            = "linux"
+        publisher_name  = "oracle"
+        offer           = "oracle-database"
+        sku             = "oracle_db_12_2_0_1_ee"
+        version         = "latest"
+        os_disk_size_gb = 512
+      }
+    }
+
+    additional_nsg_rules = {
+      Allow-F5-VPN-Inbound = {
+        priority                   = 220
+        direction                  = "Inbound"
+        access                     = "Allow"
+        protocol                   = "*"
+        source_port_range          = "*"
+        destination_port_range     = "*"
+        source_address_prefix      = "10.99.72.0/21"
+        destination_address_prefix = "*"
+        description                = "Allow F5 VPN."
+      }
+      Allow-MoJ-RDP-Inbound = {
+        priority                   = 250
+        direction                  = "Inbound"
+        access                     = "Allow"
+        protocol                   = "Tcp"
+        source_port_range          = "*"
+        destination_port_ranges    = ["3389", "1521"]
+        source_address_prefixes    = ["194.33.192.0/24", "194.33.196.0/24", "194.33.248.0/24", "194.33.249.0/24", "128.77.75.64/26"]
+        destination_address_prefix = "*"
+        description                = "Allow RDP inbound from MoJ Ranges."
+      }
+    }
+  }
   "05" = {
     project                        = "Crime Legacy Migration"
     deploy_bastion                 = true
