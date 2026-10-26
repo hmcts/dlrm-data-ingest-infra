@@ -1,3 +1,14 @@
+variable "ftps_state" {
+  type        = string
+  description = "FTP publishing state. Accepts only Disabled or FtpsOnly. Omitted and null values disable FTP publishing."
+  default     = "Disabled"
+
+  validation {
+    condition     = var.ftps_state == null ? true : contains(["Disabled", "FtpsOnly"], var.ftps_state)
+    error_message = "ftps_state must be exactly Disabled or FtpsOnly."
+  }
+}
+
 variable "location" {
   type        = string
   description = "The Azure region to deploy the function app into."

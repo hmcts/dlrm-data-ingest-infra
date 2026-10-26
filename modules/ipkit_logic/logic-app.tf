@@ -10,6 +10,10 @@ resource "azurerm_logic_app_standard" "this" {
 
   virtual_network_subnet_id = var.logicapp_subnet_id
 
+  site_config {
+    ftps_state = var.ftps_state == null ? "Disabled" : var.ftps_state
+  }
+
   identity {
     type = "SystemAssigned"
   }

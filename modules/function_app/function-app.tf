@@ -23,6 +23,7 @@ resource "azurerm_linux_function_app" "this" {
   }
 
   site_config {
+    ftps_state             = var.ftps_state == null ? "Disabled" : var.ftps_state
     vnet_route_all_enabled = true
     application_stack {
       python_version = var.python_version
