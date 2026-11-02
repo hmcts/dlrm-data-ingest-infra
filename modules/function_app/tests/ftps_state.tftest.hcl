@@ -67,11 +67,11 @@ run "landing_creation_filter" {
   }
 }
 
-run "omitted_disables_ftp" {
+run "omitted_uses_ftps_only" {
   command = plan
   assert {
-    condition     = azurerm_linux_function_app.this.site_config[0].ftps_state == "Disabled"
-    error_message = "Omitted ftps_state must disable FTP on the Function App."
+    condition     = azurerm_linux_function_app.this.site_config[0].ftps_state == "FtpsOnly"
+    error_message = "Omitted ftps_state must use FtpsOnly on the Function App."
   }
 }
 
@@ -103,14 +103,14 @@ run "ftps_only_reaches_resource" {
   }
 }
 
-run "null_disables_ftp" {
+run "null_uses_ftps_only" {
   command = plan
   variables {
     ftps_state = null
   }
   assert {
-    condition     = azurerm_linux_function_app.this.site_config[0].ftps_state == "Disabled"
-    error_message = "Null must disable FTP on the Function App."
+    condition     = azurerm_linux_function_app.this.site_config[0].ftps_state == "FtpsOnly"
+    error_message = "Null must use FtpsOnly on the Function App."
   }
 }
 

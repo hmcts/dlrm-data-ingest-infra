@@ -8,17 +8,20 @@ resource's `site_config.ftps_state`.
 
 | Input | Default | Accepted values | Explicit null |
 | --- | --- | --- | --- |
-| `ftps_state` | `Disabled` | Exact `Disabled` or `FtpsOnly` | Resolves to `Disabled` |
+| `ftps_state` | `FtpsOnly` | Exact `Disabled` or `FtpsOnly` | Resolves to `FtpsOnly` |
 
-`Disabled` turns off FTP and FTPS publishing. Set `FtpsOnly` only when encrypted
-FTP publishing is required. `AllAllowed`, empty strings, whitespace, differently
+`FtpsOnly` preserves encrypted FTP publishing without permitting plain FTP.
+Set `Disabled` to turn off FTP and FTPS publishing. `AllAllowed`, empty strings, whitespace, differently
 cased values and unsupported values are rejected during input validation.
 The change does not modify publishing authentication, HTTP access or identities.
 
-Existing callers that omit this input now explicitly disable FTP publishing.
+Existing callers that omit this input use `FtpsOnly`.
 Confirm normal, manual, emergency and third-party publishing requirements before
-adoption. The landing component does not currently forward this input, so an FTPS
-exception there requires a separate caller change. This module change does not
+adoption. The landing component does not currently forward this input, so selecting
+`Disabled` there requires a separate caller change. An explicit null is normalized
+in the resource mapping because a variable default alone does not replace null.
+This avoids introducing a newer Terraform requirement for `nullable = false`.
+This module change does not
 establish the configuration of deployed Azure resources.
 
 ### Contract Tests
@@ -53,15 +56,15 @@ configurations using the mocked providers instead.
 ## Function App FTP Publishing
 
 The `modules/function_app` module exposes the same `ftps_state` contract as the
-Logic App module: omitted and null inputs map to `Disabled`, and only exact
+Logic App module: omitted and null inputs map to `FtpsOnly`, and only exact
 `Disabled` or `FtpsOnly` values are accepted. The value is explicitly assigned to
 the Linux Function App's `site_config.ftps_state`. Invalid values are rejected
 before provisioning. Publishing authentication, HTTPS, identities, runtime,
 networking and existing lifecycle rules are unchanged.
 
 The landing caller still creates Function Apps only for landing zones with
-`deploy_function_app = true`. It does not forward the new FTP input. An FTPS
-exception needs a separately coordinated caller change and publishing-owner
+`deploy_function_app = true`. It does not forward the new FTP input. Selecting
+`Disabled` needs a separately coordinated caller change and publishing-owner
 confirmation before adoption. No deployed compliance is inferred from source.
 
 From the repository root, use Terraform 1.7 or later for these isolated checks:
