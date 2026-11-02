@@ -62,12 +62,12 @@ run "caller_provider_version" {
   }
 }
 
-run "omitted_disables_ftp" {
+run "omitted_uses_ftps_only" {
   command = plan
 
   assert {
-    condition     = azurerm_logic_app_standard.this.site_config[0].ftps_state == "Disabled"
-    error_message = "Omitting ftps_state must disable FTP on the Logic App resource."
+    condition     = azurerm_logic_app_standard.this.site_config[0].ftps_state == "FtpsOnly"
+    error_message = "Omitting ftps_state must use FtpsOnly on the Logic App resource."
   }
 }
 
@@ -97,7 +97,7 @@ run "ftps_only_reaches_resource" {
   }
 }
 
-run "null_disables_ftp" {
+run "null_uses_ftps_only" {
   command = plan
 
   variables {
@@ -105,8 +105,8 @@ run "null_disables_ftp" {
   }
 
   assert {
-    condition     = azurerm_logic_app_standard.this.site_config[0].ftps_state == "Disabled"
-    error_message = "Explicit null must disable FTP on the Logic App resource."
+    condition     = azurerm_logic_app_standard.this.site_config[0].ftps_state == "FtpsOnly"
+    error_message = "Explicit null must use FtpsOnly on the Logic App resource."
   }
 }
 

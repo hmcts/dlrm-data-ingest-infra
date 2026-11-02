@@ -1,7 +1,7 @@
 variable "ftps_state" {
   type        = string
-  description = "FTP publishing state. Accepts only Disabled or FtpsOnly. Omitted and null values disable FTP publishing."
-  default     = "Disabled"
+  description = "FTP publishing state. Accepts only Disabled or FtpsOnly. Omitted and null values use FtpsOnly."
+  default     = "FtpsOnly"
 
   validation {
     condition     = var.ftps_state == null ? true : contains(["Disabled", "FtpsOnly"], var.ftps_state)
