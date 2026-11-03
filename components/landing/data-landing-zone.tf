@@ -64,6 +64,7 @@ module "data_landing_zone" {
   deploy_synapse                                   = each.value.deploy_synapse
   deploy_eventhub                                  = each.value.deploy_eventhub
   arm_object_id                                    = var.arm_object_id
+  metadata_mssql_long_term_retention_policy        = each.value.metadata_mssql_long_term_retention_policy
   storage_account_ip_rules                         = each.value.storage_account_ip_rules
   # SBOX zones are treated as "dev" environments and need connectivity nonprod environments. So all environments now use SS-PTL ADO Agents.
   ssptl_vnet_name           = "ss-ptl-vnet"
