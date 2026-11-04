@@ -27,15 +27,6 @@ existing_purview_account = {
   resource_id                    = "/subscriptions/8cbc6f36-7c56-4963-9d36-739db5d00b27/resourceGroups/cft-purview-rg-prod/providers/Microsoft.Purview/accounts/cft-purview-prod"
 }
 
-# SMB mount failure monitoring for the doc-migration VM in landing zone 00
-smb_mount_monitor_alert = {
-  enabled                   = true
-  landing_zone_key          = "00"
-  computer_name             = "ingest00-doc-migration-prod"
-  slack_webhook_vault_id    = "/subscriptions/e9674938-57cb-43ff-a440-1917658e468c/resourceGroups/ingest-mgmt-rg-prod/providers/Microsoft.KeyVault/vaults/ingest-mgmt-kv-prod"
-  slack_webhook_secret_name = "dtspo-red-slack-webhook"
-}
-
 landing_zones = {
   "00" = {
     project                              = "DLRM Ingestion Engine"
@@ -80,21 +71,7 @@ landing_zones = {
         os_disk_size_gb = 1024
         size            = "Standard_D16ds_v5"
       }
-      doc-migration = {
-        type                       = "linux"
-        computer_name              = null
-        subnet_key                 = "vnet-doc-migration"
-        os_disk_size_gb            = 256
-        size                       = "Standard_D4ds_v5"
-        publisher_name             = "canonical"
-        offer                      = "ubuntu-24_04-lts"
-        sku                        = "server"
-        version                    = "latest"
-        deploy_AADSSHLoginForLinux = true
-        vm_admin_group_ids         = ["efb2b089-d742-414b-9956-142bf6effb43", "e7ea2042-4ced-45dd-8ae3-e051c6551789"]
-        bootstrap_script_path      = "scripts/doc-migration-smb-setup.sh"
-        trigger_bootstrap          = "25082026-1426"
-      }
+      # doc-migration VM is managed by hmcts/dlrm-aria-doc-migration-iac
     }
     additional_nsg_rules = {
       Allow-Prod-Bastion-Inbound = {
