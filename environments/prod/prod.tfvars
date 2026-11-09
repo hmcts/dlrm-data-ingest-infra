@@ -312,9 +312,9 @@ landing_zones = {
     }
     additional_paas_databases = {
       crime-legacy = {
-        sku_name   = "GP_Standard_D2s_v3"
+        sku_name   = "GP_Standard_D8ds_v5"
         version    = "17"
-        storage_mb = 32768
+        storage_mb = 65536
         type       = "postgresql"
       }
     }
