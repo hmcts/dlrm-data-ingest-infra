@@ -10,26 +10,6 @@ mgmt_additional_kv_access_policies = {
   }
 }
 
-# AI Services settings
-min_node_count        = 1
-cognitive_account_sku = "S0"
-cognitive_account_ip_rules = [
-  "20.3.165.95" # Document Intelligence Studio
-]
-
-# Storage account settings
-ip_rules = [
-  "51.11.24.49",       # Azure ML Workspace UK South IP
-  "51.104.8.64/27",    # Azure ML Workspace UK South IP
-  "51.104.24.96/28",   # Azure ML Workspace UK South IP
-  "51.105.67.16/28",   # Azure ML Workspace UK South IP
-  "51.105.75.128/28",  # Azure ML Workspace UK South IP
-  "51.140.146.208/28", # Azure ML Workspace UK South IP
-  "51.143.214.32/28",  # Azure ML Workspace UK South IP
-  "52.151.111.249",    # Azure ML Workspace UK South IP
-  "20.3.165.95"        # Document Intelligence Studio
-]
-
 #Event Hub settings
 eventhub_ns_sku = "Premium"
 services = {
@@ -405,10 +385,6 @@ install_azure_monitor   = true
 systemassigned_identity = true
 
 arm_object_id = "fd6e5281-058b-490f-8c90-186c7f057502"
-
-# AI module settings
-ml_compute_instances = 0
-deploy_openai        = true
 
 existing_purview_account = {
   identity = {
