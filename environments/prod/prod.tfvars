@@ -86,6 +86,15 @@ landing_zones = {
           }
         }
       }
+      functions = {
+        address_prefixes = ["10.247.44.192/28"]
+        delegations = {
+          functions = {
+            service_name = "Microsoft.Web/serverFarms"
+            actions      = ["Microsoft.Network/virtualNetworks/subnets/join/action"]
+          }
+        }
+      }
     }
     additional_nsg_rules = {
       Allow-Prod-Bastion-Inbound = {
