@@ -73,6 +73,20 @@ landing_zones = {
       }
       # doc-migration VM is managed by hmcts/dlrm-aria-doc-migration-iac
     }
+    additional_subnets = {
+      doc-migration = {
+        address_prefixes = ["10.24.230.0/28"]
+      }
+      container-apps = {
+        address_prefixes = ["10.247.44.224/27"]
+        delegations = {
+          containerapps = {
+            service_name = "Microsoft.App/environments"
+            actions      = ["Microsoft.Network/virtualNetworks/subnets/join/action"]
+          }
+        }
+      }
+    }
     additional_nsg_rules = {
       Allow-Prod-Bastion-Inbound = {
         priority                   = 220
@@ -120,11 +134,6 @@ landing_zones = {
       }
     }
     additional_vnet_address_space = ["10.24.230.0/28"]
-    additional_subnets = {
-      doc-migration = {
-        address_prefixes = ["10.24.230.0/28"]
-      }
-    }
   }
   "03" = {
     project                        = "TEC Legacy Migration"
