@@ -153,6 +153,17 @@ landing_zones = {
       }
       # doc-migration VM is managed by hmcts/dlrm-aria-doc-migration-iac
     }
+    additional_subnets = {
+      container-apps = {
+        address_prefixes = ["10.247.4.224/27"]
+        delegations = {
+          containerapps = {
+            service_name = "Microsoft.App/environments"
+            actions      = ["Microsoft.Network/virtualNetworks/subnets/join/action"]
+          }
+        }
+      }
+    }
     additional_nsg_rules = {
       Allow-F5-VPN-Inbound = {
         priority                   = 220
