@@ -254,11 +254,11 @@ landing_zones = {
         offer           = "oracle-database"
         sku             = "oracle_db_12_2_0_1_ee"
         version         = "latest"
-        os_disk_size_gb = 4096
+        os_disk_size_gb = 512
         data_disks = [
           {
             name                 = "ingest05-legacy02-data-disk-01"
-            disk_size_gb         = 1024
+            disk_size_gb         = 4096
             lun                  = 0
             caching              = "None"
             storage_account_type = "StandardSSD_LRS"
