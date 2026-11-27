@@ -19,6 +19,9 @@ eventhub_consumer_groups = {}
 
 landing_zones = {
   "00" = {
+    logic_app_site_config = {
+      runtime_scale_monitoring_enabled = true
+    }
     project                              = "ARIA"
     use_microsoft_ip_kit_structure       = true
     deploy_bastion                       = true
@@ -104,6 +107,9 @@ landing_zones = {
     additional_vnet_address_space = ["10.25.230.0/28"]
   }
   "01" = {
+    logic_app_site_config = {
+      runtime_scale_monitoring_enabled = true
+    }
     project                              = "ARIA"
     use_microsoft_ip_kit_structure       = true
     deploy_bastion                       = true
@@ -148,6 +154,9 @@ landing_zones = {
     }
   }
   "03" = {
+    logic_app_site_config = {
+      runtime_scale_monitoring_enabled = true
+    }
     project                        = "TEC Legacy Migration"
     deploy_bastion                 = true
     use_microsoft_ip_kit_structure = true
@@ -205,6 +214,10 @@ landing_zones = {
     }
   }
   "05" = {
+    logic_app_site_config = {
+      runtime_scale_monitoring_enabled = true
+      dotnet_framework_version         = "v6.0"
+    }
     project                        = "Crime Legacy Migration"
     deploy_bastion                 = true
     use_microsoft_ip_kit_structure = true

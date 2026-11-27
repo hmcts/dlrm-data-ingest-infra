@@ -11,7 +11,9 @@ resource "azurerm_logic_app_standard" "this" {
   virtual_network_subnet_id = var.logicapp_subnet_id
 
   site_config {
-    ftps_state = var.ftps_state == null ? "FtpsOnly" : var.ftps_state
+    ftps_state                       = var.ftps_state == null ? "FtpsOnly" : var.ftps_state
+    runtime_scale_monitoring_enabled = var.site_config.runtime_scale_monitoring_enabled
+    dotnet_framework_version         = var.site_config.dotnet_framework_version
   }
 
   identity {

@@ -22,10 +22,15 @@ variable "landing_zones" {
     bastion_host_sku                     = optional(string, null)
     deploy_sftp_storage                  = optional(bool, false)
     deploy_function_app                  = optional(bool, false)
+    function_app_ftps_state              = optional(string)
     deploy_databricks                    = optional(bool, true)
     deploy_data_factory                  = optional(bool, true)
     deploy_synapse                       = optional(bool, true)
     deploy_eventhub                      = optional(bool, true)
+    logic_app_site_config = optional(object({
+      runtime_scale_monitoring_enabled = optional(bool)
+      dotnet_framework_version         = optional(string)
+    }), {})
     role_based_access_control = optional(list(object({
       name  = optional(string)
       type  = optional(string, "user")

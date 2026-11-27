@@ -9,6 +9,16 @@ variable "ftps_state" {
   }
 }
 
+variable "site_config" {
+  type = object({
+    runtime_scale_monitoring_enabled = optional(bool)
+    dotnet_framework_version         = optional(string)
+  })
+  description = "Optional runtime settings to preserve when configuring the Logic App site."
+  default     = {}
+  nullable    = false
+}
+
 variable "os_type" {
   type        = string
   description = "The operating system type of the app service plan."

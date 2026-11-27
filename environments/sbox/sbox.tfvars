@@ -78,6 +78,9 @@ eventhub_consumer_groups = {
 
 landing_zones = {
   "00" = {
+    logic_app_site_config = {
+      runtime_scale_monitoring_enabled = true
+    }
     project                        = "DLRM Ingestion Engine"
     deploy_bastion                 = true
     deploy_sftp_storage            = true
@@ -179,8 +182,12 @@ landing_zones = {
     }
   }
   "01" = {
-    project             = "Document Migration"
-    deploy_function_app = true
+    logic_app_site_config = {
+      runtime_scale_monitoring_enabled = true
+    }
+    project                 = "Document Migration"
+    deploy_function_app     = true
+    function_app_ftps_state = "Disabled"
     role_based_access_control = [
       # No Entra group exists yet for Document Migration; grant Prasanna directly for now.
       {
@@ -220,6 +227,9 @@ landing_zones = {
     }
   }
   "03" = {
+    logic_app_site_config = {
+      runtime_scale_monitoring_enabled = true
+    }
     project                        = "TEC Legacy Migration"
     deploy_bastion                 = true
     use_microsoft_ip_kit_structure = true
@@ -277,6 +287,10 @@ landing_zones = {
     }
   }
   "05" = {
+    logic_app_site_config = {
+      runtime_scale_monitoring_enabled = true
+      dotnet_framework_version         = "v6.0"
+    }
     project                        = "Crime Legacy Migration"
     deploy_bastion                 = true
     use_microsoft_ip_kit_structure = true

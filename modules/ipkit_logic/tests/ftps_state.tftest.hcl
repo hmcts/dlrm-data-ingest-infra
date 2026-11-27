@@ -71,6 +71,27 @@ run "omitted_uses_ftps_only" {
   }
 }
 
+run "site_config_overrides_preserve_ftps_default" {
+  command = plan
+
+  variables {
+    site_config = {
+      runtime_scale_monitoring_enabled = true
+      dotnet_framework_version         = "v6.0"
+    }
+  }
+
+  assert {
+    condition     = azurerm_logic_app_standard.this.site_config[0].runtime_scale_monitoring_enabled && azurerm_logic_app_standard.this.site_config[0].dotnet_framework_version == "v6.0"
+    error_message = "The existing Logic App scale monitoring and .NET settings must reach the resource."
+  }
+
+  assert {
+    condition     = azurerm_logic_app_standard.this.site_config[0].ftps_state == "FtpsOnly"
+    error_message = "Runtime settings must not override the compliant FTP default."
+  }
+}
+
 run "explicit_disabled_reaches_resource" {
   command = plan
 

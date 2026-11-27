@@ -14,10 +14,11 @@ Both `modules/ipkit_logic` (Logic App Standard) and `modules/function_app`
 Set `Disabled` to turn off both FTP and FTPS publishing. Unsupported values,
 including `AllAllowed`, empty, whitespace, padded and wrong-case strings, are rejected.
 
-The landing caller does not forward this input, so selecting `Disabled` requires
-a caller change and confirmation of publishing requirements. Function App
-creation remains controlled by `deploy_function_app`. Publishing authentication
-and other resource settings are unchanged.
+Landing zones can set `function_app_ftps_state` for a Function App. Sandbox
+landing zone `01` explicitly keeps `Disabled`. Function App creation remains
+controlled by `deploy_function_app`. Logic App scale monitoring and .NET settings
+are passed through `logic_app_site_config` to match existing configuration.
+Publishing authentication is unchanged.
 
 ## Contract Tests
 

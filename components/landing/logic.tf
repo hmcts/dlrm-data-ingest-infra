@@ -14,4 +14,5 @@ module "logic" {
   logicapp_subnet_id         = module.data_landing_zone[each.key].subnet_ids["vnet-data-product-001"]
   sql_database_name          = "MetadataControl"
   sql_server_fqdn            = module.data_landing_zone[each.key].metadata_mssql.fqdn
+  site_config                = each.value.logic_app_site_config
 }
