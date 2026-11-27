@@ -12,4 +12,5 @@ module "function_app" {
   common_tags                = merge(module.ctags.common_tags, { "Data-Ingest-Project" = each.value.project })
   function_app_subnet_id     = module.data_landing_zone[each.key].subnet_ids["vnet-function-app"]
   private_endpoint_subnet_id = module.data_landing_zone[each.key].subnet_ids["vnet-services"]
+  ftps_state                 = each.value.function_app_ftps_state
 }
